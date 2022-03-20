@@ -24,5 +24,5 @@ public class WritingContent {
 
     //picture은 나중에 구현
 
-    private List<Long> answerIds = new ArrayList<>();
+    private List<AnswersToTheWriting> answers = new ArrayList<>();
 }

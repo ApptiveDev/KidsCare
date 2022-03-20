@@ -3,12 +3,11 @@ package team3.OneSubscribe.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
 //@Entity
 @Getter @Setter
-public class AnswerContent {
+public class AnswersFromMember {
 
     private Long id;
 
