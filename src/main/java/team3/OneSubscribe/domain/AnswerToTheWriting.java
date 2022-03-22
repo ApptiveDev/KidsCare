@@ -4,21 +4,28 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
-public class Tag {
-
+public class AnswerToTheWriting {
 
     @Id @GeneratedValue
-    @Column(name = "tag_id")
+    @Column(name = "answer_to_the_writing_id")
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "writing_content_id")
     private WritingContent writingContent;
 
-    @Enumerated(EnumType.STRING)
-    private DiseaseName diseaseName;
+    private LocalDateTime createDate;
 
+    private LocalDateTime updateDate;
+
+    @Enumerated(EnumType.STRING)
+    private Expert expert;
+
+    private Long likeNumber;
+
+    private boolean feedback;
 }

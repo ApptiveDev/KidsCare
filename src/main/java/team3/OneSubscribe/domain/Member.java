@@ -4,12 +4,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
-//@Entity
+@Entity
 @Getter @Setter
 public class Member {
 
+    @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
     private String loginId; // 형식 확인 필요
@@ -20,12 +21,15 @@ public class Member {
 
     private String eMail;
 
-    private String group;
+    private String team; // group으로 하면 데이터베이스 예약어라서 안됨.
 
+    @Enumerated(EnumType.STRING)
     private Expert expert;
 
+    @OneToOne(fetch = FetchType.LAZY)
     private Writing writings;
 
+    @OneToOne(fetch = FetchType.LAZY)
     private Answer answers;
 
 }
