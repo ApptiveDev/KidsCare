@@ -23,6 +23,8 @@ public class Member {
 
     private String team; // group으로 하면 데이터베이스 예약어라서 안됨.
 
+    private String phoneNumber;
+
     @Enumerated(EnumType.STRING)
     private Expert expert;
 
