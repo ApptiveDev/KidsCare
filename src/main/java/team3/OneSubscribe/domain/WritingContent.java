@@ -32,6 +32,5 @@ public class WritingContent {
     //private Picture picture;
     //picture은 나중에 구현
 
-    @OneToMany(mappedBy = "writingContent") // mappedBy는 JAVA Code에서 실제로 사용하는 변수명으로, camelCase로 작성한다.
-    private List<AnswerToTheWriting> answers = new ArrayList<>();
+    private ArrayList answerMemberId = new ArrayList();
 }

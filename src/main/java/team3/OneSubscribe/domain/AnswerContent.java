@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
-public class AnswerFromMember {
+public class AnswerContent {
 
     @Id @GeneratedValue
-    @Column(name = "answer_from_member_id")
+    @Column(name = "answer_content_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -22,10 +22,18 @@ public class AnswerFromMember {
 
     private LocalDateTime updateDate;
 
+    private String context; // 형식을 어떤걸로 저장해야 할지 모르겠음.
+
     @Enumerated(EnumType.STRING)
     private Expert expert;
 
     private Long likeNumber;
 
     private boolean feedback;
+
+    //조회를 위한 정보
+
+    private Long questionerId;
+
+    private Long writingContentId;
 }

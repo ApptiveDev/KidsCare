@@ -24,5 +24,5 @@ public class Answer {
     private Long totalLikeNumber;
 
     @OneToMany(mappedBy = "answer")
-    private List<AnswerFromMember> answers = new ArrayList<>();
+    private List<AnswerContent> answers = new ArrayList<>();
 }
