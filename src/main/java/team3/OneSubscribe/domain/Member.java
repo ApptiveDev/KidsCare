@@ -28,10 +28,10 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Expert expert;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private Writing writings;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private Answer answers;
 
 }

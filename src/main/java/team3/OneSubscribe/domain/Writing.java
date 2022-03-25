@@ -22,5 +22,5 @@ public class Writing {
     private Long count;
 
     @OneToMany(mappedBy = "writing")
-    private List<WritingContent> writings = new ArrayList<>();
+    private List<WritingContent> writingContents = new ArrayList<>();
 }

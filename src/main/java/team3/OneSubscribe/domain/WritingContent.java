@@ -32,5 +32,5 @@ public class WritingContent {
     //private Picture picture;
     //picture은 나중에 구현
 
-    private ArrayList answerMemberId = new ArrayList();
+    private ArrayList answerMembers = new ArrayList();
 }

@@ -33,7 +33,7 @@ public class AnswerContent {
 
     //조회를 위한 정보
 
-    private Long questionerId;
+    private Long questioner;
 
-    private Long writingContentId;
+    private Long writingContentNumber;
 }
