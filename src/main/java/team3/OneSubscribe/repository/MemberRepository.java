@@ -1,23 +1,23 @@
 package team3.OneSubscribe.repository;
 
-import org.springframework.stereotype.Repository;
 import team3.OneSubscribe.domain.Member;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+public interface MemberRepository {
 
-@Repository
-public class MemberRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    //DB에 멤버저장. 고유 id반환.
+    public Long save(Member member);
 
-    public Long save(Member member){
-        em.persist(member);
-        return member.getId();
-    }
+    public Member find(Long id);
 
-    public Member find(Long id){
-        return em.find(Member.class, id);
-    }
+    //id, pw를 받아서 일치하면 0반환. 틀리면 -1
+    //혹시 특정 에러가 발생했을 때 다른 수를 반환할 수 있게 int로 선언함.
+    public int loginCheck(String loginId, String loginPw);
+
+    //loginId 중복검사를 위함.
+    //이미 id가 존재하면 해당 Member반환. 없다면 null반환.
+    public Member findByLoginId(String loginId);
+
+
+
 }
