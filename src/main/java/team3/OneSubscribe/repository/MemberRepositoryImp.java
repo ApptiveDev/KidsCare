@@ -31,4 +31,9 @@ public class MemberRepositoryImp implements MemberRepository {
     public Member findByLoginId(String loginId) {
         return null;
     }
+
+    @Override
+    public String matchNamenEmailNPhoneNum(String name, String email, String phoneNum) {
+        return null;
+    }
 }

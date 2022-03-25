@@ -19,5 +19,6 @@ public interface MemberRepository {
     public Member findByLoginId(String loginId);
 
 
-
+    //이름, 이메일, 전화번호가 모두 일치하는 사용자가 있으면 사용자 아이디 반환. 없다면 null반환.
+    public String matchNamenEmailNPhoneNum(String name, String email, String phoneNum);
 }
