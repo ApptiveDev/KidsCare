@@ -43,7 +43,7 @@ public class LoginController {
 
     }
 
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public String logoutMember(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false); //세션이 없어도 생성안함.
         model.addAttribute("logout", "fail");
@@ -67,7 +67,7 @@ public class LoginController {
             mailService.sendMail(email, "[KidsCare]아이디 찾기", "아이디는 : " +resId + "입니다."); //메일을 보내는데 시간이 좀 걸려서 비동기로 하면 좋을 것 같다.
             //메일을 확인하라는 뷰 띄우기.
             model.addAttribute("findId", email);
-            return "plz_check_eamil";
+            return "plz_check_email";
         }
 
     }

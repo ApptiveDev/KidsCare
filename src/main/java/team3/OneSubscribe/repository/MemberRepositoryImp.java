@@ -34,6 +34,6 @@ public class MemberRepositoryImp implements MemberRepository {
 
     @Override
     public String matchNamenEmailNPhoneNum(String name, String email, String phoneNum) {
-        return null;
+        return "zhdhfhd33";
     }
 }
