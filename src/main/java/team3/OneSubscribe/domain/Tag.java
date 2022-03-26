@@ -1,9 +1,24 @@
 package team3.OneSubscribe.domain;
 
-public enum Tag {
-    //dizziness 어지럼증
-    //shiver 몸서리, 오싹한 느낌; 오한
-    //spot 점
-    DIZZINESS, SHIVER, SPOT
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter @Setter
+public class Tag {
+
+
+    @Id @GeneratedValue
+    @Column(name = "tag_id")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "writing_content_id")
+    private WritingContent writingContent;
+
+    @Enumerated(EnumType.STRING)
+    private DiseaseName diseaseName;
 
 }
