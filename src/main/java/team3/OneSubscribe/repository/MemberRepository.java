@@ -16,14 +16,10 @@ public interface MemberRepository {
 
     //loginId 중복검사를 위함.
     //이미 id가 존재하면 해당 Member반환. 없다면 null반환.
-    public List<Member> findByLoginId(String loginId);
+    public Member findByLoginId(String loginId);
 
+    public List<Member> findByPhoneNumber(String phoneNumber);
 
-    //id, pw를 받아서 일치하면 0반환. 틀리면 -1
-    //혹시 특정 에러가 발생했을 때 다른 수를 반환할 수 있게 int로 선언함.
-    // //public int loginCheck(String loginId, String loginPw);
-    // // 이거는 service 기능 같은데??
-    // // 바로 loginCheck로 하는게 아닌, 기본기능으로 하기??
 
 
 
