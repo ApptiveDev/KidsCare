@@ -1,13 +1,59 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>index</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8">
+  <title>홈</title>
 </head>
-<body>
-<h1>index</h1>
-<p th:text="'logout : ' + ${logout}"> </p>
-<p th:text="'login : ' + ${login}"> </p>
+<!--id는 한번 밖에 사용하지 못하는 식별자 이므로 큰 범위, header나 container같은 곳에 사용하고
+class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
+<!--block을 가로로 정렬하는 방법
+1. 필요한 요소를 inline-block으로 변경 후 적절한 배치 사용 relative(현재위치기준), absolute(부모위치기준)
+2. float
+3. float나 inline보다 더 편리한 flex-->
 
+<!--부모에서 flex를 사용해서 자식에서 float:right를 쓰면 당연히 적용 안됨-->
+<body>
+<div id="header" style="display:flex; background-color:red"><!--상단 부분-->
+  <div>
+    <a href="/" ><img src="" alt="로고"></a>
+  </div>
+  <div>
+    <h3 >프로젝트 이름</h3>
+  </div>
+  <div style="position:absolute;right:10px ; background:blue">
+    <div style="display:flex">
+      <div>
+        <a href="/join.html">회원가입</a>
+      </div>
+      &nbsp;
+      <div>
+        <a href="/login.html">로그인</a>
+      </div>
+    </div>
+    <div>
+      <p>계정이름</p>
+    </div>
+  </div>
+</div>
+
+<div id="container"><!--본문-->
+  <div class="leftside"><!--왼쪽에 광고 배치-->
+    <div class="card"></div> <!--프레임-->
+    <div class="card"></div>
+    <div class="card">
+      <div class="board"></div><!--menu, banner, board등에 따라서 결정, 요소 -->
+    </div>
+  </div>
+
+  <div class="rightside">
+
+  </div>
+
+  <div class="main"> <!--게시판 글 불러와서 띄우는 곳 -->
+    <div class="card"></div>
+  </div>
+</div>
+
+<div id="footer"></div><!--바닥-->
 </body>
 </html>

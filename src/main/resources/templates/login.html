@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인</title>
+</head>
+<body>
+<div id="container" class="login" >
+  <div>
+    <a href="/"><img src="" alt="로고"></a>
+  </div>
+  <form>
+    <div>
+      <p class="input"><input type="text" name="userid" maxlength="20" class="text" placeholder="아이디"></p>
+    </div>
+    <div>
+      <p class="input"><input type="password" name="password" maxlength="20" class="text" placeholder="비밀번호"></p>
+    </div>
+    <div>
+      <p class="submit"><input type="submit" value="로그인" class="text"></p>
+    </div>
+    <div>
+      <label class="autologin"><input type="checkbox" name="autologin" value="1">로그인 유지</label>
+    </div>
+    <div style="display:flex">
+      <div>
+        <a href="/forget">아이디/비밀번호 찾기</a>
+      </div>
+      &nbsp;
+      <div>
+        <a href="/join">회원가입</a>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>
