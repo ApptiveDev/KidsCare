@@ -54,10 +54,10 @@
 
         <div>
             <div>
-                <h3>별명</h3>
+                <h3>이름</h3>
             </div>
             <div>
-                <input type="text" id="name" name="nickName" title="별명" maxlength="40" onblur="blurName()">
+                <input type="text" id="name" name="nickName" title="이름" maxlength="40" onblur="blurName()">
             </div>
             <div>
                 <div id="alert_name"></div>
@@ -168,7 +168,7 @@
 </div>
 
 <script>
-	    const form = document.join_form;
+	    const form = document.signUp_form;
 
     	function blurName() {
     		const chkName = checkName(form);
@@ -236,35 +236,84 @@
     	}
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
         function checkName(form) {
             if(form.name.value=="") {
-                document.getElementById("alert_name").innerText = "Please enter nickname.";
+                document.getElementById("alert_name").innerText = "Please enter Name.";
                 return false;
             }
             return true;
         }
 
         function checkId(form) {
-            if(form.id.value=="") {
+            var value =  form.id.value;
+            var chk=0;
+            for(var i=0; i<value.length; i++) { //숫자, 영어만 입력
+                if(!((value[i]>="0"&&value[i]<="9")||(value[i]>="A"&&value[i]<="Z")||(value[i]>="a"&&value[i]<="z")))
+                    chk=1;
+            }
+            if(chk==1) {
+                document.getElementById("alert_id").innerText = "Please enter alphabet or number";
+                return false;
+            }
+
+            if(value=="") {
                 document.getElementById("alert_id").innerText = "Please enter ID";
                 return false;
+            }
+            else if(value.length<6 || value.length>15) { //첫 번째 숫자 넣어야 함
+                if(value[0]>="0" && value[0]<="9") {
+                   document.getElementById("alert_id").innerText = "Please enter ID 6~12 characters and don't enter alphabet at first";
+                   return false;
+                }
+                document.getElementById("alert_id").innerText = "Please enter ID 6~12 characters";
+                return false;
+            }
+            else { //개수는 맞지만 형식 불일치
+                if(value[0]>="0" && value[0]<="9") {
+                   document.getElementById("alert_id").innerText = "Don't enter alphabet at first";
+                   return false;
+                }
             }
             return true;
         }
 
         function checkPw1(form) {
-            if(form.pw1.value=="") {
-                document.getElementById("alert_pw1").innerText = "Please enter Password";
+            var value =  form.pw1.value;
+            var chk=0;
+            for(var i=0; i<value.length; i++) { //숫자, 영어, 특정 특수 문자
+                if(!((value[i]>="0"&&value[i]<="9")||(value[i]>="A"&&value[i]<="Z")||
+                (value[i]>="a"&&value[i]<="z")||(value[i]=="!")||(value[i]=="@")||(value[i]=="#")))
+                    chk=1;
+            }
+            if(chk==1) {
+                document.getElementById("alert_pw1").innerText = "Please enter alphabet or number or !@#";
+                return false;
+            }
+
+            if(value=="") {
+                document.getElementById("alert_pw1").innerText = "Please enter PW";
+                return false;
+            }
+            else if(value.length<6 || value.length>15) { //첫 번째 숫자 넣어야 함
+                document.getElementById("alert_pw1").innerText = "Please enter ID 6~12 characters";
                 return false;
             }
             return true;
         }
 
         function checkPw2(form) {
+            var value1 =  form.pw1.value;
+            var value2 =  form.pw2.value;
             if(form.pw2.value=="") {
                 document.getElementById("alert_pw2").innerText = "Please enter Confirm Password";
+                return false;
+            }
+            else if(value1!=value2) {
+                document.getElementById("alert_pw2").innerText = "No agreement";
                 return false;
             }
             return true;
