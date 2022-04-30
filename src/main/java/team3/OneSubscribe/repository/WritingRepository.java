@@ -20,7 +20,7 @@ public class WritingRepository {
         em.persist(writing);
     }
 
-    public Writing findOne(Long id){
+    public Writing findOneById(Long id){
         return em.find(Writing.class, id);
     }
 

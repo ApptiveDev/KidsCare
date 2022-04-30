@@ -22,17 +22,14 @@ public class MemberService {
      */
     @Transactional // 변경
     public Long join(Member member){
-        //validateDuplicateMember(member); //중복 회원 검사
+        validateDuplicateMember(member); //중복 회원 검사
         memberRepository.save(member);
         return member.getId();
     }
 
-    // 사실상 loginId를 중복해서 만드는것을 허용안하므로, 중복이 처음부터 발생하지 않음.
-    // 이거 필요 없음.
     private void validateDuplicateMember(Member member) {
-        Member findMember = memberRepository.findByLoginId(member.getLoginId());
-        // Member가 null을 못 받고 있음
-        if(findMember == null){
+        List<Member> findMembers = memberRepository.findByLoginId(member.getLoginId());
+        if(!findMembers.isEmpty()){
             throw new IllegalStateException("이미 존재하는 아이디입니다.");
         }
     }
@@ -48,6 +45,6 @@ public class MemberService {
      * 회원 한명 조회
      */
     public Member findOne(Long memberId){
-        return memberRepository.findOne(memberId);
+        return memberRepository.findOneById(memberId);
     }
 }
