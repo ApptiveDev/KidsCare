@@ -20,5 +20,6 @@ public class MailService {
 //        simpleMailMessage.setText("안녕민건!");
 //        javaMailSender.send(simpleMailMessage);
     }
+}
 
 
