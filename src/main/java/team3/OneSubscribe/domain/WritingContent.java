@@ -24,7 +24,10 @@ public class WritingContent {
 
     private LocalDateTime updateDate;
 
+    private String title;
+
     private String context; // 형식을 어떤걸로 저장해야 할지 모르겠음.
+
 
     @OneToMany(mappedBy = "writingContent") // mappedBy는 JAVA Code에서 실제로 사용하는 변수명으로, camelCase로 작성한다.
     private List<Tag> tags; // enum을 list로 가져올 수 없어서, Tag 거쳐서 이동

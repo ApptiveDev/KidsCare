@@ -1,19 +1,14 @@
 package team3.OneSubscribe.controller.login;
 
-import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import team3.OneSubscribe.service.LoginService;
 import team3.OneSubscribe.service.MailService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
@@ -24,7 +19,6 @@ public class LoginController {
 
     //자동 autowierd
     private final MailService mailService;
-    private final LoginService loginService;
 
 //    @GetMapping("mailtest")
 //    public String sendMail() {

@@ -52,7 +52,14 @@ public class MemberRepositoryImp implements MemberRepository {
 //        }finally{
 //
 //        }
-    };
+    }
+
+    @Override
+    public List<Member> findByPhoneNumber(String phoneNumber) {
+        return null;
+    }
+
+    ;
 
 
 
