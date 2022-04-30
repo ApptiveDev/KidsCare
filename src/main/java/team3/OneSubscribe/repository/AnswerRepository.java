@@ -20,7 +20,7 @@ public class AnswerRepository {
         em.persist(answer);
     }
 
-    public Answer findOne(Long id){
+    public Answer findOneById(Long id){
         return em.find(Answer.class, id);
     }
 

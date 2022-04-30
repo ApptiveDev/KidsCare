@@ -17,6 +17,8 @@ public class Member {
 
     private String loginPassword; // 형식 확인 필요
 
+    private String name;
+
     private String nickName;
 
     private String eMail;

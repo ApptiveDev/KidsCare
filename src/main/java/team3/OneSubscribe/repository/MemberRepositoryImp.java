@@ -24,7 +24,7 @@ public class MemberRepositoryImp implements MemberRepository {
     }
 
     @Override
-    public Member findOne(Long id) {
+    public Member findOneById(Long id) {
         return em.find(Member.class, id);
     }
 
@@ -36,22 +36,17 @@ public class MemberRepositoryImp implements MemberRepository {
 
 
     @Override
-    public Member findByLoginId(String loginId){
+    public List<Member> findByLoginId(String loginId){
 
-        return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
+        try{
+            return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", loginId)
-                .getSingleResult();
-        // 어짜피 loginId를 중복을 허용안할거라서 검증할 필요없음.
-        // 만약에 아이디 비번을 찾기 위해서 이것을 쓰는거라면, 그에 맞는거를 다시 만들기.
-//        try{
-//            return em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
-//                .setParameter("loginId", loginId)
-//                    .getSingleResult();
-//        }catch (Exception e){
-//            throw null;
-//        }finally{
-//
-//        }
+                    .getResultList();
+        }catch (Exception e){
+            return null;
+        }finally{
+
+        }
     };
 
 

@@ -8,6 +8,8 @@ import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.MemberRepositoryImp;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class SignupService {
@@ -25,8 +27,8 @@ public class SignupService {
 
     //해당 id 사용가능하면 ture, 사용 못하면 false
     public boolean idDuplicateCheck(String loginId) {
-        Member res = memberRepository.findByLoginId(loginId);
-        return res == null;
+        List<Member> res = memberRepository.findByLoginId(loginId);
+        return res.isEmpty();
     }
 
     //id형식검사. 통과하면 0. 통과못하면 상황에 따른 int반환.
