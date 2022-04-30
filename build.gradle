@@ -35,6 +35,12 @@ dependencies {
 //	testImplementation("org.junit.vintage:junit-vintage-engine") {
 //		exclude group: "org.hamcrest", module: "hamcrest-core"
 //	}
+
+	//mail을 위함.
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.6.4'
+
+
+
 }
 
 tasks.named('test') {
