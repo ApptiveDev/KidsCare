@@ -62,7 +62,7 @@ public class MemberRepositoryImp implements MemberRepository {
         return null;
     }
 
-    ;
+
 
 
 }
