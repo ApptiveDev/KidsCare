@@ -42,17 +42,18 @@ public class MemberRepositoryImp implements MemberRepository {
             li = em.createQuery("select m from Member m where m.loginId = :loginId", Member.class)
                 .setParameter("loginId", loginId)
                     .getResultList();
-
         }catch (Exception e){
-            return null;
-        }finally{
-
+            return null; // exception발생할때 지금 고려안했음. 이거 나중에 수정.
         }
+
         int sz = li.size();
         if ( sz >= 2) {
             throw new DuplicatedLoginIDExcpetion("시스템에 같은 이름의 id가 2개 이상 존재합니다");
-        } else{
+        } else if(sz == 1){
             return li.get(0);
+        }
+        else{
+            return null;
         }
 
     }

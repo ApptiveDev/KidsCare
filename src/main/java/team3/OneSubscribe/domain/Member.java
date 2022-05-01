@@ -33,7 +33,10 @@ public class Member {
     @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     private Writing writings;
 
-    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
-    private Answer answers;
+//    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
+//    private Answer answers;
+
+    // 추가
+    private Long totalLikeNumber;
 
 }

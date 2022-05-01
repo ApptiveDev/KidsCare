@@ -25,7 +25,7 @@ public class WritingRepository {
     }
 
     public List<Writing> findAll(){
-        return em.createQuery("select i from Item i", Writing.class)
+        return em.createQuery("select i from Writing i", Writing.class)
                 .getResultList();
     }
 }
