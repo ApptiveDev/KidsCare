@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class MainController {
+public class HomeController {
 
     @Autowired
     WritingRepository writingRepository;
