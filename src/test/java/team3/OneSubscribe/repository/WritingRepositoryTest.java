@@ -30,6 +30,7 @@ class WritingRepositoryTest {
     MemberService memberService;
 
     @Test
+    @Rollback(false)
     void findOneById() {
         //Given
         Member member = new Member();
@@ -37,7 +38,8 @@ class WritingRepositoryTest {
         Long saveId = memberService.save(member);
         Writing writing = new Writing();
         writing.setTitle("titleTest");
-        writing.setContext("contextTest");
+        writing.setContext("contextTest 123" +
+                "4");
 
         //When
         writingRepository.save(writing);
@@ -45,10 +47,13 @@ class WritingRepositoryTest {
 
         //Then
         assertEquals("titleTest", savedWriting.getTitle());
-        assertEquals("contextTest", savedWriting.getContext());
+        assertEquals("contextTest 123" +
+                "4", savedWriting.getContext());
+        System.out.println(savedWriting.getContext()); // enter키 작동 나중에 확인.
     }
 
     @Test
+    @Rollback(false)
     void findAll() {
         //Given
         Member member = new Member();

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.Member;
@@ -33,6 +34,7 @@ class AnswerRepositoryTest {
     MemberService memberService;
 
     @Test
+    @Rollback(false)
     void findOneById() {
         //Given
         Member member = new Member();
@@ -49,6 +51,7 @@ class AnswerRepositoryTest {
     }
 
     @Test
+    @Rollback(false)
     void findAll() {
         //Given
         Member member = new Member();

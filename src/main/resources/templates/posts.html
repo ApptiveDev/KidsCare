@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,13 +30,31 @@
         </div>
     </div>
 
-
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>제목</th>
+            <th>내용</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="writing : ${writings}">
+            <td th:text="${writing.id}"></td>
+            <td th:text="${writing.title}"></td>
+            <td th:text="${writing.context}"></td>
+        </tr>
+        </tbody>
+    </table>
 
     <div id="write">
             <div class="btn">
-                <button type="button">글 작성</button>
+                <a href="contents/writing">
+                    <button type="button">글 작성</button>
+                </a>
             </div>
     </div>
+
 </div>
 </body>
 </html>
