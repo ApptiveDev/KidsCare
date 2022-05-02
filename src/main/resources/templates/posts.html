@@ -42,7 +42,7 @@
         <tr th:each="writing : ${writings}">
             <td th:text="${writing.id}"></td>
             <td th:text="${writing.title}"></td>
-            <td th:text="${writing.context}"></td>
+            <td th:text="${writing.context}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
         </tr>
         </tbody>
     </table>

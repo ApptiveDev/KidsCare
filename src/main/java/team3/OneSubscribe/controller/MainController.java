@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.domain.WritingContent;
@@ -50,6 +51,14 @@ public class MainController {
 
         writingRepository.save(writing);
         return "redirect:/contents";
+    }
+
+    @GetMapping("/contents/{writingId}")
+    public String writingContents(@PathVariable("writingId") Long writingId, Model model){
+        Writing writing = (Writing) writingRepository.findOneById(writingId);
+
+        model.addAttribute("writing", writing);
+        return "write"; // 일단은 html 없어서 write으로 가게 함. // 여기 특정글 화면 나타내는 페이지 만들어야 함. // 그리고 거기서 타임리프 써서 특정글 보여주는 형식으로 해야함.
     }
 
 
