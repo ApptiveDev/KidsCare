@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,23 @@ public class Writing {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    private Long count;
+//    private Long count;
+
+//    @OneToMany(mappedBy = "writing")
+//    private List<WritingContent> writingContents = new ArrayList<>();
 
     @OneToMany(mappedBy = "writing")
-    private List<WritingContent> writingContents = new ArrayList<>();
+    private List<Tag> tags = new ArrayList<>();
+
+    @OneToMany(mappedBy = "writing")
+    private List<Answer> answers = new ArrayList<>();
+
+    private String title;
+
+    private String context;
+
+    private LocalDateTime createDate;
+
+    private LocalDateTime updateDate;
+
 }
