@@ -2,6 +2,7 @@ package team3.OneSubscribe.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import team3.OneSubscribe.domain.Writing;
 
 
@@ -16,6 +17,7 @@ public class WritingRepository {
     @PersistenceContext
     private EntityManager em;
 
+    @Transactional
     public void save(Writing writing){
         em.persist(writing);
     }
@@ -25,7 +27,7 @@ public class WritingRepository {
     }
 
     public List<Writing> findAll(){
-        return em.createQuery("select i from Item i", Writing.class)
+        return em.createQuery("select i from Writing i", Writing.class)
                 .getResultList();
     }
 }

@@ -54,9 +54,10 @@ public class MemberRepositoryImp implements MemberRepository {
             return null;
         } else if (sz >= 2) {
             throw new DuplicatedLoginIDExcpetion("시스템에 같은 이름의 id가 2개 이상 존재합니다");
-        } else {
+        } else{
             return li.get(0);
         }
+
     }
 
     @Override

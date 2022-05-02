@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +16,29 @@ public class Answer {
     @Column(name = "answer_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "member_id")
+//    private Member member;
 
-    private Long count;
+    @ManyToOne
+    @JoinColumn(name = "writing_id")
+    private Writing writing;
 
-    private Long totalLikeNumber;
+    private String context;
 
-    @OneToMany(mappedBy = "answer")
-    private List<AnswerContent> answersContents = new ArrayList<>();
+    private LocalDateTime createDate;
+
+    private LocalDateTime updateDate;
+
+    @Enumerated(EnumType.STRING)
+    private Expert expert;
+
+    private boolean feedback;
+
+    private Long likeNumber;
+
+//    private Long totalLikeNumber;
+
+//    @OneToMany(mappedBy = "answer")
+//    private List<AnswerContent> answersContents = new ArrayList<>();
 }
