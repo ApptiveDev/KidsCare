@@ -29,9 +29,10 @@ class MemberServiceTest {
         //Given
         Member member = new Member();
         member.setNickName("kim");
+        member.setLoginId("testId");
 
         //When
-        Long saveId = memberService.join(member);
+        Long saveId = memberService.save(member);
 
         //Then
         assertEquals(member, memberRepository.findOneById(saveId));

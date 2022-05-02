@@ -36,6 +36,7 @@ public class MemberRepositoryImp implements MemberRepository {
 
 
     @Override
+    //일치하는게 없으면 null반환.
     public Member findByLoginId(String loginId){
         List<Member> li;
         try{
@@ -49,12 +50,13 @@ public class MemberRepositoryImp implements MemberRepository {
 
         }
         int sz = li.size();
-        if ( sz >= 2) {
+        if (li == null) {
+            return null;
+        } else if (sz >= 2) {
             throw new DuplicatedLoginIDExcpetion("시스템에 같은 이름의 id가 2개 이상 존재합니다");
-        } else{
+        } else {
             return li.get(0);
         }
-
     }
 
     @Override
@@ -62,7 +64,7 @@ public class MemberRepositoryImp implements MemberRepository {
         return null;
     }
 
-    ;
+
 
 
 }
