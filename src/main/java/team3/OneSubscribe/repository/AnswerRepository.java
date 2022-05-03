@@ -3,7 +3,6 @@ package team3.OneSubscribe.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import team3.OneSubscribe.domain.Answer;
-import team3.OneSubscribe.domain.Writing;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,7 +24,7 @@ public class AnswerRepository {
     }
 
     public List<Answer> findAll(){
-        return em.createQuery("select i from Item i", Answer.class)
+        return em.createQuery("select i from Answer i", Answer.class)
                 .getResultList();
     }
 

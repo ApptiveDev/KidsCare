@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+//@Entity
 @Getter @Setter
 public class AnswerContent {
 
@@ -14,7 +14,7 @@ public class AnswerContent {
     @Column(name = "answer_content_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "answer_id")
     private Answer answer;
 
