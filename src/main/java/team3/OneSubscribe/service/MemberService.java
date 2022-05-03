@@ -25,19 +25,9 @@ public class MemberService {
      */
     @Transactional // 변경
     public Long save(Member member) {
-        if (memberRepository.findByLoginId(member.getLoginId()) != null) {//중복 회원 검사
-            return Long.valueOf(-1);
-        }
         memberRepository.save(member);
         return member.getId();
     }
-
-//    private void validateDuplicateMember(Member member) {
-//        List<Member> findMembers = memberRepository.findByLoginId(member.getLoginId());
-//        if(!findMembers.isEmpty()){
-//            throw new IllegalStateException("이미 존재하는 아이디입니다.");
-//        }
-//    }
 
     /**
      * 전체 회원 조회
