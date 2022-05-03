@@ -36,9 +36,6 @@ public class MemberService {
         if (tmp != null) { //전화번호 중복 검사
             return Long.valueOf(-2);
         }
-        memberRepository.save(member);
-        return member.getId();
-    }
 
     /**
      * @param loginId 검사하고자하는 id값 입력.
