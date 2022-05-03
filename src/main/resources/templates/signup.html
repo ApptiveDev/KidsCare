@@ -5,7 +5,7 @@
     <title>회원가입</title>
 </head>
 <body>
-<div id="container" class="signUp">
+<div id="container" class="signUp" onsubmit="return checkSubmit();">
     <form name="signUp_form" method="get">
         <div class="logo">
             <a href="/"><img src="" alt="로고"></a>
@@ -72,22 +72,23 @@
             <div>
                 <select id="phoneNumber" name="phoneNumber">
                     <option value="0">010</option>
-                    <option value="0">011</option>
-                    <option value="0">012</option>
-                    <option value="0">013</option>
+                    <option value="1">011</option>
+                    <option value="2">012</option>
+                    <option value="3">013</option>
                 </select>
                 -
-                <input type="text" name="">
+                <input type="text" id="first" onblur="blurNum()">
                 -
-                <input type="text" name="">
+                <input type="text" id="second" onblur="blurNum()">
             </div>
+            <div id="alert_num"></div>
         </div>
 
         <div class="job_area">
             <h3>직업</h3>
             <div name="expert"><!--맴버랑 맞는지 확인 필요-->
-                <input type="radio" name="who" value="1">의사
-                <input type="radio" name="who" value="2">일반인
+                <input type="radio" name="who" value="1" checked>일반인
+                <input type="radio" name="who" value="2">의사
             </div>
         </div>
 
@@ -140,22 +141,16 @@
 
 <script>
 	    const form = document.signUp_form;
-
-    	function blurName() {
-    		const chkName = checkName(form);
-    		if(chkName) {
-                document.getElementById("alert_name").innerText = "";
-                form.name.style.border = "2px solid";
-                form.name.style.borderColor = '#00F000';
-            }
-            else {
-                form.name.style.borderColor = '#FF0000';
-                document.getElementById("alert_name").style.color = '#FF0000';
-            }
-    	}
+        var testEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+        var testName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+        var chkId = 0
+        var chkPw = 0
+        var chkName = 0
+        var chkEmail = 0
+        var chkNum = 0
 
     	function blurId() {
-    		const chkId = checkId(form);
+    		var chkId = checkId();
     		if(chkId) {
                 document.getElementById("alert_id").innerText = "";
                 form.id.style.border = "2px solid";
@@ -168,7 +163,7 @@
     	}
 
     	function blurPw1() {
-    		const chkPw1 = checkPw1(form);
+    		var chkPw1 = checkPw1();
     		if(chkPw1) {
                 document.getElementById("alert_pw1").innerText = "";
                 form.pw1.style.border = "2px solid";
@@ -181,7 +176,7 @@
     	}
 
     	function blurPw2() {
-    		const chkPw2 = checkPw2(form);
+    		var chkPw2 = checkPw2();
     		if(chkPw2) {
                 document.getElementById("alert_pw2").innerText = "";
                 form.pw2.style.border = "2px solid";
@@ -193,8 +188,21 @@
             }
     	}
 
+        function blurName() {
+    		var chkName = checkName();
+    		if(chkName) {
+                document.getElementById("alert_name").innerText = "";
+                form.name.style.border = "2px solid";
+                form.name.style.borderColor = '#00F000';
+            }
+            else {
+                form.name.style.borderColor = '#FF0000';
+                document.getElementById("alert_name").style.color = '#FF0000';
+            }
+    	}
+
     	function blurEmail() {
-    		const chkEmail = checkEmail(form);
+    		var chkEmail = checkEmail();
     		if(chkEmail) {
                 document.getElementById("alert_email").innerText = "";
                 form.email.style.border = "2px solid";
@@ -206,20 +214,21 @@
             }
     	}
 
+    	function blurNum() {
+    	    var chkNum = checkNum();
+    		if(chkNum) {
+                document.getElementById("alert_num").innerText = "";
+            }
+            else {
+                document.getElementById("alert_email").style.color = '#FF0000';
+            }
+    	}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-        function checkName(form) {
-            if(form.name.value=="") {
-                document.getElementById("alert_name").innerText = "Please enter Name.";
-                return false;
-            }
-            return true;
-        }
-
-        function checkId(form) {
+        function checkId() {
             var value =  form.id.value;
             var chk=0;
             for(var i=0; i<value.length; i++) { //숫자, 영어만 입력
@@ -249,10 +258,11 @@
                    return false;
                 }
             }
+            chkId = 1
             return true;
         }
 
-        function checkPw1(form) {
+        function checkPw1() {
             var value =  form.pw1.value;
             var chk=0;
             for(var i=0; i<value.length; i++) { //숫자, 영어, 특정 특수 문자
@@ -273,10 +283,11 @@
                 document.getElementById("alert_pw1").innerText = "Please enter ID 6~12 characters";
                 return false;
             }
+            chkPw = 1
             return true;
         }
 
-        function checkPw2(form) {
+        function checkPw2() {
             var value1 =  form.pw1.value;
             var value2 =  form.pw2.value;
             if(form.pw2.value=="") {
@@ -294,12 +305,64 @@
             return true;
         }
 
-        function checkEmail(form) {
+        function checkName() {
+            if(form.name.value=="") {
+                document.getElementById("alert_name").innerText = "Please enter Name.";
+                return false;
+            }
+            if(testName.test(form.name.value) == false) {
+                document.getElementById("alert_name").innerText = "Wrong input";
+                return false;
+            }
+            chkName = 1
+            return true;
+        }
+
+        function checkEmail() {
             if(form.email.value=="") {
                 document.getElementById("alert_email").innerText = "Please enter e-mail";
                 return false;
             }
+
+            if(!(testEmail.test(email.value))) {
+                document.getElementById("alert_email").innerText = "Wrong input";
+                return false;
+            }
+            chkEmail = 1
             return true;
+        }
+
+        function checkNum() {
+            var f = form.first.value;
+            var s = form.second.value;
+            var chk=0
+            for(var i=0; i<f.length; i++) {
+                if(!(f[i]>="0" && f[i]<="9")) {
+                    chk = 1
+                }
+            }
+            for(var i=0; i<s.length; i++) {
+                if(!(s[i]>="0" && s[i]<="9")) {
+                    chk = 1
+                }
+            }
+            if((f=="" && s=="") || !(f.length==4 && s.length==4) || chk==1) {
+                return false;
+            }
+            chkNum = 1;
+            return true;
+        }
+
+        function checkSubmit() {
+            if(chkNum==0) {
+                alert(form.first.value);
+                return false;
+            }
+            if(chkId==1 && chkPw==1 && chkName==1 && chkEmail==1 && chkNum==1)
+                return true;
+            alert("입력다시")
+            return false;
+
         }
 
 
