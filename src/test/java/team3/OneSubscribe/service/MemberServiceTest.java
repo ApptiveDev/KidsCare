@@ -27,14 +27,31 @@ class MemberServiceTest {
     @Rollback(false)
     public void 회원가입() throws Exception{
         //Given
-        Member member = new Member();
-        member.setNickName("kim");
-        member.setLoginId("testId");
+        Member member1 = new Member();
+        member1.setNickName("choi");
+        member1.setLoginId("chl");
+
+        Member member2 = new Member();
+        member2.setNickName("shin");
+        member2.setLoginId("tls");
+
+        Member member3 = new Member();
+        member3.setNickName("hwang");
+        member3.setLoginId("ghkd");
 
         //When
-        Long saveId = memberService.save(member);
+        Long savedId1 = memberService.save(member1);
+        Long savedId2 = memberService.save(member2);
+        Long savedId3 = memberService.save(member3);
 
         //Then
-        //assertEquals(member, memberRepository.findOneById(saveId));
+        assertEquals(member1.getId(), savedId1);
+        assertEquals(member2.getId(), savedId2);
+        assertEquals(member3.getId(), savedId3);
+
+        assertEquals(member1.getId(), memberRepository.findByLoginId("chl").getId());
+        assertEquals(member2.getId(), memberRepository.findByLoginId("tls").getId());
+        assertEquals(null, memberRepository.findByLoginId("ahffk"));
+
     }
 }
