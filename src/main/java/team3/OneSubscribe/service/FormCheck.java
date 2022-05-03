@@ -1,6 +1,6 @@
 package team3.OneSubscribe.service;
 
-class FormCheck {
+public class FormCheck {
 
     private static final int minLEN = 6;
     private static final int maxLEN = 15;

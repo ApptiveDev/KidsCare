@@ -48,7 +48,7 @@ public class MemberRepositoryImp implements MemberRepository {
     }
 
     @Override
-    public List<Member> findByPhoneNumber(String phoneNumber) {
+    public Member findByPhoneNumber(String phoneNumber) {
         return null;
     }
 

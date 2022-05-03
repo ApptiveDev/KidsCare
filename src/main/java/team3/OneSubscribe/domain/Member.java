@@ -17,6 +17,8 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+
+    @Column(unique = true)
     private String loginId; // 형식 확인 필요
 
     private String loginPassword; // 형식 확인 필요
@@ -29,6 +31,7 @@ public class Member {
 
     private String team; // group으로 하면 데이터베이스 예약어라서 안됨.
 
+    @Column(unique = true)
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
