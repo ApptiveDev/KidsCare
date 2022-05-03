@@ -30,12 +30,15 @@ public class MemberService {
         //TODO(전화번호가 같은 회원은 중복 회원가입 막아야겠네. 단순 아이디 중복검사만 해서는 안된다.)
         Member tmp = memberRepository.findByLoginId(member.getLoginId());
         if (tmp != null) {//아이디 중복 검사
-            return Long.valueOf(-1);
+            return (long) -1;
         }
         tmp = memberRepository.findByPhoneNumber(member.getPhoneNumber());
         if (tmp != null) { //전화번호 중복 검사
-            return Long.valueOf(-2);
+            return (long) -2;
         }
+        return memberRepository.save(member);
+
+    }
 
     /**
      * @param loginId 검사하고자하는 id값 입력.
@@ -108,5 +111,6 @@ public class MemberService {
 
 
 }
+
 
 
