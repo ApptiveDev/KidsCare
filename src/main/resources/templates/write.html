@@ -6,29 +6,31 @@
     <title>글 작성</title>
 </head>
 <body>
-    <div id="container">
-        <div id="write_area">
+    <div id="writing_area">
             <form th:action="@{/contents/writing/new}" th:object="${form}" method="post">
                 <div id="title">
-<!--                    <textarea th:field="*{title}" name="title" id="title_" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>-->
+                    <!--textarea말고 input은 잠시 확인용??-->
+<!--                <textarea th:field="*{title}" name="title" id="title_" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>-->
                     <label th:for="title">제목</label>
                     <input type="text" th:field="*{title}" placeholder="제목을 입력하세요">
                 </div>
+
                 <div id="tag">
                 </div>
+
                 <div id="content">
-<!--                    <textarea th:field="*{context}" name="content" id="content_" placeholder="내용" required></textarea>-->
+<!--                <textarea th:field="*{context}" name="content" id="content_" placeholder="내용" required></textarea>-->
                     <label th:for="context">내용</label>
                     <input type="text" th:field="*{context}" placeholder="내용을 입력하세요">
                 </div>
+
                 <input type="file" name="SelectFile" />
-                <div class="btn">
-                    <button type="submit">글 작성</button>
+
+                <div id="btn">
+                    <input type="submit" value="글 작성"/>
                 </div>
 
             </form>
-        </div>
-
     </div>
 </body>
 </html>
