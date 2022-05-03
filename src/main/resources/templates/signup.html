@@ -220,7 +220,7 @@
                 document.getElementById("alert_num").innerText = "";
             }
             else {
-                document.getElementById("alert_email").style.color = '#FF0000';
+                document.getElementById("alert_num").style.color = '#FF0000';
             }
     	}
 
@@ -347,6 +347,7 @@
                 }
             }
             if((f=="" && s=="") || !(f.length==4 && s.length==4) || chk==1) {
+                document.getElementById("alert_num").innerText = "Wrong input";
                 return false;
             }
             chkNum = 1;
@@ -354,10 +355,6 @@
         }
 
         function checkSubmit() {
-            if(chkNum==0) {
-                alert(form.first.value);
-                return false;
-            }
             if(chkId==1 && chkPw==1 && chkName==1 && chkEmail==1 && chkNum==1)
                 return true;
             alert("입력다시")
