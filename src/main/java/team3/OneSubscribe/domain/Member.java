@@ -29,6 +29,7 @@ public class Member {
 
     private String team; // group으로 하면 데이터베이스 예약어라서 안됨.
 
+    @Column(unique = true)
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)

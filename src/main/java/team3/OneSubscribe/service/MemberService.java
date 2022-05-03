@@ -1,5 +1,6 @@
 package team3.OneSubscribe.service;
 
+import com.sun.xml.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,22 +23,33 @@ public class MemberService {
     /**
      * 회원가입
      * 아이디 중복으로 실패하면 -1반환.
+     * 전화번호 중복으로 실패하면 -2반환.
      */
-    @Transactional // 변경
+    @Transactional
     public Long save(Member member) {
-        if (memberRepository.findByLoginId(member.getLoginId()) != null) {//중복 회원 검사
+        //TODO(전화번호가 같은 회원은 중복 회원가입 막아야겠네. 단순 아이디 중복검사만 해서는 안된다.)
+        Member tmp = memberRepository.findByLoginId(member.getLoginId());
+        if (tmp != null) {//아이디 중복 검사
             return Long.valueOf(-1);
+        }
+        tmp = memberRepository.findByPhoneNumber(member.getPhoneNumber());
+        if (tmp != null) { //전화번호 중복 검사
+            return Long.valueOf(-2);
         }
         memberRepository.save(member);
         return member.getId();
     }
 
-//    private void validateDuplicateMember(Member member) {
-//        List<Member> findMembers = memberRepository.findByLoginId(member.getLoginId());
-//        if(!findMembers.isEmpty()){
-//            throw new IllegalStateException("이미 존재하는 아이디입니다.");
-//        }
-//    }
+    /**
+     * @param loginId 검사하고자하는 id값 입력.
+     * @return true : 이미 존재 , false : 사용가능.
+     */
+    public Boolean isIdDuplicated(String loginId) {
+        if (memberRepository.findByLoginId(loginId) != null) {//중복 회원 검사
+            return true;
+        }
+        return false;
+    }
 
     /**
      * 전체 회원 조회
@@ -49,7 +61,7 @@ public class MemberService {
     /**
      * 회원 한명 조회
      */
-    public Member findOne(Long memberId) {
+    public Member findOneById(Long memberId) {
         return memberRepository.findOneById(memberId);
     }
 
@@ -66,25 +78,38 @@ public class MemberService {
     }
 
     /**
-     * id찾기.
-     * name, email, phoneNum이 다 일치하는 사용자가 있으면 id반환, 없으면 null반환..
+     * loginId찾기.
+     * name, email, phoneNum이 다 일치하는 사용자가 있으면 id반환, 없으면 null반환.
      */
-//
     public String findLoginId(String name, String email, String phoneNum) {
-        List<Member> res = memberRepository.findByPhoneNumber(phoneNum).stream().filter(m -> m.getEMail().equals(email))
-                .filter(m -> m.getName().equals(name)).collect(Collectors.toList());
-        if (res.size() == 1) {
-            return res.get(0).getLoginId();
-        } else if (res.size() > 1) {
-            System.out.println("findLoginId()에서 2개의 아이디 탐색!");
+        Member res = memberRepository.findByPhoneNumber(phoneNum);
+        if (res.getEMail().equals(email) && res.getName().equals(name)) {
+            return res.getLoginId();//일치. loginId알려준다.
+        } else {
+            return null; //일치하는게 없다.
         }
-        return null; //일치하는게 없다.
     }
 
-    //비번찾기
-//    public boolean findPw(String loginId, String name, String email, String phoneNum) {
-//
-//    }
+    /**
+     * @param loginId 찾고자하는 아이디
+     * @param name 실명 ex) 홍길동
+     * @param email 이메일
+     * @param phoneNum 전화번호
+     * @return 찾았는지 성공여부. 비밀번호는 이메일로 알려줌.
+     */
+    public boolean findPw(String loginId, String name, String email, String phoneNum) {
+        Member res = memberRepository.findByLoginId(loginId);
+        if (res.getName().equals(name) && res.getEMail().equals(email) && res.getPhoneNumber().equals(phoneNum)) {
+            //TODO(메일발송)
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+
 }
 
 
