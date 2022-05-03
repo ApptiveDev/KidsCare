@@ -44,11 +44,12 @@ class MemberServiceTest {
         Long savedId2 = memberService.save(member2);
         Long savedId3 = memberService.save(member3);
 
-        //Then
+        //Then1
         assertEquals(member1.getId(), savedId1);
         assertEquals(member2.getId(), savedId2);
         assertEquals(member3.getId(), savedId3);
 
+        //Then2
         assertEquals(member1.getId(), memberRepository.findByLoginId("chl").getId());
         assertEquals(member2.getId(), memberRepository.findByLoginId("tls").getId());
         assertEquals(null, memberRepository.findByLoginId("ahffk"));
