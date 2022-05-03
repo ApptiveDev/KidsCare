@@ -3,12 +3,14 @@ package team3.OneSubscribe.domain;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Getter @Setter
 @EqualsAndHashCode
+@ToString
 public class Member {
 
     @Id @GeneratedValue
