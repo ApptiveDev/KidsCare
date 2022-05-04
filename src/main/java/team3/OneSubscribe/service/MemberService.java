@@ -27,7 +27,6 @@ public class MemberService {
      */
     @Transactional
     public Long save(Member member) {
-        //TODO(전화번호가 같은 회원은 중복 회원가입 막아야겠네. 단순 아이디 중복검사만 해서는 안된다.)
         Member tmp = memberRepository.findByLoginId(member.getLoginId());
         if (tmp != null) {//아이디 중복 검사
             return (long) -1;

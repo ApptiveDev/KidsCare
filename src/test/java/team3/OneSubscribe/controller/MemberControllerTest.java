@@ -11,10 +11,7 @@ import org.springframework.util.MultiValueMap;
 import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.service.MemberService;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -65,7 +62,7 @@ class MemberControllerTest {
                 .andExpect(view().name("loginFail"));
     }
 
-    //TODO 로그아웃 테스트는 짜기 힘든듯.
+    //TODO 로그아웃 테스트는 짜기 힘든듯. MockMvc로 하면 안통한다.
 //    @Test
 //    public void 로그아웃() throws Exception {
 //        //givne
