@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ContentsController {
     
 
-    @GetMapping("/show_all")
-    public String showAll() {
-
-    }
+//    @GetMapping("/show_all")
+//    public String showAll() {
+//
+//    }
 }
