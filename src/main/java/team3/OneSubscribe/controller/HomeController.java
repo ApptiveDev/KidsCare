@@ -1,24 +1,32 @@
 package team3.OneSubscribe.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.domain.WritingContent;
+import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.WritingRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class HomeController {
 
     @Autowired
     WritingRepository writingRepository;
+
+    @Autowired
+    MemberRepository memberRepository;
 
     @GetMapping("/")
     public String index() {
@@ -48,6 +56,7 @@ public class HomeController {
         Writing writing = new Writing();
         writing.setTitle(form.getTitle());
         writing.setContext(form.getContext());
+        writing.setCreateDate(LocalDateTime.now());
 
         writingRepository.save(writing);
         return "redirect:/contents";

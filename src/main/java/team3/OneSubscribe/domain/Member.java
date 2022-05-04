@@ -25,6 +25,7 @@ public class Member {
 
     private String name;
 
+    @Column(unique = true)
     private String nickName;
 
     private String eMail;

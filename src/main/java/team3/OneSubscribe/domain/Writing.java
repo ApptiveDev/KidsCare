@@ -2,6 +2,7 @@ package team3.OneSubscribe.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,7 +18,8 @@ public class Writing {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    //@JoinColumn(name = "member_id")
+    @JoinColumn(name = "nickName")
     private Member member;
 
 //    private Long count;
@@ -35,8 +37,10 @@ public class Writing {
 
     private String context;
 
+    @CreationTimestamp
     private LocalDateTime createDate;
 
+    @CreationTimestamp
     private LocalDateTime updateDate;
 
 }
