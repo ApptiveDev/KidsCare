@@ -71,7 +71,10 @@ public class MemberService {
      */
     public boolean login(Member m) {
         Member findMem = memberRepository.findByLoginId(m.getLoginId());
-        if (findMem.getLoginPassword().equals(m.getLoginPassword())) {
+        if (findMem == null) {
+            return false;
+        }
+        else if (findMem.getLoginPassword().equals(m.getLoginPassword())) {
             return true;
         }
         return false;

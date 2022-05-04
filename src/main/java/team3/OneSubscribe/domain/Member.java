@@ -1,9 +1,6 @@
 package team3.OneSubscribe.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +8,7 @@ import javax.persistence.*;
 @Getter @Setter
 @EqualsAndHashCode
 @ToString
+@NoArgsConstructor
 public class Member {
 
     @Id @GeneratedValue

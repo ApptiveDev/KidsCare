@@ -1,5 +1,6 @@
 package team3.OneSubscribe.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,23 +18,28 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/login")
-    public String loginMember(@ModelAttribute Member m, HttpServletRequest request, Model model) {
+    @GetMapping("/login")
+    public String loginGet() {
+        return "login";
+    }
 
-        System.out.println(m);
+
+    @PostMapping("/login")
+    public String loginPost(@ModelAttribute("m") Member m, HttpServletRequest request, Model model) {
         model.addAttribute("login", "fail");
         if (memberService.login(m)) {
             request.getSession();//세션이 없다면 세션생성.
-            model.addAttribute("login", "success");
-        }
-        return "index";
 
+            model.addAttribute("isLogined", "true");
+            return "index";//로그인 성공
+        }
+        return "loginFail";
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String logoutMember(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false); //세션이 없어도 생성안함.
-        model.addAttribute("logout", "fail");
+//        model.addAttribute("logout", "fail");
         if (session != null) {
             session.invalidate();
             model.addAttribute("logout", "success");//덮어쓰기
