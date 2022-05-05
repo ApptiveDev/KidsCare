@@ -41,15 +41,21 @@ class WritingRepositoryTest {
         writing.setContext("contextTest 123" +
                 "4");
 
+
         //When
         writingRepository.save(writing);
         Writing savedWriting = writingRepository.findOneById(writing.getId());
+
+        writing.setMember(member);
+
 
         //Then
         assertEquals("titleTest", savedWriting.getTitle());
         assertEquals("contextTest 123" +
                 "4", savedWriting.getContext());
         System.out.println(savedWriting.getContext()); // enter키 작동 나중에 확인.
+
+        assertEquals("kim", writing.getMember().getNickName());
     }
 
     @Test

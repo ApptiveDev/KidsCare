@@ -32,21 +32,25 @@
         <tr>
             <th>#</th>
             <th>제목</th>
-            <th>내용</th>
+            <th>작성자</th>
+            <th>업로드 날짜</th>
         </tr>
         </thead>
+<!--        역순 출력해야함-->
         <tbody>
         <tr th:each="writing : ${writings}">
             <td th:text="${writing.id}"></td>
-            <td th:text="${writing.title}"></td>
-            <td th:text="${writing.context}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
+            <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
+<!--            <td th:text="${writing.nickName}">작성자</td>-->
+            <td>작성자(기본값)</td>
+            <td th:text="${writing.createDate}">업로드 날짜</td>
         </tr>
         </tbody>
     </table>
 
     <div id="write">
             <div class="btn">
-                <a href="write.html">
+                <a href="contents/writing">
                     <button type="button">글 작성</button>
                 </a>
             </div>
