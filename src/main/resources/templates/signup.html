@@ -267,7 +267,7 @@
             var chk=0;
             for(var i=0; i<value.length; i++) { //숫자, 영어, 특정 특수 문자
                 if(!((value[i]>="0"&&value[i]<="9")||(value[i]>="A"&&value[i]<="Z")||
-                (value[i]>="a"&&value[i]<="z")||(value[i]=="!")||(value[i]=="@")||(value[i]=="#")))
+                (value[i]>="a"&&value[i]<="z")||(value[i]=="!")||(value[i]=="@")||(value[i]=="~")))
                     chk=1;
             }
             if(chk==1) {
@@ -359,7 +359,6 @@
                 return true;
             alert("입력다시")
             return false;
-
         }
 
 
