@@ -25,7 +25,12 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/member/login")
+    public String loginGet() {
+        return "login";
+    }
+
+    @GetMapping("/member/signup")
     public String signup() {
         return "signup";
     }
@@ -60,6 +65,8 @@ public class HomeController {
         model.addAttribute("writing", writing);
         return "write"; // 일단은 html 없어서 write으로 가게 함. // 여기 특정글 화면 나타내는 페이지 만들어야 함. // 그리고 거기서 타임리프 써서 특정글 보여주는 형식으로 해야함.
     }
+
+
 
 
 

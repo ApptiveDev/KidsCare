@@ -22,7 +22,4 @@ public class AnswerService {
     //수정
 
 
-
-    public
-
 }
