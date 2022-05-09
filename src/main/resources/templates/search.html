@@ -8,53 +8,53 @@
     <h1>태그를 선택하세요</h1>
     <div id="container">
 <!--클릭된 버튼 데이터를 전송해 검색결과를 불러온다-->
-        <form action="" method="">
+        <form action="/contents/search" method="post">
             <div id="tag1">
                 <h3>소화</h3>
                 <div id="btn1">
-                    <input type="hidden" value="0" id="복통"/>
+                    <input type="hidden" value="0" id="복통" name="복통"/>
                     <input type="button" value="복통" onclick="onChg(this)" id="b1"/>
 
-                    <input type="hidden" value="0" id="설사"/>
+                    <input type="hidden" value="0" id="설사" name="설사"/>
                     <input type="button" value="설사" onclick="onChg(this)" id="b2"/>
 
-                    <input type="hidden" value="0" id="영양질환"/>
+                    <input type="hidden" value="0" id="영양질환" name="영양질환"/>
                     <input type="button" value="영양질환" onclick="onChg(this)" id="b3"/>
                 </div>
             </div>
             <div id="tag2">
                 <h3>호흡</h3>
                 <div id="btn2">
-                    <input type="hidden" value="0" id="비염"/>
+                    <input type="hidden" value="0" id="비염" name="비염"/>
                     <input type="button" value="비염" onclick="onChg(this)" id="b4"/>
 
-                    <input type="hidden" value="0" id="폐렴"/>
+                    <input type="hidden" value="0" id="폐렴" name="폐렴"/>
                     <input type="button" value="폐렴" onclick="onChg(this)" id="b5"/>
 
-                    <input type="hidden" value="0" id="천식"/>
+                    <input type="hidden" value="0" id="천식" name="천식"/>
                     <input type="button" value="천식" onclick="onChg(this)" id="b6"/>
                 </div>
             </div>
             <div id="tag3">
                 <h3>피부</h3>
                 <div id="btn3">
-                    <input type="hidden" value="0" id="알레르기"/>
+                    <input type="hidden" value="0" id="알레르기" name="알레르기"/>
                     <input type="button" value="알레르기" onclick="onChg(this)" id="b7"/>
 
-                    <input type="hidden" value="0" id="아토피"/>
+                    <input type="hidden" value="0" id="아토피" name="아토피"/>
                     <input type="button" value="아토피" onclick="onChg(this)" id="b8"/>
                 </div>
             </div>
             <div id="tag4">
                 <h3>기타</h3>
                 <div id="btn4">
-                    <input type="hidden" value="0" id="두통"/>
+                    <input type="hidden" value="0" id="두통" name="두통"/>
                     <input type="button" value="두통" onclick="onChg(this)" id="b9"/>
 
-                    <input type="hidden" value="0" id="중이염"/>
+                    <input type="hidden" value="0" id="중이염" name="중이염"/>
                     <input type="button" value="중이염" onclick="onChg(this)" id="b10"/>
 
-                    <input type="hidden" value="0" id="축농증"/>
+                    <input type="hidden" value="0" id="축농증" name="축농증"/>
                     <input type="button" value="축농증" onclick="onChg(this)" id="b11"/>
                 </div>
             </div>
