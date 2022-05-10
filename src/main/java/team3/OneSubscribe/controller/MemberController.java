@@ -19,18 +19,14 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/login")
-    public String loginGet() {
-        return "login";
-    }
-
 
     @PostMapping("/login")
-    public String loginPost(@ModelAttribute("m") Member m, HttpServletRequest request, Model model) {
+    public String login(@ModelAttribute("m") Member m, HttpServletRequest request, Model model) {
         model.addAttribute("login", "fail");
+        HttpSession session;
         if (memberService.login(m)) {
-            request.getSession();//세션이 없다면 세션생성.
-
+            session = request.getSession();//세션이 없다면 세션생성.
+            session.setAttribute("member", m);
             model.addAttribute("isLogined", "true");
             return "index";//로그인 성공
         }
@@ -38,7 +34,7 @@ public class MemberController {
     }
 
     @GetMapping("/logout")
-    public String logoutMember(HttpServletRequest request, Model model) {
+    public String logout(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false); //세션이 없어도 생성안함.
 //        model.addAttribute("logout", "fail");
         if (session != null) {
@@ -69,12 +65,14 @@ public class MemberController {
     }
 
 
+
     //회원을 등록해준다. 등록에 성공하면 id를 반환. 실패하면 메시지를 반환.
     //어떤 검증에서 에러가 발생했는지 알기 위해 if문을 나눠서 작성.
     //에러를 보면 어디서 뭔가 잘못되었는지 한눈에 알 수 있어야 한다. errorCode를 같이 출력함.
     @PostMapping("/signup")
     public String signupMember(@RequestParam Member member) {
-        int errorCode=0;
+
+        int errorCode = 0;
         if ((errorCode = FormCheck.idFormCheck(member.getLoginId())) != 0) {
             return "id 형식이 맞지 않습니다. errorCode : " + errorCode;
         }
@@ -91,12 +89,12 @@ public class MemberController {
     //id 중복검사 api
     //ajax로 프론트에서 요청 후 js로 프론트에서 처리하는게 좋을 듯.
     //에러페이지를 보여줄까도 했지만 ajax가 더 현대적일듯.
-    @PostMapping("/isIdDuplicated")
     @ResponseBody
-    public boolean isIdDuplicated(@RequestParam String loginId) {
+    @PostMapping("/isIdDuplicated")
+    public boolean isIdDuplicated(@RequestBody String loginId) {
+
+        System.out.println("isIdDuplicated");
+        System.out.println("loginId : "+loginId);
         return memberService.isIdDuplicated(loginId);
     }
-
-
-
 }

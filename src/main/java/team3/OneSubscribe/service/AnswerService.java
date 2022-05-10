@@ -10,20 +10,10 @@ import team3.OneSubscribe.repository.AnswerRepository;
 //@RequiredArgsConstructor
 //public class AnswerService {
 //
-//    //자동 autowired
-//    private final AnswerRepository answerRepository;
-//
-//    //쓰기
-////    public boolean write(Answer m) {
-////
-////    }
-//
-//    //삭제
-//    //수정
-//
-//
-//
-//    public
-//
-//}
-//
+//    }
+
+    //삭제
+    //수정
+
+
+}

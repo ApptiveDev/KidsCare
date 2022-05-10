@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <script type="text/javascript" src="/minkun.js"></script>
 </head>
 <body>
 <div id="container" class="signUp" onsubmit="return checkSubmit();">
@@ -18,7 +19,8 @@
                     <input type="text" id="id" name="loginId" title="아이디 입력" maxlength="20" onblur="blurId()">
                 </div>
                 <div>
-                    <input type="button" value="중복확인">
+                    <input type="button" id ="idDuplicateCheckBtn" value="중복확인" >
+
                 </div>
             </div>
             <div id="alert_id"></div>
@@ -360,6 +362,7 @@
             alert("입력다시")
             return false;
         }
+
 
 
     </script>

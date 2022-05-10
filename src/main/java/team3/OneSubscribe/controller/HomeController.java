@@ -48,10 +48,20 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/member/login")
+    public String loginGet() {
+        return "login";
+    }
+
+    @GetMapping("/member/signup")
     public String signup() {
         return "signup";
     }
+
+
+
+
+
 
 
 

@@ -19,7 +19,6 @@ public class WritingContent {
     @ManyToOne
     @JoinColumn(name = "writing_id")
     private Writing writing;
-
     private LocalDateTime createDate;
 
     private LocalDateTime updateDate;
@@ -30,6 +29,7 @@ public class WritingContent {
     private List<Tag> tags; // enum을 list로 가져올 수 없어서, Tag 거쳐서 이동
 
     //private Picture picture;
+
     //picture은 나중에 구현
 
     private ArrayList answerMembers = new ArrayList();
