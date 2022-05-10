@@ -3,64 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <title>검색창</title>
+
+    <style>
+    .header {
+      display:flex;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
+      background-color: rgba(246, 216, 118, 0.32);
+    }
+    .logo {
+      width: 20em;
+      margin: 0.8em 0em 0em 0em;
+      object-fit: contain;
+    }
+    .menu {
+      height: 2em;
+      margin: 3em 5em 3em 12em;
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    #img {
+      width : 12em;
+      height : 10em;
+      margin: 1em 0em 0em 0em;
+    }
+    .img {
+      width: 2em;
+      height: 2em;
+      margin: 0em 1em 0em 18em;
+      object-fit: contain;
+    }
+    .title {
+      width:4em
+      height: 2em;
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .btn {
+      width: 9em;
+      height: 2.5em;
+      margin: 1em 0.5em 1em 0em;
+      border-radius: 0.5em;
+      border: solid 1px #a0a0a0;
+      background-color: #fff;
+    }
+    .text {
+      width: 2em;
+      height: 2em;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #a0a0a0;
+    }
+    .vector-4 {
+      width: 40em;
+      height: 0.2em;
+      margin: 0em 0em 1em 18em;
+      background-color: #ededed;
+    }
+    .submit {
+      width: 20em;
+      height: 2.5em;
+      margin: 0em 0em 5em 35em;
+      flex-grow: 0;
+      border: 0;
+      border-radius: 0.5em;
+      background-color: #499e99;
+    }
+    .submit-text {
+      width: 2em;
+      height: 1em;
+      flex-grow: 0;
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #fff;
+    }
+    </style>
 </head>
 <body onload="start()">
-    <h1>태그를 선택하세요</h1>
+    <div class="header">
+        <div>
+            <a href="/"><img src="img/logo.png" alt="로고" class="logo"></a>
+        </div>
+    </div>
+    <div style="display:flex;">
+        <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
+        <img src="img/search.png" id="img"/>
+    </div>
+
     <div id="container">
 <!--클릭된 버튼 데이터를 전송해 검색결과를 불러온다-->
         <form action="" method="">
             <div id="tag1">
-                <h3>소화</h3>
-                <div id="btn1">
-                    <input type="hidden" value="0" id="복통"/>
-                    <input type="button" value="복통" onclick="onChg(this)" id="b1"/>
-
-                    <input type="hidden" value="0" id="설사"/>
-                    <input type="button" value="설사" onclick="onChg(this)" id="b2"/>
-
-                    <input type="hidden" value="0" id="영양질환"/>
-                    <input type="button" value="영양질환" onclick="onChg(this)" id="b3"/>
+                <div style="display:flex">
+                    <img src="img/hand.png" class="img"/>
+                    <span class="title">손, 발</span>
                 </div>
+                <div id="btn1" style="margin-Left:18em">
+                    <input type="hidden" value="0" id="복통" name="복통"/>
+                    <button value="복통" type="button" onclick="onChg(this)" id="b1" class="btn"><span class="text" id="t1">복통</span></button>
+
+                    <input type="hidden" value="0" id="설사" name="설사"/>
+                    <button value="설사" type="button" onclick="onChg(this)" id="b2" class="btn"><span class="text" id="t2">설사</span></button>
+
+                    <input type="hidden" value="0" id="영양질환" name="영양질환"/>
+                    <button value="영양질환" type="button" onclick="onChg(this)" id="b3" class="btn"><span class="text" id="t3">영양질환</span></button>
+                </div>
+                <div class="vector-4"></div>
             </div>
             <div id="tag2">
-                <h3>호흡</h3>
-                <div id="btn2">
-                    <input type="hidden" value="0" id="비염"/>
-                    <input type="button" value="비염" onclick="onChg(this)" id="b4"/>
-
-                    <input type="hidden" value="0" id="폐렴"/>
-                    <input type="button" value="폐렴" onclick="onChg(this)" id="b5"/>
-
-                    <input type="hidden" value="0" id="천식"/>
-                    <input type="button" value="천식" onclick="onChg(this)" id="b6"/>
+                <div style="display:flex">
+                    <img src="img/psy.png" class="img"/>
+                    <span class="title">심리</span>
                 </div>
+                <div id="btn2" style="margin-Left:18em">
+                    <input type="hidden" value="0" id="비염" name="비염"/>
+                    <button value="비염" type="button" onclick="onChg(this)" id="b4" class="btn"><span class="text" id="t4">비염</span></button>
+
+
+                    <input type="hidden" value="0" id="폐렴" name="폐렴"/>
+                    <button value="폐렴" type="button" onclick="onChg(this)" id="b5" class="btn"><span class="text" id="t5">폐렴</span></button>
+
+
+                    <input type="hidden" value="0" id="천식" name="천식"/>
+                    <button value="천식" type="button" onclick="onChg(this)" id="b6" class="btn"><span class="text" id="t6">천식</span></button>
+                </div>
+                <div class="vector-4"></div>
             </div>
             <div id="tag3">
-                <h3>피부</h3>
-                <div id="btn3">
-                    <input type="hidden" value="0" id="알레르기"/>
-                    <input type="button" value="알레르기" onclick="onChg(this)" id="b7"/>
-
-                    <input type="hidden" value="0" id="아토피"/>
-                    <input type="button" value="아토피" onclick="onChg(this)" id="b8"/>
+                <div style="display:flex">
+                    <img src="img/nerve.png" class="img"/>
+                    <span class="title">신경</span>
                 </div>
+                <div id="btn3" style="margin-Left:18em">
+                    <input type="hidden" value="0" id="알레르기" name="알레르기"/>
+                    <button value="알레르기" type="button" onclick="onChg(this)" id="b7" class="btn"><span class="text" id="t7">알레르기</span></button>
+
+
+                    <input type="hidden" value="0" id="아토피" name="아토피"/>
+                    <button value="아토피" type="button" onclick="onChg(this)" id="b8" class="btn"><span class="text" id="t8">아토피</span></button>
+                </div>
+                <div class="vector-4"></div>
             </div>
             <div id="tag4">
-                <h3>기타</h3>
-                <div id="btn4">
-                    <input type="hidden" value="0" id="두통"/>
-                    <input type="button" value="두통" onclick="onChg(this)" id="b9"/>
-
-                    <input type="hidden" value="0" id="중이염"/>
-                    <input type="button" value="중이염" onclick="onChg(this)" id="b10"/>
-
-                    <input type="hidden" value="0" id="축농증"/>
-                    <input type="button" value="축농증" onclick="onChg(this)" id="b11"/>
+                <div style="display:flex">
+                    <img src="img/eye.png" class="img"/>
+                    <span class="title">눈</span>
                 </div>
+                <div id="btn4" style="margin-Left:18em">
+                    <input type="hidden" value="0" id="두통" name="두통"/>
+                    <button value="두통" type="button" onclick="onChg(this)" id="b9" class="btn"><span class="text" id="t9">두통</span></button>
+
+                    <input type="hidden" value="0" id="중이염" name="중이염"/>
+                    <button value="중이염" type="button" onclick="onChg(this)" id="b10" class="btn"><span class="text" id="t10">중이염</span></button>
+
+                    <input type="hidden" value="0" id="축농증" name="축농증"/>
+                    <button value="축농증" type="button" onclick="onChg(this)" id="b11" class="btn"><span class="text" id="t11">축농증</span></button>
+                </div>
+                <div class="vector-4"></div>
             </div>
             <br><br>
             <div id="btn">
-                <input type="submit" value="입력" onclick="result()"/>
+                <button type="submit" onclick="result()" class="submit"><span class="submit-text">검색하기</span></button>
             </div>
         </form>
     </div>
@@ -70,156 +199,178 @@
         if (form.value=="복통") {
             var data = document.getElementById("복통")
             var btn = document.getElementById("b1")
+            var text = document.getElementById("t1")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("복통의 전달 데이터 : " + data.value)
         }
         else if (form.value=="설사") {
             var data = document.getElementById("설사")
             var btn = document.getElementById("b2")
+            var text = document.getElementById("t2")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("설사의 전달 데이터 : " + data.value)
         }
         else if (form.value=="영양질환") {
             var data = document.getElementById("영양질환")
             var btn = document.getElementById("b3")
+            var text = document.getElementById("t3")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("영양질환의 전달 데이터 : " + data.value)
         }
         else if (form.value=="비염") {
             var data = document.getElementById("비염")
             var btn = document.getElementById("b4")
+            var text = document.getElementById("t4")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("비염의 전달 데이터 : " + data.value)
         }
         else if (form.value=="폐렴") {
             var data = document.getElementById("폐렴")
             var btn = document.getElementById("b5")
+            var text = document.getElementById("t5")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("폐렴의 전달 데이터 : " + data.value)
         }
         else if (form.value=="천식") {
             var data = document.getElementById("천식")
             var btn = document.getElementById("b6")
+            var text = document.getElementById("t6")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("천식의 전달 데이터 : " + data.value)
         }
         else if (form.value=="알레르기") {
             var data = document.getElementById("알레르기")
             var btn = document.getElementById("b7")
+            var text = document.getElementById("t7")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("알레르기의 전달 데이터 : " + data.value)
         }
         else if (form.value=="아토피") {
             var data = document.getElementById("아토피")
             var btn = document.getElementById("b8")
+            var text = document.getElementById("t8")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("아토피의 전달 데이터 : " + data.value)
         }
         else if (form.value=="두통") {
             var data = document.getElementById("두통")
             var btn = document.getElementById("b9")
+            var text = document.getElementById("t9")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("두통의 전달 데이터 : " + data.value)
         }
         else if (form.value=="중이염") {
             var data = document.getElementById("중이염")
             var btn = document.getElementById("b10")
+            var text = document.getElementById("t10")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("중이염의 전달 데이터 : " + data.value)
         }
         else {
             var data = document.getElementById("축농증")
             var btn = document.getElementById("b11")
+            var text = document.getElementById("t11")
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                text.style.color = "#ffffff"
+                btn.style.backgroundColor = "#f6d876"
             }
             else {
                 data.value = 0
+                text.style.color = "#a0a0a0"
                 btn.style.backgroundColor = ""
             }
-            alert("축농증의 전달 데이터 : " + data.value)
         }
     }
 
