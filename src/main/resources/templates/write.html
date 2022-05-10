@@ -15,7 +15,56 @@
                     <input type="text" th:field="*{title}" placeholder="제목을 입력하세요">
                 </div>
 
-                <div id="tag">
+                <div class="tag">
+                    <div id="tag1">
+                        <!--<h5>소화</h5>-->
+                        <div id="btn1">
+                            <input type="hidden" value="0" id="복통"/>
+                            <input type="button" value="복통" onclick="onChg(this)" id="b1"/>
+
+                            <input type="hidden" value="0" id="설사"/>
+                            <input type="button" value="설사" onclick="onChg(this)" id="b2"/>
+
+                            <input type="hidden" value="0" id="영양질환"/>
+                            <input type="button" value="영양질환" onclick="onChg(this)" id="b3"/>
+                        </div>
+                    </div>
+                    <div id="tag2">
+                        <!--<h5>호흡</h5>-->
+                        <div id="btn2">
+                            <input type="hidden" value="0" id="비염"/>
+                            <input type="button" value="비염" onclick="onChg(this)" id="b4"/>
+
+                            <input type="hidden" value="0" id="폐렴"/>
+                            <input type="button" value="폐렴" onclick="onChg(this)" id="b5"/>
+
+                            <input type="hidden" value="0" id="천식"/>
+                            <input type="button" value="천식" onclick="onChg(this)" id="b6"/>
+                        </div>
+                    </div>
+                    <div id="tag3">
+                        <!--<h5>피부</h5>-->
+                        <div id="btn3">
+                            <input type="hidden" value="0" id="알레르기"/>
+                            <input type="button" value="알레르기" onclick="onChg(this)" id="b7"/>
+
+                            <input type="hidden" value="0" id="아토피"/>
+                            <input type="button" value="아토피" onclick="onChg(this)" id="b8"/>
+                        </div>
+                    </div>
+                    <div id="tag4">
+                        <!--<h5>기타</h5>-->
+                        <div id="btn4">
+                            <input type="hidden" value="0" id="두통"/>
+                            <input type="button" value="두통" onclick="onChg(this)" id="b9"/>
+
+                            <input type="hidden" value="0" id="중이염"/>
+                            <input type="button" value="중이염" onclick="onChg(this)" id="b10"/>
+
+                            <input type="hidden" value="0" id="축농증"/>
+                            <input type="button" value="축농증" onclick="onChg(this)" id="b11"/>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="content">
@@ -27,10 +76,186 @@
                 <input type="file" name="SelectFile" />
 
                 <div id="btn">
-                    <input type="submit" value="글 작성"/>
+                    <input type="submit" value="글 작성" onclick="result()"/>
                 </div>
 
             </form>
     </div>
+    <script>
+        function onChg(form) {
+        if (form.value=="복통") {
+            var data = document.getElementById("복통")
+            var btn = document.getElementById("b1")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("복통의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="설사") {
+            var data = document.getElementById("설사")
+            var btn = document.getElementById("b2")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("설사의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="영양질환") {
+            var data = document.getElementById("영양질환")
+            var btn = document.getElementById("b3")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("영양질환의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="비염") {
+            var data = document.getElementById("비염")
+            var btn = document.getElementById("b4")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("비염의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="폐렴") {
+            var data = document.getElementById("폐렴")
+            var btn = document.getElementById("b5")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("폐렴의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="천식") {
+            var data = document.getElementById("천식")
+            var btn = document.getElementById("b6")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("천식의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="알레르기") {
+            var data = document.getElementById("알레르기")
+            var btn = document.getElementById("b7")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("알레르기의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="아토피") {
+            var data = document.getElementById("아토피")
+            var btn = document.getElementById("b8")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("아토피의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="두통") {
+            var data = document.getElementById("두통")
+            var btn = document.getElementById("b9")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("두통의 전달 데이터 : " + data.value)
+        }
+        else if (form.value=="중이염") {
+            var data = document.getElementById("중이염")
+            var btn = document.getElementById("b10")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("중이염의 전달 데이터 : " + data.value)
+        }
+        else {
+            var data = document.getElementById("축농증")
+            var btn = document.getElementById("b11")
+
+            if(data.value==0) {
+                data.value = 1
+                btn.style.backgroundColor = "#FC5C7D"
+            }
+            else {
+                data.value = 0
+                btn.style.backgroundColor = ""
+            }
+            alert("축농증의 전달 데이터 : " + data.value)
+        }
+    }
+
+    function result() {
+        var v1 = document.getElementById("복통")
+        var v2 = document.getElementById("설사")
+        var v3 = document.getElementById("영양질환")
+        var v4 = document.getElementById("비염")
+        var v5 = document.getElementById("폐렴")
+        var v6 = document.getElementById("천식")
+        var v7 = document.getElementById("알레르기")
+        var v8 = document.getElementById("아토피")
+        var v9 = document.getElementById("두통")
+        var v10 = document.getElementById("중이염")
+        var v11 = document.getElementById("축농증")
+
+        alert(v1.value+v2.value+v3.value+v4.value+v5.value+v6.value+v7.value+v8.value+v9.value+v10.value+v11.value)
+
+    }
+
+    </script>
 </body>
 </html>
