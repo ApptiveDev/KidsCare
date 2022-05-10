@@ -6,14 +6,8 @@ import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.repository.AnswerRepository;
 
-//@Service
-//@RequiredArgsConstructor
-//public class AnswerService {
-//
-//    }
-
-    //삭제
-    //수정
-
+@Service
+@RequiredArgsConstructor
+public class AnswerService {
 
 }
