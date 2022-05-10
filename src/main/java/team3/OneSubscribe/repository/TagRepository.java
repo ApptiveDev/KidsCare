@@ -21,6 +21,15 @@ public class TagRepository {
         em.persist(tag);
     }
 
+    @Transactional
+    public void saveAll(List<Tag> tags){
+        System.out.println(tags.size());
+        for(int i = 0; i < tags.size(); i++){
+            System.out.println(i + "번째" + tags.get(i).getDiseaseName());
+            em.persist(tags.get(i));
+        }
+    }
+
     public List<Tag> findAll(){
         return em.createQuery("select i from Writing i", Tag.class)
                 .getResultList();

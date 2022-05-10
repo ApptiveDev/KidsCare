@@ -17,8 +17,7 @@ public class Writing {
     @Column(name = "writing_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "member_id")
+    @ManyToOne
     @JoinColumn(name = "nickName")
     private Member member;
 
