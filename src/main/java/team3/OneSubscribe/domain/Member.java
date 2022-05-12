@@ -3,6 +3,7 @@ package team3.OneSubscribe.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -36,8 +37,8 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Expert expert;
 
-    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
-    private Writing writings;
+    @OneToMany(mappedBy = "member")
+    private List<Writing> writings;
 
 //    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
 //    private Answer answers;
