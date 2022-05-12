@@ -39,15 +39,16 @@ public class SearchController {
     @Autowired
     TagRepository tagRepository;
 
-    @GetMapping("/contents/search")
+    @GetMapping("/search")
     public String search(){
         return "search";
     }
 
-    @PostMapping("/contents/search")
+    @GetMapping("/search/result")
     public String search(HttpServletRequest request, Model model){
-        HttpSession session;
-        session = request.getSession();
+//        HttpSession session;
+//        session = request.getSession();
+        // 위에꺼 필요없을거 같은데, 그냥 바로 request에 접근하는데?
 
         ArrayList<Tag> tags = new ArrayList<Tag>();
         if(Objects.equals(request.getParameter("복통"), "1")){
@@ -105,8 +106,11 @@ public class SearchController {
             tag11.setDiseaseName(DiseaseName.empyema);
             tags.add(tag11);
         }
-
+        //
         // tags를 이용해서 search 하기
+
+        List<Writing> searchResults = writingRepository.findAll(); // 이거말고 알고리즘 짜서 List만들어야 함.
+        model.addAttribute("searchResults", searchResults);
         return "search_result";
     }
 }

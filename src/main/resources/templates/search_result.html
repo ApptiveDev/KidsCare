@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>검색결과</title>
@@ -89,6 +89,29 @@
 =======
         <img src="img/search.png"/>
     </div>
+
+    <!-- 타임리프 사용 구간(시작) -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>업로드 날짜</th>
+        </tr>
+        </thead>
+        <!--        역순 출력해야함-->
+        <tbody>
+        <tr th:each="result : ${searchResults}">
+            <td th:text="${result.id}"></td>
+            <td th:text="${result.title}" th:href="@{/contents/{id} (id=${result.id})}"></td>
+            <!--            <td th:text="${writing.nickName}">작성자</td>-->
+            <td>작성자(기본값)</td>
+            <td th:text="${result.createDate}">업로드 날짜</td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- 타임리프 사용 구간(끝) -->
 
     <div id="container" style="display:flex">
         <div class="search">

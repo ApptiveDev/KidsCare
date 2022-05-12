@@ -39,6 +39,7 @@ public class HomeController {
         member.setNickName("choi");
         member.setLoginId("test");
         member.setLoginPassword("test1");
+        member.setNickName("테스트Choi");
         memberService.save(member);
         return "index";
     }
