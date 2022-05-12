@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>showWriting</h1>
+<div th:text="'title : '+${title}"></div>
+<div th:text="'context : ' + ${context}"></div>
+
+<div th:each="i : ${li}">
+    <div>댓글</div>
+    <div th:text="'작성자 : ' + ${i.writing}"></div>
+    <div th:text="${i.context}"></div>
+    <div th:text="'생성시간 : '+${i.createDate}"></div>
+    <div th:text="'수정시간 : '+${i.updateDate}"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+package team3.OneSubscribe.controller.interceptor;
+
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.List;
+
+@Component
+@NoArgsConstructor
+public class LoginInterceptor implements HandlerInterceptor {
+
+    //인터셉터가 동작할 url을 넣어주는 리스트
+    public List<String> loginEssential = Arrays.asList("/contents/writing/**");
+    public List<String> loginInessential = Arrays.asList("");//비어있다.
+
+    /**
+     * @return true : 컨트롤러에 접근 승인, false : 컨트롤러에 접근 거부
+     * @throws Exception
+     */
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        HttpSession sess = request.getSession(false);//세션 없을 때 세션 생성 x
+        if (sess != null) {
+            return true;//접근허용
+        } else {
+            String destUri = request.getRequestURI();
+            String destQuery = request.getQueryString();
+            String dest = (destQuery == null) ? destUri : destUri + "?" + destQuery;
+//            request.getSession().setAttribute("dest", dest); //굳이 세션에 등록할 필요가?
+            response.sendRedirect("/member/login");
+            return false;
+        }
+    }
+}
+
