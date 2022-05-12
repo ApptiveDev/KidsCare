@@ -3,6 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <title>홈</title>
+
+  <style>
+    .header {
+      display:flex;
+      width: 1920px;
+      height: 185px;
+      margin: 0 0 16px;
+      padding: 53px 144px 11px 114px;
+      background-color: rgba(246, 216, 118, 0.32);
+    }
+    body {
+      flex-grow: 0;
+      padding: 0 0 97px;
+      background-color: #fff;
+    }
+    span.menu {
+      width: 93px;
+      height: 33px;
+      font-family: NotoSansKR;
+      font-size: 20px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .logo {
+      width: 467px;
+      height: 83px;
+      margin: 0 974px 5px 0;
+      object-fit: contain;
+    }
+    .line {
+      width: 2px;
+      height: 35px;
+      transform: rotate(-180deg);
+      background-color: #b9b9b9;
+    }
+    .best {
+      width: 1180px;
+      height: 241px;
+      margin: 30px 371px 22px 26px;
+      padding: 3px 16px 33px 19px;
+      background-color: #f9f9f9;
+    }
+    .line-best {
+      width: 949px;
+      height: 1.5px;
+      margin: 16.5px 8px 50px 5px;
+      transform: rotate(-359.91deg);
+      background-color: #e95e44;
+    }
+    .best-title {
+      width: 173px;
+      height: 36px;
+      margin: 0 5px 32px 10px;
+      font-family: NotoSansKR;
+      font-size: 25px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #e95e44;
+    }
+    .all-title {
+      width: 75px;
+      height: 30px;
+      margin: 23px 350px 0.5px 38px;
+      font-family: Inter;
+      font-size: 25px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #499e99;
+    }
+    .line-all {
+      width: 81px;
+      height: 3px;
+      margin: 0.5px 347px 7.5px 35px;
+      background-color: #499e99;
+    }
+
+  </style>
 </head>
 <!--id는 한번 밖에 사용하지 못하는 식별자 이므로 큰 범위, header나 container같은 곳에 사용하고
 class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
@@ -13,52 +103,74 @@ class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
 
 <!--부모에서 flex를 사용해서 자식에서 float:right를 쓰면 당연히 적용 안됨-->
 <body>
-<div id="header" style="display:flex; background-color:red"><!--상단 부분-->
-  <div>
-    <a href="/" ><img src="" alt="로고"></a>
-  </div>
-  <div>
-    <h3 >프로젝트 이름</h3>
-  </div>
-  <div style="position:absolute;right:10px ; background:blue">
-    <div style="display:flex">
-      <div>
-        <a href="/join">회원가입</a>
-      </div>
-      &nbsp;
-      <div>
-        <a href="member/login">로그인</a>
-      </div>
-    </div>
+  <div class="header" ><!--상단 부분-->
     <div>
-      <p>계정이름</p>
-      <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+      <a href="index.html" class="logo"><img src="img/logo.png" alt="로고"></a>
+    </div>
+    <div style="position:absolute;right:10px ;">
+      <div style="display:flex">
+        <span onclick="location.href='signup.html'" class="menu">
+          회원가입
+        </span>
+        <div class="line"></div>
+        &nbsp;&nbsp;
+        <span onclick="location.href='login.html'" class="menu">
+          로그인
+        </span>
+      </div>
+      <div>
+        <p>계정이름</p>
+        <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="container"><!--본문-->
-  <div class="leftside"><!--왼쪽에 광고 배치-->
-    <div class="card"></div> <!--프레임-->
-    <div class="card"></div>
-    <div class="card">
-      <div class="board"></div><!--menu, banner, board등에 따라서 결정, 요소 -->
+  <div id="container"><!--본문-->
+    <div class="leftside"><!--왼쪽에 광고 배치-->
+      <div class="card"></div> <!--프레임-->
+      <div class="card"></div>
+      <div class="card">
+        <div class="board"></div><!--menu, banner, board등에 따라서 결정, 요소 -->
+      </div>
+    </div>
+
+    <div class="rightside">
+
+    </div>
+
+    <div class="main" style="display:flex"> <!--게시판 글 불러와서 띄우는 곳 -->
+      <div class="banner">
+        <p>광고1</p>
+        <p>광고2</p>
+        <p>광고3</p>
+        <p>광고4</p>
+      </div>
+      <div class="main_right">
+        <div class="best">
+          <div style="display:flex">
+            <span class="best-title">금주의 베스트 글</span>
+            <div class="line-best"></div>
+          </div>
+          
+          <!--금주의 베스트 글 목록-->
+          <div>
+
+          </div>
+        </div>
+
+        <div style="display:flex">
+          <div class="all">
+            <span class="all-title">전체 글</span>
+            <div class="line-all"></div>
+          </div>
+
+          <div class="expert">
+            <span class="all-title">베스트 전문가</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="rightside">
-
-  </div>
-
-  <!-- 임시 href -->
-  <div id="tmp">
-    <button type="button" onClick="location.href='contents'">목록 이동</button>
-  </div>
-
-  <div class="main"> <!--게시판 글 불러와서 띄우는 곳 -->
-    <div class="card"></div>
-  </div>
-</div>
-<div id="footer"></div><!--바닥-->
+  <div id="footer"></div><!--바닥-->
 </body>
 </html>
