@@ -105,7 +105,7 @@ public class SearchController {
             tag11.setDiseaseName(DiseaseName.empyema);
             tags.add(tag11);
         }
-
+        //
         // tags를 이용해서 search 하기
         return "search_result";
     }
