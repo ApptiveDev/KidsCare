@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import team3.OneSubscribe.DTO.WritingDTO;
 import team3.OneSubscribe.domain.DiseaseName;
-import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.MemberRepository;
@@ -20,7 +20,6 @@ import team3.OneSubscribe.service.MemberService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,12 +42,12 @@ public class ContentsWritingController {
 
     @GetMapping("/contents/writing")
     public String writingPage(Model model){
-        model.addAttribute("form", new WritingForm());
+        model.addAttribute("form", new WritingDTO());
         return "write";
     }
 
     @PostMapping("/contents/writing/new")
-    public String contentsFromWriting(WritingForm form, HttpServletRequest request){
+    public String contentsFromWriting(WritingDTO form, HttpServletRequest request){
         HttpSession session = request.getSession();
         Member writer = memberRepository.findByLoginId(((Member)session.getAttribute("member")).getLoginId());
 
