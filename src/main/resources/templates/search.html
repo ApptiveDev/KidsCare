@@ -7,18 +7,20 @@
     <style>
     .header {
       display:flex;
-      width: 1920px;
-      height: 185px;
-      margin: 0 0 16px;
-      padding: 53px 144px 11px 114px;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
       background-color: rgba(246, 216, 118, 0.32);
     }
+    .logo {
+      width: 20em;
+      margin: 0.8em 0em 0em 0em;
+      object-fit: contain;
+    }
     .menu {
-      width: 773px;
-      height: 122px;
-      margin: 120px 0 89.5px 360px;
+      height: 2em;
+      margin: 3em 5em 3em 12em;
       font-family: NotoSansKR;
-      font-size: 45px;
+      font-size: 1.5em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -27,18 +29,22 @@
       text-align: left;
       color: #000;
     }
+    #img {
+      width : 12em;
+      height : 10em;
+      margin: 1em 0em 0em 0em;
+    }
     .img {
-      width: 55px;
-      height: 55px;
-      margin: 18.5px 17px 35px 362px;
+      width: 2em;
+      height: 2em;
+      margin: 0em 1em 0em 18em;
       object-fit: contain;
     }
     .title {
-      width: 84px;
-      height: 51px;
-      margin: 18.5px 87px 39px 17px;
+      width:4em
+      height: 2em;
       font-family: NotoSansKR;
-      font-size: 35px;
+      font-size: 1.5em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -48,19 +54,18 @@
       color: #000;
     }
     .btn {
-      width: 220px;
-      height: 65px;
-      margin: 35px 25px 38.5px 360px;
-      padding: 15px 76px 14px 75px;
-      border-radius: 10px;
+      width: 9em;
+      height: 2.5em;
+      margin: 1em 0.5em 1em 0em;
+      border-radius: 0.5em;
       border: solid 1px #a0a0a0;
       background-color: #fff;
     }
     .text {
-      width: 69px;
-      height: 36px;
+      width: 2em;
+      height: 2em;
       font-family: NotoSansKR;
-      font-size: 25px;
+      font-size: 1em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -69,21 +74,27 @@
       text-align: center;
       color: #a0a0a0;
     }
+    .vector-4 {
+      width: 40em;
+      height: 0.2em;
+      margin: 0em 0em 1em 18em;
+      background-color: #ededed;
+    }
     .submit {
-      width: 500px;
-      height: 78px;
+      width: 20em;
+      height: 2.5em;
+      margin: 0em 0em 5em 35em;
       flex-grow: 0;
-      margin: 100px 145px 0 146px;
-      padding: 17px 179px 18px 178px;
-      border-radius: 14px;
+      border: 0;
+      border-radius: 0.5em;
       background-color: #499e99;
     }
     .submit-text {
-      width: 111px;
-      height: 43px;
+      width: 2em;
+      height: 1em;
       flex-grow: 0;
       font-family: NotoSansKR;
-      font-size: 30px;
+      font-size: 1.5em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -97,12 +108,12 @@
 <body onload="start()">
     <div class="header">
         <div>
-            <a href="index.html" class="logo"><img src="img/logo.png" alt="로고"></a>
+            <a href="/"><img src="img/logo.png" alt="로고" class="logo"></a>
         </div>
     </div>
-    <div style="display:flex">
+    <div style="display:flex;">
         <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
-        <img src="img/search.png"/>
+        <img src="img/search.png" id="img"/>
     </div>
 
     <div id="container">
@@ -113,7 +124,7 @@
                     <img src="img/hand.png" class="img"/>
                     <span class="title">손, 발</span>
                 </div>
-                <div id="btn1">
+                <div id="btn1" style="margin-Left:18em">
                     <input type="hidden" value="0" id="복통" name="복통"/>
                     <button value="복통" type="button" onclick="onChg(this)" id="b1" class="btn"><span class="text" id="t1">복통</span></button>
 
@@ -123,15 +134,17 @@
                     <input type="hidden" value="0" id="영양질환" name="영양질환"/>
                     <button value="영양질환" type="button" onclick="onChg(this)" id="b3" class="btn"><span class="text" id="t3">영양질환</span></button>
                 </div>
+                <div class="vector-4"></div>
             </div>
             <div id="tag2">
                 <div style="display:flex">
                     <img src="img/psy.png" class="img"/>
                     <span class="title">심리</span>
                 </div>
-                <div id="btn2">
+                <div id="btn2" style="margin-Left:18em">
                     <input type="hidden" value="0" id="비염" name="비염"/>
                     <button value="비염" type="button" onclick="onChg(this)" id="b4" class="btn"><span class="text" id="t4">비염</span></button>
+
 
                     <input type="hidden" value="0" id="폐렴" name="폐렴"/>
                     <button value="폐렴" type="button" onclick="onChg(this)" id="b5" class="btn"><span class="text" id="t5">폐렴</span></button>
@@ -139,26 +152,29 @@
                     <input type="hidden" value="0" id="천식" name="천식"/>
                     <button value="천식" type="button" onclick="onChg(this)" id="b6" class="btn"><span class="text" id="t6">천식</span></button>
                 </div>
+                <div class="vector-4"></div>
             </div>
             <div id="tag3">
                 <div style="display:flex">
                     <img src="img/nerve.png" class="img"/>
                     <span class="title">신경</span>
                 </div>
-                <div id="btn3">
+                <div id="btn3" style="margin-Left:18em">
                     <input type="hidden" value="0" id="알레르기" name="알레르기"/>
                     <button value="알레르기" type="button" onclick="onChg(this)" id="b7" class="btn"><span class="text" id="t7">알레르기</span></button>
+
 
                     <input type="hidden" value="0" id="아토피" name="아토피"/>
                     <button value="아토피" type="button" onclick="onChg(this)" id="b8" class="btn"><span class="text" id="t8">아토피</span></button>
                 </div>
+                <div class="vector-4"></div>
             </div>
             <div id="tag4">
                 <div style="display:flex">
                     <img src="img/eye.png" class="img"/>
                     <span class="title">눈</span>
                 </div>
-                <div id="btn4">
+                <div id="btn4" style="margin-Left:18em">
                     <input type="hidden" value="0" id="두통" name="두통"/>
                     <button value="두통" type="button" onclick="onChg(this)" id="b9" class="btn"><span class="text" id="t9">두통</span></button>
 
@@ -168,6 +184,7 @@
                     <input type="hidden" value="0" id="축농증" name="축농증"/>
                     <button value="축농증" type="button" onclick="onChg(this)" id="b11" class="btn"><span class="text" id="t11">축농증</span></button>
                 </div>
+                <div class="vector-4"></div>
             </div>
             <br><br>
             <div id="btn">

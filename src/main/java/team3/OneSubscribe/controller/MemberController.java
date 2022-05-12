@@ -100,4 +100,6 @@ public class MemberController {
         System.out.println("loginId : "+loginId);
         return memberService.isIdDuplicated(loginId);
     }
+
+
 }
