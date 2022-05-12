@@ -1,10 +1,10 @@
-package team3.OneSubscribe.controller;
+package team3.OneSubscribe.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class WritingForm {
+public class WritingDTO {
 
     private Long id;
 
