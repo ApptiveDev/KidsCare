@@ -56,8 +56,8 @@ public class ContentsWritingController {
         writing.setTitle(form.getTitle());
         writing.setContext(form.getContext());
         writing.setCreateDate(LocalDateTime.now());
+        //writing.setMember((Member) session.getAttribute("member"));
         System.out.println("세션 : " + session.getAttribute("member"));
-        //writing.setMember((Member) session.getAttribute("member")); // 여기 고쳐야 함
         writingRepository.save(writing);
 
         // 2. tag 저장

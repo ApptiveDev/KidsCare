@@ -30,4 +30,6 @@ public class WritingRepository {
         return em.createQuery("select i from Writing i", Writing.class)
                 .getResultList();
     }
+
+
 }
