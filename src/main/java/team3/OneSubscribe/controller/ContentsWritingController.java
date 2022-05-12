@@ -60,7 +60,6 @@ public class ContentsWritingController {
         writingRepository.save(writing);
 
         // 2. tag 저장
-
         if(Objects.equals(request.getParameter("복통"), "1")){
             Tag tag1 = new Tag();
             tag1.setDiseaseName(DiseaseName.abdominalPain);
