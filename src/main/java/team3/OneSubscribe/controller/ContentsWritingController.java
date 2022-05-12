@@ -58,7 +58,6 @@ public class ContentsWritingController {
         writing.setContext(form.getContext());
         writing.setCreateDate(LocalDateTime.now());
         writing.setMember(writer);
-
         writingRepository.save(writing);
 
         // 2. tag 저장
