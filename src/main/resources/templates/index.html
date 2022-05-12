@@ -7,22 +7,20 @@
   <style>
     .header {
       display:flex;
-      width: 1920px;
-      height: 185px;
-      margin: 0 0 16px;
-      padding: 53px 144px 11px 114px;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
       background-color: rgba(246, 216, 118, 0.32);
     }
     body {
       flex-grow: 0;
-      padding: 0 0 97px;
       background-color: #fff;
     }
     span.menu {
-      width: 93px;
-      height: 33px;
+      cursor: pointer;
+      width: 5em;
+      height: 1em;
       font-family: NotoSansKR;
-      font-size: 20px;
+      font-size: 1.25em;
       font-weight: 300;
       font-stretch: normal;
       font-style: normal;
@@ -32,37 +30,33 @@
       color: #000;
     }
     .logo {
-      width: 467px;
-      height: 83px;
-      margin: 0 974px 5px 0;
+      width: 20em;
+      margin: 0.8em 0em 0em 0em;
       object-fit: contain;
     }
     .line {
-      width: 2px;
-      height: 35px;
+      width: 0.1em;
+      height: 1.5em;
       transform: rotate(-180deg);
       background-color: #b9b9b9;
     }
     .best {
-      width: 1180px;
-      height: 241px;
-      margin: 30px 371px 22px 26px;
-      padding: 3px 16px 33px 19px;
+      width: 40em;
+      height: 10em;
+      margin: 1em 0em 0em 0em;
       background-color: #f9f9f9;
     }
     .line-best {
-      width: 949px;
-      height: 1.5px;
-      margin: 16.5px 8px 50px 5px;
+      width: 25em;
+      height: 0.1em;
+      margin: 1em 0em 0em 1em;
       transform: rotate(-359.91deg);
       background-color: #e95e44;
     }
     .best-title {
-      width: 173px;
-      height: 36px;
-      margin: 0 5px 32px 10px;
+      height: 1em;
       font-family: NotoSansKR;
-      font-size: 25px;
+      font-size: 1.5em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -71,12 +65,13 @@
       text-align: left;
       color: #e95e44;
     }
+    .all {
+      width: 30em;
+    }
     .all-title {
-      width: 75px;
-      height: 30px;
-      margin: 23px 350px 0.5px 38px;
+      height: 1em;
       font-family: Inter;
-      font-size: 25px;
+      font-size: 1.5em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -86,9 +81,8 @@
       color: #499e99;
     }
     .line-all {
-      width: 81px;
-      height: 3px;
-      margin: 0.5px 347px 7.5px 35px;
+      width: 5em;
+      height: 0.1em;
       background-color: #499e99;
     }
 
@@ -105,9 +99,9 @@ class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
 <body>
   <div class="header" ><!--상단 부분-->
     <div>
-      <a href="/" class="logo"><img src="img/logo.png" alt="로고"></a>
+      <a href="/"><img class="logo" src="img/logo.png" alt="로고"></a>
     </div>
-    <div style="position:absolute;right:10px ;">
+    <div style="position:absolute;right:10px;">
       <div style="display:flex">
         <span onclick="location.href='/member/signup'" class="menu">
           회원가입
@@ -151,7 +145,7 @@ class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
             <span class="best-title">금주의 베스트 글</span>
             <div class="line-best"></div>
           </div>
-          
+
           <!--금주의 베스트 글 목록-->
           <div>
 
@@ -163,7 +157,6 @@ class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
             <span class="all-title">전체 글</span>
             <div class="line-all"></div>
           </div>
-
           <div class="expert">
             <span class="all-title">베스트 전문가</span>
           </div>
