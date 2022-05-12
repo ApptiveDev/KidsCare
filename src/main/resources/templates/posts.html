@@ -41,8 +41,8 @@
         <tr th:each="writing : ${writings}">
             <td th:text="${writing.id}"></td>
             <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
-<!--            <td th:text="${writing.nickName}">작성자</td>-->
-            <td>작성자(기본값)</td>
+            <td th:text="${writing.Member.nickName}"></td>
+<!--            <td>작성자(기본값)</td>-->
             <td th:text="${writing.createDate}">업로드 날짜</td>
         </tr>
         </tbody>

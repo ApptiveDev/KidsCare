@@ -50,14 +50,14 @@ public class ContentsWritingController {
     @PostMapping("/contents/writing/new")
     public String contentsFromWriting(WritingForm form, HttpServletRequest request){
         HttpSession session = request.getSession();
+        Member writer = memberRepository.findByLoginId(((Member)session.getAttribute("member")).getLoginId());
 
         // 1. writing 저장
         Writing writing = new Writing();
         writing.setTitle(form.getTitle());
         writing.setContext(form.getContext());
         writing.setCreateDate(LocalDateTime.now());
-        //writing.setMember((Member) session.getAttribute("member"));
-        System.out.println("세션 : " + session.getAttribute("member"));
+        writing.setMember(writer);
         writingRepository.save(writing);
 
         // 2. tag 저장

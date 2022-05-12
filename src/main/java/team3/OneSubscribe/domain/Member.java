@@ -22,9 +22,9 @@ public class Member {
 
     private String loginPassword; // 형식 확인 필요
 
+    @Column(unique = true)
     private String name;
 
-    @Column(unique = true)
     private String nickName;
 
     private String eMail;
