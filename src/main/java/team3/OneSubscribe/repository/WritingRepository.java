@@ -18,8 +18,9 @@ public class WritingRepository {
     private EntityManager em;
 
     @Transactional
-    public void save(Writing writing){
+    public long save(Writing writing){
         em.persist(writing);
+        return writing.getId();
     }
 
     public Writing findOneById(Long id){

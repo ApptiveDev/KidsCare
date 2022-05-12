@@ -15,8 +15,9 @@ public class AnswerRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public void save(Answer answer){
+    public long save(Answer answer){
         em.persist(answer);
+        return answer.getId();
     }
 
     public Answer findOneById(Long id){
