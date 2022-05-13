@@ -3,7 +3,6 @@ package team3.OneSubscribe.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import team3.OneSubscribe.domain.Member;
-import team3.OneSubscribe.error.DuplicatedLoginIDExcpetion;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

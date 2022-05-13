@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import team3.OneSubscribe.DTO.WritingDTO;
+import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.DiseaseName;
 import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Tag;
@@ -16,6 +18,7 @@ import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.TagRepository;
 import team3.OneSubscribe.repository.WritingRepository;
+import team3.OneSubscribe.service.AnswerService;
 import team3.OneSubscribe.service.MemberService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,41 +30,36 @@ import java.util.Objects;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@RequestMapping("/contents")
 public class ContentsWritingController {
 
-    @Autowired
-    WritingRepository writingRepository;
+    private final WritingRepository writingRepository;
+    private final MemberRepository memberRepository;
+    private final MemberService memberService;
+    private final TagRepository tagRepository;
+    private final AnswerService answerService;
 
-    @Autowired
-    MemberRepository memberRepository;
-
-    @Autowired
-    MemberService memberService;
-
-    @Autowired
-    TagRepository tagRepository;
-
-    @GetMapping("/contents/writing")
+    @GetMapping("/writing")
     public String writingPage(Model model){
         model.addAttribute("form", new WritingDTO());
-        return "write";
+        return "writing";
     }
 
-    @PostMapping("/contents/writing/new")
+    @PostMapping("/writing/new")
     public String contentsFromWriting(WritingDTO form, HttpServletRequest request){
         HttpSession session = request.getSession();
         Member writer = memberRepository.findByLoginId(((Member)session.getAttribute("member")).getLoginId());
 
         // 1. writing 저장
-        Writing writing = new Writing();
-        writing.setTitle(form.getTitle());
-        writing.setContext(form.getContext());
+        Writing writing = new Writing(form);
         writing.setCreateDate(LocalDateTime.now());
-        writing.setMember(writer);
+
+        System.out.println("세션 : " + session.getAttribute("member"));
+        //writing.setMember((Member) session.getAttribute("member")); // 여기 고쳐야 함
         writingRepository.save(writing);
 
-        // 2. tag 저장
 
+        // 2. tag 저장
         if(Objects.equals(request.getParameter("복통"), "1")){
             Tag tag1 = new Tag();
             tag1.setDiseaseName(DiseaseName.abdominalPain);
@@ -128,24 +126,30 @@ public class ContentsWritingController {
             tag11.setWriting(writing);
             tagRepository.save(tag11);
         }
-
         return "redirect:/contents";
     }
 
-    @GetMapping("/contents")
+    @GetMapping("")
+    //전체글 조회
     public String contents(Model model){
+        //TODO : 전부 가져오면 터진다. 10개 또는 20개씩 끊어서 가져오기
         List<Writing> writings = writingRepository.findAll();
         model.addAttribute("writings", writings);
         return "posts";
     }
 
-    @GetMapping("/contents/{writingId}")
+    @GetMapping("/{writingId}")
+    //글 하나 보여주기
     public String writingContents(@PathVariable("writingId") Long writingId, Model model){
+        //글찾기
         Writing writing = (Writing) writingRepository.findOneById(writingId);
+        model.addAttribute("title", writing.getTitle());//writing객체 다 넘기지 말고 필요한 애들만 넘기자
+        model.addAttribute("context", writing.getContext());
 
-        model.addAttribute("writing", writing);
-        return "write"; // 일단은 html 없어서 write으로 가게 함. // 여기 특정글 화면 나타내는 페이지 만들어야 함. // 그리고 거기서 타임리프 써서 특정글 보여주는 형식으로 해야함.
+        //댓글찾기
+        List<Answer> li = answerService.findAllAnswerByWriting(writing);
+        model.addAttribute("li", li);
+        return "showWriting";
     }
-
 
 }
