@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import team3.OneSubscribe.domain.DiseaseName;
 import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
+import team3.OneSubscribe.repository.AnswerRepository;
 import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.TagRepository;
 import team3.OneSubscribe.repository.WritingRepository;
@@ -38,6 +40,7 @@ public class ContentsWritingController {
     private final MemberService memberService;
     private final TagRepository tagRepository;
     private final AnswerService answerService;
+    private final AnswerRepository answerRepository;
 
     @GetMapping("/writing")
     public String writingPage(Model model){
@@ -132,8 +135,8 @@ public class ContentsWritingController {
         return "redirect:/contents";
     }
 
-    @GetMapping("")
     //전체글 조회
+    @GetMapping("")
     public String contents(Model model){
         //TODO : 전부 가져오면 터진다. 10개 또는 20개씩 끊어서 가져오기
         List<Writing> writings = writingRepository.findAll();
@@ -146,13 +149,45 @@ public class ContentsWritingController {
     public String writingContents(@PathVariable("writingId") Long writingId, Model model){
         //글찾기
         Writing writing = (Writing) writingRepository.findOneById(writingId);
+        model.addAttribute("writing", writing); // 답변 작성을 위해서 id 필요 // 연재가 추가
         model.addAttribute("title", writing.getTitle());//writing객체 다 넘기지 말고 필요한 애들만 넘기자
         model.addAttribute("context", writing.getContext());
 
         //댓글찾기
         List<Answer> li = answerService.findAllAnswerByWriting(writing);
         model.addAttribute("li", li);
+
+        //연재댓글(참고용)
+        List<Answer> answers = answerRepository.findByWriting(writing);
+        model.addAttribute("answers", answers);
+
+
         return "showWriting";
+    }
+
+    @GetMapping("/{writingId}/answer")
+    public String answer(@PathVariable("writingId") Long writingId, Model model){
+        Writing writing = writingRepository.findOneById(writingId);
+        model.addAttribute("writing", writing);
+
+        return "answer";
+    }
+
+    @Transactional
+    @PostMapping("/{writingId}/answer")
+    public String answerForWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+
+        Writing writing = writingRepository.findOneById(writingId);
+        Answer answer = new Answer();
+        answer.setWriting(writing);
+        answer.setContext(request.getParameter("content"));
+        answer.setCreateDate(LocalDateTime.now());
+        answerRepository.save(answer);
+
+        model.addAttribute("writing", writing);
+
+        return "redirect:/contents/{writingId}";
     }
 
 }

@@ -17,5 +17,36 @@
     <div th:text="'생성시간 : '+${i.createDate}"></div>
     <div th:text="'수정시간 : '+${i.updateDate}"></div>
 </div>
+<div>
+    <td><a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}">답변 작성</a></td>
+</div>
+
+<div>연재 댓글</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>답변 내용</th>
+        <th>작성자</th>
+        <th>업로드 날짜</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="answer : ${answers}">
+        <td th:text="${answer.id}"></td>
+        <td th:text="${answer.context}"></td>
+        <td th:text="${writing.Member.nickName}"></td>
+        <td th:text="${writing.createDate}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <a href="/contents">
+        <span class="all-title">글목록</span>
+        <div class="line-all"></div>
+    </a>
+</div>
+
 </body>
 </html>
