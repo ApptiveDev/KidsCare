@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import team3.OneSubscribe.DTO.WritingDTO;
 import team3.OneSubscribe.domain.DiseaseName;
+import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.MemberRepository;

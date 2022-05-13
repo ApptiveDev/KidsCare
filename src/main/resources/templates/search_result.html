@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>검색결과</title>
@@ -57,5 +57,24 @@
 
     </div>
 </div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>업로드 날짜</th>
+    </tr>
+    </thead>
+    <!-- 역순 출력해야함 // 뒤에꺼가 겹치는 태그가 더 많음-->
+    <tbody>
+    <tr th:each="search : ${searchResults}">
+        <td th:text="${search.id}"></td>
+        <td th:text="${search.title}" th:href="@{/contents/{id} (id=${search.id})}"></td>
+        <td th:text="${search.Member.nickName}"></td>
+        <td th:text="${search.createDate}">업로드 날짜</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
