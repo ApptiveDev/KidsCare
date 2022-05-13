@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AnswerService {
 
+
     //자동 autowired
     private final AnswerRepository answerRepository;
 

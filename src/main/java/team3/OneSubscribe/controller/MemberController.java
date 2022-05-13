@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import team3.OneSubscribe.domain.Member;
+import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.service.FormCheck;
 import team3.OneSubscribe.service.MemberService;
 
@@ -19,6 +20,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    private final MemberRepository memberRepository;
 
     @PostMapping("/login")
     public String login(@ModelAttribute("m") Member m, HttpServletRequest request, Model model) {
@@ -26,6 +28,7 @@ public class MemberController {
         HttpSession session;
         if (memberService.login(m)) {
             session = request.getSession();//세션이 없다면 세션생성.
+            m.setNickName(memberRepository.findByLoginId(m.getLoginId()).getNickName());
             session.setAttribute("member", m);
             model.addAttribute("isLogined", "true");
             return "index";//로그인 성공

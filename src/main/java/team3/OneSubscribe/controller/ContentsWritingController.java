@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import team3.OneSubscribe.DTO.WritingDTO;
 import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.DiseaseName;
+import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.MemberRepository;
@@ -47,6 +48,7 @@ public class ContentsWritingController {
     @PostMapping("/writing/new")
     public String contentsFromWriting(WritingDTO form, HttpServletRequest request){
         HttpSession session = request.getSession();
+        Member writer = memberRepository.findByLoginId(((Member)session.getAttribute("member")).getLoginId());
 
         // 1. writing 저장
         Writing writing = new Writing(form);

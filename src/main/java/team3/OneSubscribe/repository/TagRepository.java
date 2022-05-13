@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import team3.OneSubscribe.domain.Tag;
+import team3.OneSubscribe.domain.Writing;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,8 +31,14 @@ public class TagRepository {
         }
     }
 
+    public List<Tag> findListByWriting(Writing writing){
+        return em.createQuery("select i from Tag i where i.writing = :writing", Tag.class)
+                .setParameter("writing", writing)
+                .getResultList();
+    }
+
     public List<Tag> findAll(){
-        return em.createQuery("select i from Writing i", Tag.class)
+        return em.createQuery("select i from Tag i", Tag.class)
                 .getResultList();
     }
 }

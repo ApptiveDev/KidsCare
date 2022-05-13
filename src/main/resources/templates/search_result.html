@@ -5,20 +5,23 @@
     <title>검색결과</title>
 
     <style>
-     .header {
+    .header {
       display:flex;
-      width: 1920px;
-      height: 185px;
-      margin: 0 0 16px;
-      padding: 53px 144px 11px 114px;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
       background-color: rgba(246, 216, 118, 0.32);
     }
+    .logo {
+      width: 20em;
+      margin: 0.8em 0em 0em 0em;
+      object-fit: contain;
+    }
     .menu {
-      width: 773px;
-      height: 122px;
-      margin: 120px 0 89.5px 360px;
+      margin: 0em 3em 0em 0em;
+      border: 3px solid red;
+      height: 2em;
       font-family: NotoSansKR;
-      font-size: 45px;
+      font-size: 1.5em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -27,18 +30,61 @@
       text-align: left;
       color: #000;
     }
-    .logo {
-      width: 467px;
-      height: 83px;
-      margin: 0 974px 5px 0;
-      object-fit: contain;
+    #img {
+      width : 12em;
+      height : 10em;
     }
     .sch-img {
-      width: 50px;
-      height: 47px;
-      margin: 24.5px 43px 36.5px 362px;
+      width: 2em;
+      height: 2em;
       object-fit: contain;
     }
+    .vector-4 {
+      width: 1197px;
+      height: 3px;
+      background-color: #ededed;
+    }
+    .result {
+      width: 500px;
+      height: 172px;
+      padding: 24px 21px 15px 35px;
+      border: solid 2px #ededed;
+    }
+    .result-title {
+      width: 100px;
+      height: 21px;
+      font-family: NotoSansKR;
+      font-size: 21px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .result-data {
+
+    }
+    .result-content {
+      width: 500px;
+      height: 38px;
+      font-family: NotoSansKR;
+      font-size: 16px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .line-1 {
+      height: 0.5px;
+      transform: rotate(-0.03deg);
+      background-color: #ededed;
+    }
+
     </style>
 </head>
 <body>
@@ -47,39 +93,56 @@
             <a href="index.html"><img src="img/logo.png" alt="로고" class="logo"></a>
         </div>
     </div>
-    <div style="display:flex">
-        <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
-        <img src="img/search.png"/>
-    </div>
 
-    <!-- 타임리프 사용 구간(시작) -->
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>업로드 날짜</th>
-        </tr>
-        </thead>
-        <!--        역순 출력해야함-->
-        <tbody>
-        <tr th:each="result : ${searchResults}">
-            <td th:text="${result.id}"></td>
-            <td th:text="${result.title}" th:href="@{/contents/{id} (id=${result.id})}"></td>
-            <!--            <td th:text="${writing.nickName}">작성자</td>-->
-            <td>작성자(기본값)</td>
-            <td th:text="${result.createDate}">업로드 날짜</td>
-        </tr>
-        </tbody>
-    </table>
-    <!-- 타임리프 사용 구간(끝) -->
-
-    <div id="container" style="display:flex">
-        <div class="search">
-            <img src="img/sch.png" class="sch-img"/>
-<!-- 버튼 동적으로 불러오는 부분-->
+    <center>
+    <div style="width:50em; border:3px solid red;" >
+        <div style="display:flex; align-items:center; justify-content:center; border:3px solid blue; margin-Top:2em">
+            <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
+            <img src="img/search.png" id="img"/>
         </div>
+
+        <div id="container" style="display:flex">
+            <div class="search">
+                <img src="img/sch.png" class="sch-img"/>
+                <!-- 버튼 동적으로 불러오는 부분-->
+
+            </div>
+        </div>
+
+        <div class="vector-4"></div>
+
+        <div th:each="result : ${searchResults}" class="result">
+            <span th:text="${result.title}" class="result-title">제목</span>
+            <span th:text="${result.createDate}" class="result-date">날짜</span>
+            <br>
+            <span class="result-content">내용</span>
+            <div class="line-1"></div>
+        </div>
+
+
+        <!-- 타임리프 사용 구간(시작) -->
+    <!--    <table class="table table-striped">-->
+    <!--        <thead>-->
+    <!--        <tr>-->
+    <!--            <th>#</th>-->
+    <!--            <th>제목</th>-->
+    <!--            <th>작성자</th>-->
+    <!--            <th>업로드 날짜</th>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        &lt;!&ndash;        역순 출력해야함&ndash;&gt;-->
+    <!--        <tbody>-->
+    <!--        <tr th:each="result : ${searchResults}">-->
+    <!--            <td th:text="${result.id}"></td>-->
+    <!--            <td th:text="${result.title}" th:href="@{/contents/{id} (id=${result.id})}"></td>-->
+    <!--            &lt;!&ndash;            <td th:text="${writing.nickName}">작성자</td>&ndash;&gt;-->
+    <!--            <td>작성자(기본값)</td>-->
+    <!--            <td th:text="${result.createDate}">업로드 날짜</td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--    </table>-->
+        <!-- 타임리프 사용 구간(끝) -->
     </div>
+    </center>
 </body>
 </html>

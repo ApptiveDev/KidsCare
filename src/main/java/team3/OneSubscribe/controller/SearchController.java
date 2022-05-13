@@ -14,30 +14,33 @@ import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.TagRepository;
 import team3.OneSubscribe.repository.WritingRepository;
 import team3.OneSubscribe.service.MemberService;
+import team3.OneSubscribe.service.SearchService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+
+import static team3.OneSubscribe.domain.DiseaseName.*;
+import static team3.OneSubscribe.domain.DiseaseName.abdominalPain;
 
 @Controller
 @RequiredArgsConstructor
 @Slf4j
 public class SearchController {
 
-    @Autowired
-    WritingRepository writingRepository;
+    private final WritingRepository writingRepository;
 
-    @Autowired
-    MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
-    @Autowired
-    MemberService memberService;
+    private final MemberService memberService;
 
-    @Autowired
-    TagRepository tagRepository;
+    private final TagRepository tagRepository;
+
+    private final SearchService searchService;
 
     @GetMapping("/search")
     public String search(){
@@ -50,67 +53,48 @@ public class SearchController {
 //        session = request.getSession();
         // 위에꺼 필요없을거 같은데, 그냥 바로 request에 접근하는데?
 
-        ArrayList<Tag> tags = new ArrayList<Tag>();
+        List<Tag> tags = new LinkedList<Tag>();
+        List<DiseaseName> diseaseNames = new LinkedList<DiseaseName>();
         if(Objects.equals(request.getParameter("복통"), "1")){
-            Tag tag1 = new Tag();
-            tag1.setDiseaseName(DiseaseName.abdominalPain);
-            tags.add(tag1);
+            diseaseNames.add(abdominalPain);
         }
         if(Objects.equals(request.getParameter("설사"), "1")){
-            Tag tag2 = new Tag();
-            tag2.setDiseaseName(DiseaseName.diarrhea);
-            tags.add(tag2);
+            diseaseNames.add(diarrhea);
         }
         if(Objects.equals(request.getParameter("영양질환"), "1")){
-            Tag tag3 = new Tag();
-            tag3.setDiseaseName(DiseaseName.nutritionalDisease);
-            tags.add(tag3);
+            diseaseNames.add(nutritionalDisease);
         }
         if(Objects.equals(request.getParameter("비염"), "1")){
-            Tag tag4 = new Tag();
-            tag4.setDiseaseName(DiseaseName.rhinitis);
-            tags.add(tag4);
+            diseaseNames.add(rhinitis);
         }
         if(Objects.equals(request.getParameter("폐렴"), "1")){
-            Tag tag5 = new Tag();
-            tag5.setDiseaseName(DiseaseName.pneumonia);
-            tags.add(tag5);
+            diseaseNames.add(pneumonia);
         }
         if(Objects.equals(request.getParameter("천식"), "1")){
-            Tag tag6 = new Tag();
-            tag6.setDiseaseName(DiseaseName.asthma);
-            tags.add(tag6);
+            diseaseNames.add(asthma);
         }
         if(Objects.equals(request.getParameter("알레르기"), "1")){
-            Tag tag7 = new Tag();
-            tag7.setDiseaseName(DiseaseName.allergic);
-            tags.add(tag7);
+            diseaseNames.add(allergic);
         }
         if(Objects.equals(request.getParameter("아토피"), "1")){
-            Tag tag8 = new Tag();
-            tag8.setDiseaseName(DiseaseName.atopy);
-            tags.add(tag8);
+            diseaseNames.add(atopy);
         }
         if(Objects.equals(request.getParameter("두통"), "1")){
-            Tag tag9 = new Tag();
-            tag9.setDiseaseName(DiseaseName.cephalagia);
-            tags.add(tag9);
+            diseaseNames.add(cephalagia);
         }
         if(Objects.equals(request.getParameter("중이염"), "1")){
-            Tag tag10 = new Tag();
-            tag10.setDiseaseName(DiseaseName.otitisMedia);
-            tags.add(tag10);
+            diseaseNames.add(otitisMedia);
         }
         if(Objects.equals(request.getParameter("축농증"), "1")){
-            Tag tag11 = new Tag();
-            tag11.setDiseaseName(DiseaseName.empyema);
-            tags.add(tag11);
+            diseaseNames.add(empyema);
         }
-        //
-        // tags를 이용해서 search 하기
 
-        List<Writing> searchResults = writingRepository.findAll(); // 이거말고 알고리즘 짜서 List만들어야 함.
-        model.addAttribute("searchResults", searchResults);
+        List<Writing> writings = searchService.searchResults(diseaseNames);
+        // 확인용 // 나중에 지워야함
+        for(int i = 0; i < writings.size(); i++){
+            System.out.println("searchList : " + writings.get(i).getTitle()); // 현재로써는 뒤로 갈수록 해당 태그가 많은것 // 나중에 출력을 그냥 반대로 해주면 됨
+        }
+        model.addAttribute("searchResults", writings);
         return "search_result";
     }
 }
