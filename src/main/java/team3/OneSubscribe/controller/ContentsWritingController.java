@@ -52,6 +52,9 @@ public class ContentsWritingController {
 
         // 1. writing 저장
         Writing writing = new Writing(form);
+        writing.setTitle(form.getTitle());
+        writing.setContext(form.getContext());
+        writing.setMember(writer);
         writing.setCreateDate(LocalDateTime.now());
 
         System.out.println("세션 : " + session.getAttribute("member"));
