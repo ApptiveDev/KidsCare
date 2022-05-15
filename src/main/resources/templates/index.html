@@ -190,6 +190,27 @@ class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
           </div>
 
           <!--금주의 베스트 글 목록-->
+          <!-- 연재 추가 -->
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>업로드 날짜</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="writing : ${bestWritings}">
+              <td th:text="${writing.id}"></td>
+              <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
+              <td th:text="${writing.Member.nickName}"></td>
+              <td th:text="${writing.createDate}">업로드 날짜</td>
+              <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>
+            </tr>
+            </tbody>
+          </table>
+          <!-- 연재 추가 -->
           <div>
 
           </div>
@@ -201,6 +222,27 @@ class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
               <span class="all-title">전체 글</span>
               <div class="line-all"></div>
             </a>
+            <!-- 연재 추가 -->
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>업로드 날짜</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="writing : ${writings}">
+                <td th:text="${writing.id}"></td>
+                <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
+                <td th:text="${writing.Member.nickName}"></td>
+                <td th:text="${writing.createDate}">업로드 날짜</td>
+                <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>
+              </tr>
+              </tbody>
+            </table>
+            <!-- 연재 추가 -->
           </div>
           <div class="expert">
             <span class="all-title">베스트 전문가</span>

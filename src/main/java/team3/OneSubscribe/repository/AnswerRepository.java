@@ -37,5 +37,13 @@ public class AnswerRepository {
                 .getResultList();
     }
 
+    // writing의 answer 수 제공하기
+    public int findAnswerNumberByWriting(Writing w){
+        List<Answer> answers =  em.createQuery("select i from Answer i where i.writing = :writing", Answer.class)
+                .setParameter("writing", w)
+                .getResultList();
+
+        return answers.size();
+    }
 
 }

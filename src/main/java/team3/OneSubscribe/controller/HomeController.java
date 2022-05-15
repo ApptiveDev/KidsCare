@@ -14,9 +14,12 @@ import team3.OneSubscribe.domain.WritingContent;
 import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.WritingRepository;
 import team3.OneSubscribe.service.MemberService;
+import team3.OneSubscribe.service.WritingService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -24,14 +27,13 @@ import java.util.List;
 @Slf4j
 public class HomeController {
 
-    @Autowired
-    WritingRepository writingRepository;
+    private final WritingRepository writingRepository;
 
-    @Autowired
-    MemberRepository memberRepository;
+    private final WritingService writingService;
 
-    @Autowired
-    MemberService memberService;
+    private final MemberRepository memberRepository;
+
+    private final MemberService memberService;
 
     @GetMapping("/setting")
     public String makeTheId(){
@@ -44,7 +46,46 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        // 금주의 베스트 글
+        List<Writing> bestWritings = writingService.sequenceByAnswerNumberForAWeek();
+        List<Writing> best3Writings = new LinkedList<>();
+        if(bestWritings.size() == 0){
+            model.addAttribute("writings", null);
+        }
+        else {
+            if(bestWritings.size() < 3){
+                for(int i = 0; i < bestWritings.size(); i++)
+                    best3Writings.add(bestWritings.get(i));
+            }
+            else{
+                for (int i = 0; i < 3; i++) {
+                    best3Writings.add(bestWritings.get(i));
+                }
+            }
+            model.addAttribute("bestWritings", best3Writings);
+        }
+
+        // 전체 글 목록 // 일단은 5개만 주기 // 최신순으로 던져줌
+        List<Writing> writings = writingRepository.findAll();
+        List<Writing> recentWritings = new LinkedList<>();
+        if(writings.size() == 0){
+            model.addAttribute("writings", null);
+        }
+        else {
+            if(writings.size() < 5){
+                for (int i = writings.size(); i > 0; i--) {
+                    recentWritings.add(writings.get(i - 1));
+                }
+            }
+            else{
+                for (int i = 0; i < 5; i++) {
+                    recentWritings.add(writings.get(writings.size() - 1 - i));
+                }
+            }
+
+            model.addAttribute("writings", recentWritings);
+        }
         return "index";
     }
 

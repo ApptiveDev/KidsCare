@@ -40,8 +40,8 @@ public class SearchService {
         entryList.sort(Map.Entry.comparingByValue());
 
         List<Writing> results = new LinkedList<>();
-        for(Map.Entry<Writing, Integer> entry : entryList){
-            results.add(entry.getKey());
+        for(int i = entryList.size(); i > 0; i--){
+            results.add(entryList.get(i-1).getKey());
         }
 
         return results;
