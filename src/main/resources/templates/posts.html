@@ -44,6 +44,7 @@
             <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
             <td th:text="${writing.Member.nickName}"></td>
             <td th:text="${writing.createDate}">업로드 날짜</td>
+            <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>
         </tr>
         </tbody>
     </table>
