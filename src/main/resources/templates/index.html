@@ -40,10 +40,10 @@
       transform: rotate(-180deg);
       background-color: #b9b9b9;
     }
-    .best {
+    .main {
       width: 40em;
-      height: 10em;
-      margin: 1em 0em 0em 0em;
+      height: 12em;
+      margin: 1em 0em 2em 0em;
       background-color: #f9f9f9;
     }
     .line-best {
@@ -54,6 +54,7 @@
       background-color: #e95e44;
     }
     .best-title {
+      margin:0.1em 0em 0em 0.5em;
       height: 1em;
       font-family: NotoSansKR;
       font-size: 1.5em;
@@ -65,8 +66,28 @@
       text-align: left;
       color: #e95e44;
     }
+    .line-20 {
+      width: 37em;
+      height: 0.1em;
+      margin: 0.75em 0em 0.75em 0em;
+      background-color: #c4c4c4;
+    }
+    .best-content {
+      width: 40em;
+      height: 0.2em;
+      margin: 2em 0em 0em 1em;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
     .all {
-      width: 30em;
+      width: 35em;
     }
     .all-title {
       height: 1em;
@@ -86,18 +107,20 @@
       background-color: #499e99;
     }
     .result {
-      width: 500px;
-      height: 172px;
-      margin: 49px 361px 20px 362px;
-      padding: 24px 21px 15px 35px;
-      border: solid 2px #ededed;
+      display:inline-block;
+      float:left;
+      width: 15em;
+      height: 5em;
+      margin: 1em 0.5em 0em 0.75em;
+      padding: 21px 8px 16px 9px;
+      background-color: #f9f9f9;
     }
     .result-title {
-      width: 100px;
-      height: 21px;
-      margin: 0 300px 26px 2px;
+      float:left;
+      width: 5em;
+      height: 1.5em;
       font-family: NotoSansKR;
-      font-size: 21px;
+      font-size: 1.25em;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;
@@ -106,15 +129,17 @@
       text-align: left;
       color: #000;
     }
-    .result-data {
-
+    .result-date {
+      margin-Left:5em;
     }
     .result-content {
-      width: 500px;
-      height: 38px;
-      margin: 26px 21px 1px 2px;
+      display:block;
+      float:left;
+      border:3px solid blue;
+      width: 14em;
+      height: 1em;
       font-family: NotoSansKR;
-      font-size: 16px;
+      font-size: 1em;
       font-weight: 300;
       font-stretch: normal;
       font-style: normal;
@@ -124,21 +149,14 @@
       color: #000;
     }
     .line-1 {
-      height: 0.5px;
-      margin: 1px 14px 13.5px 0;
+      height: 0.2em;
+      margin: 2.5em 0em 0.5em 0em;
       transform: rotate(-0.03deg);
       background-color: #ededed;
     }
   </style>
 </head>
-<!--id는 한번 밖에 사용하지 못하는 식별자 이므로 큰 범위, header나 container같은 곳에 사용하고
-class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
-<!--block을 가로로 정렬하는 방법
-1. 필요한 요소를 inline-block으로 변경 후 적절한 배치 사용 relative(현재위치기준), absolute(부모위치기준)
-2. float
-3. float나 inline보다 더 편리한 flex-->
 
-<!--부모에서 flex를 사용해서 자식에서 float:right를 쓰면 당연히 적용 안됨-->
 <body>
   <div class="header" ><!--상단 부분-->
     <div>
@@ -162,95 +180,92 @@ class는 여러번 사용할 수 있기에 중복되는 부분에 사용-->
     </div>
   </div>
 
-  <div id="container"><!--본문-->
-    <div class="leftside"><!--왼쪽에 광고 배치-->
-      <div class="card"></div> <!--프레임-->
-      <div class="card"></div>
-      <div class="card">
-        <div class="board"></div><!--menu, banner, board등에 따라서 결정, 요소 -->
-      </div>
-    </div>
 
-    <div class="rightside">
-
-    </div>
-
-    <div class="main" style="display:flex"> <!--게시판 글 불러와서 띄우는 곳 -->
-      <div class="banner">
-        <p>광고1</p>
+  <center>
+    <div class="content" style="border:3px solid blue; width:50em;">
+      <div class="banner" style="float:left;">
+        <p style="background:green;">광고1</p>
         <p>광고2</p>
         <p>광고3</p>
         <p>광고4</p>
+        <p>광고5</p>
+        <p>광고6</p>
+        <p>광고7</p>
+
       </div>
-      <div class="main_right">
-        <div class="best">
-          <div style="display:flex">
-            <span class="best-title">금주의 베스트 글</span>
-            <div class="line-best"></div>
-          </div>
 
-          <!--금주의 베스트 글 목록-->
-          <!-- 연재 추가 -->
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>#</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>업로드 날짜</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="writing : ${bestWritings}">
-              <td th:text="${writing.id}"></td>
-              <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
-              <td th:text="${writing.Member.nickName}"></td>
-              <td th:text="${writing.createDate}">업로드 날짜</td>
-              <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>
-            </tr>
-            </tbody>
-          </table>
-          <!-- 연재 추가 -->
-          <div>
 
-          </div>
+      <div class="main"> <!--게시판 글 불러와서 띄우는 곳 -->
+        <div class="best" style="display:flex">
+          <span class="best-title">금주의 베스트 글</span>
+          <div class="line-best"></div>
+        </div>
+        <!--금주의 베스트 글 목록-->
+
+        <div th:each="writing, index : ${bestWritings}" class="best-content">
+          <th:block th:if="${index.index+1}<=3">
+            <span th:text="${index.index+1}" style="margin-Right:2em"></span>
+            <span th:text="${writing.title}">임시1</span>
+            <th:block th:if="${index.index+1}<3">
+            <div class="line-20"></div>
+          </th:block>
+          </th:block>
         </div>
 
-        <div style="display:flex">
-          <div class="all">
-            <a href="/contents">
-              <span class="all-title">전체 글</span>
-              <div class="line-all"></div>
-            </a>
-            <!-- 연재 추가 -->
-            <table class="table table-striped">
-              <thead>
-              <tr>
-                <th>#</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>업로드 날짜</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr th:each="writing : ${writings}">
-                <td th:text="${writing.id}"></td>
-                <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
-                <td th:text="${writing.Member.nickName}"></td>
-                <td th:text="${writing.createDate}">업로드 날짜</td>
-                <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>
-              </tr>
-              </tbody>
-            </table>
-            <!-- 연재 추가 -->
+      </div>
+      <div class="all" style="float:left; border:3px solid green;">
+        <span class="all-title">전체글</span>
+
+        <div th:each="writing : ${writings}">
+          <div class="result">
+            <div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div>
+            <span class="result-content" th:text="${writing.context}"></span>
+            <div class="line-1"></div>
+<!--하트, 댓글, 날짜-->
+            <div style="display:flex; border:3px solid red; width:15em">
+              <div class="bubble" style="margin-Right: 1em;">
+                <img src="img/bubble.png" style="margin-Top:0.25em"/>
+                <sapn>4</sapn>
+              </div>
+              <div class="heart">
+                <img src="img/heart.png">
+                <span>14</span>
+              </div>
+              <span th:text="${writing.createDate}" class="result-date">날짜</span>
+            </div>
           </div>
-          <div class="expert">
-            <span class="all-title">베스트 전문가</span>
-          </div>
+        </div>
+      </div>
+
+      <div class="expert" style="float:right;">
+        <span class="all-title">베스트 전문가</span>
+        <div style="border:3px solid black">
+          <span>대표원장</span>
+          <span>김김김 </span>
         </div>
       </div>
     </div>
-  </div>
+  </center>
   <div id="footer"></div><!--바닥-->
+
+
+<!--            <tr th:each="writing : ${bestWritings}">-->
+<!--              <td th:text="${writing.id}"></td>-->
+<!--              <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>-->
+<!--              <td th:text="${writing.Member.nickName}"></td>-->
+<!--              <td th:text="${writing.createDate}">업로드 날짜</td>-->
+<!--              <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>-->
+<!--            <table class="table table-striped">-->
+
+<!--              <tbody>-->
+<!--              <tr th:each="writing : ${writings}">-->
+<!--                <td th:text="${writing.id}"></td>-->
+<!--                <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>-->
+<!--                <td th:text="${writing.Member.nickName}"></td>-->
+<!--                <td th:text="${writing.createDate}">업로드 날짜</td>-->
+<!--                <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>-->
+<!--              </tr>-->
+
+
 </body>
 </html>
