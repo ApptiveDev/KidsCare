@@ -8,10 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import team3.OneSubscribe.domain.Member;
-import team3.OneSubscribe.domain.Writing;
-import team3.OneSubscribe.domain.WritingContent;
+import team3.OneSubscribe.domain.*;
 import team3.OneSubscribe.repository.MemberRepository;
+import team3.OneSubscribe.repository.TagRepository;
 import team3.OneSubscribe.repository.WritingRepository;
 import team3.OneSubscribe.service.MemberService;
 import team3.OneSubscribe.service.WritingService;
@@ -35,15 +34,7 @@ public class HomeController {
 
     private final MemberService memberService;
 
-    @GetMapping("/setting")
-    public String makeTheId(){
-        Member member = new Member();
-        member.setNickName("choi");
-        member.setLoginId("test");
-        member.setLoginPassword("test1");
-        memberService.save(member);
-        return "index";
-    }
+    private final TagRepository tagRepository;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -98,13 +89,6 @@ public class HomeController {
     public String signup() {
         return "signup";
     }
-
-
-
-
-
-
-
 
 
 }
