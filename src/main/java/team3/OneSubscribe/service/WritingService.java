@@ -7,6 +7,7 @@ import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.AnswerRepository;
 import team3.OneSubscribe.repository.WritingRepository;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -89,6 +90,16 @@ public class WritingService {
                 return writingsForSending;
             }
         }
+
+    }
+
+    @Transactional
+    public void updateWriting(){
+
+    }
+
+    @Transactional
+    public void deleteWriting(){
 
     }
 
