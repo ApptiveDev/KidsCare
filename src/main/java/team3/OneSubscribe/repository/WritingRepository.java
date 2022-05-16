@@ -3,6 +3,7 @@ package team3.OneSubscribe.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.Writing;
 
 
@@ -31,6 +32,8 @@ public class WritingRepository {
         return em.createQuery("select i from Writing i", Writing.class)
                 .getResultList();
     }
+
+
 
 
 }
