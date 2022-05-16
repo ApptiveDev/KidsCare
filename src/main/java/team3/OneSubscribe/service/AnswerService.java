@@ -7,6 +7,7 @@ import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.AnswerRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,5 +43,13 @@ public class AnswerService {
 
 //    TODO : 수정
 
+    @Transactional
+    public void updateAnswer(){
 
+    }
+
+    @Transactional
+    public void deleteAnswer(){
+
+    }
 }
