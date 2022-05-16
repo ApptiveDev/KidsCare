@@ -49,50 +49,62 @@ public class SearchController {
 
     @GetMapping("/search/result")
     public String search(HttpServletRequest request, Model model){
-//        HttpSession session;
-//        session = request.getSession();
-        // 위에꺼 필요없을거 같은데, 그냥 바로 request에 접근하는데?
 
         List<Tag> tags = new LinkedList<Tag>();
+
         List<DiseaseName> diseaseNames = new LinkedList<DiseaseName>();
+        List<String> diseaseNamesKorean = new LinkedList<String>();
         if(Objects.equals(request.getParameter("복통"), "1")){
             diseaseNames.add(abdominalPain);
+            diseaseNamesKorean.add("복통");
         }
         if(Objects.equals(request.getParameter("설사"), "1")){
             diseaseNames.add(diarrhea);
+            diseaseNamesKorean.add("설사");
         }
         if(Objects.equals(request.getParameter("영양질환"), "1")){
             diseaseNames.add(nutritionalDisease);
+            diseaseNamesKorean.add("영양질환");
         }
         if(Objects.equals(request.getParameter("비염"), "1")){
             diseaseNames.add(rhinitis);
+            diseaseNamesKorean.add("비염");
         }
         if(Objects.equals(request.getParameter("폐렴"), "1")){
             diseaseNames.add(pneumonia);
+            diseaseNamesKorean.add("폐렴");
         }
         if(Objects.equals(request.getParameter("천식"), "1")){
             diseaseNames.add(asthma);
+            diseaseNamesKorean.add("천식");
         }
         if(Objects.equals(request.getParameter("알레르기"), "1")){
             diseaseNames.add(allergic);
+            diseaseNamesKorean.add("알레르기");
         }
         if(Objects.equals(request.getParameter("아토피"), "1")){
             diseaseNames.add(atopy);
+            diseaseNamesKorean.add("아토피");
         }
         if(Objects.equals(request.getParameter("두통"), "1")){
             diseaseNames.add(cephalagia);
+            diseaseNamesKorean.add("두통");
         }
         if(Objects.equals(request.getParameter("중이염"), "1")){
             diseaseNames.add(otitisMedia);
+            diseaseNamesKorean.add("중이염");
         }
         if(Objects.equals(request.getParameter("축농증"), "1")){
             diseaseNames.add(empyema);
+            diseaseNamesKorean.add("축농증");
         }
+        model.addAttribute("diseaseNamesKorean", diseaseNamesKorean);
+        model.addAttribute("diseaseNames", diseaseNames);
 
         List<Writing> writings = searchService.searchResults(diseaseNames);
         // 확인용 // 나중에 지워야함
         for(int i = 0; i < writings.size(); i++){
-            System.out.println("searchList : " + writings.get(i).getTitle()); // 현재로써는 뒤로 갈수록 해당 태그가 많은것 // 나중에 출력을 그냥 반대로 해주면 됨
+            System.out.println("searchList : " + writings.get(i).getTitle());
         }
         model.addAttribute("searchResults", writings);
         return "search_result";

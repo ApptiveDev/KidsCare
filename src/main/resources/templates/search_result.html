@@ -100,6 +100,11 @@
             <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
             <img src="img/search.png" id="img"/>
         </div>
+        <!-- 연재 추가(검색된 태그)-->
+        <div th:each="diseaseName : ${diseaseNamesKorean}" class="result">
+            <div th:text="${diseaseName}" class="result-title" color="yellow">DiseaseName</div>
+        </div>
+        <!-- 연재 추가(검색된 태그)-->
 
         <div id="container" style="display:flex">
             <div class="search">
@@ -110,38 +115,31 @@
         </div>
 
         <div class="vector-4"></div>
-
+        <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
         <div th:each="result : ${searchResults}" class="result">
             <span th:text="${result.title}" class="result-title">제목</span>
             <span th:text="${result.createDate}" class="result-date">날짜</span>
+            <span th:text="${result.context}" class="result-context">내용</span>
             <br>
-            <span class="result-content">내용</span>
+            <span th:each="tag : ${result.tags}"class="result-tags">
+                <span th:if="${diseaseNames.contains(tag.getDiseaseName())}">
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).abdominalPain}" class="result-title">복통</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).diarrhea}" class="result-title">설사</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).nutritionalDisease}" class="result-title">영양질환</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).rhinitis}" class="result-title">비염</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).pneumonia}" class="result-title">폐렴</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).asthma}" class="result-title">천식</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).allergic}" class="result-title">알레르기</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).atopy}" class="result-title">아토피</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).cephalagia}" class="result-title">두통</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).otitisMedia}" class="result-title">중이염</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).empyema}" class="result-title">축농증</div>
+                </span>
+            </span>
+
             <div class="line-1"></div>
         </div>
-
-
-        <!-- 타임리프 사용 구간(시작) -->
-    <!--    <table class="table table-striped">-->
-    <!--        <thead>-->
-    <!--        <tr>-->
-    <!--            <th>#</th>-->
-    <!--            <th>제목</th>-->
-    <!--            <th>작성자</th>-->
-    <!--            <th>업로드 날짜</th>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        &lt;!&ndash;        역순 출력해야함&ndash;&gt;-->
-    <!--        <tbody>-->
-    <!--        <tr th:each="result : ${searchResults}">-->
-    <!--            <td th:text="${result.id}"></td>-->
-    <!--            <td th:text="${result.title}" th:href="@{/contents/{id} (id=${result.id})}"></td>-->
-    <!--            &lt;!&ndash;            <td th:text="${writing.nickName}">작성자</td>&ndash;&gt;-->
-    <!--            <td>작성자(기본값)</td>-->
-    <!--            <td th:text="${result.createDate}">업로드 날짜</td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--    </table>-->
-        <!-- 타임리프 사용 구간(끝) -->
+        <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
     </div>
     </center>
 </body>
