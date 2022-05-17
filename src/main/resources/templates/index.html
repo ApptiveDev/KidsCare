@@ -117,10 +117,10 @@
     }
     .result-title {
       float:left;
-      width: 5em;
+      width: 100%;
       height: 1.5em;
       font-family: NotoSansKR;
-      font-size: 1.25em;
+      font-size: 1em;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;
@@ -130,16 +130,18 @@
       color: #000;
     }
     .result-date {
+      font-size: 0.9em;
       margin-Left:5em;
+      margin-Top:0.1em;
     }
     .result-content {
       display:block;
       float:left;
       border:3px solid blue;
-      width: 14em;
+      width: 100%;
       height: 1em;
       font-family: NotoSansKR;
-      font-size: 1em;
+      font-size: 0.75em;
       font-weight: 300;
       font-stretch: normal;
       font-style: normal;
@@ -150,7 +152,7 @@
     }
     .line-1 {
       height: 0.2em;
-      margin: 2.5em 0em 0.5em 0em;
+      margin: 2.25em 0em 0.25em 0em;
       transform: rotate(-0.03deg);
       background-color: #ededed;
     }
@@ -160,7 +162,7 @@
 <body>
   <div class="header" ><!--상단 부분-->
     <div>
-      <a href="/"><img class="logo" src="img/logo.png" alt="로고"></a>
+      <a href="/"><img class="logo" src="../static/img/logo.png" alt="로고"></a>
     </div>
     <div style="position:absolute;right:10px;">
       <div style="display:flex">
@@ -211,24 +213,25 @@
           </th:block>
           </th:block>
         </div>
-
+<!--전체 글 시작-->
       </div>
       <div class="all" style="float:left; border:3px solid green;">
-        <span class="all-title">전체글</span>
+        <span class="all-title" onclick="location.href='/contents'" style="cursor:pointer">
+          전체글</span>
 
         <div th:each="writing : ${writings}">
           <div class="result">
             <div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div>
-            <span class="result-content" th:text="${writing.context}"></span>
+            <span class="result-content" th:text="${writing.context}">내용</span>
             <div class="line-1"></div>
 <!--하트, 댓글, 날짜-->
-            <div style="display:flex; border:3px solid red; width:15em">
+            <div style="display:flex; border:3px solid red; width:100%">
               <div class="bubble" style="margin-Right: 1em;">
-                <img src="img/bubble.png" style="margin-Top:0.25em"/>
+                <img src="../static/img/bubble.png" style="margin-Top:0.25em"/>
                 <sapn>4</sapn>
               </div>
               <div class="heart">
-                <img src="img/heart.png">
+                <img src="../static/img/heart.png">
                 <span>14</span>
               </div>
               <span th:text="${writing.createDate}" class="result-date">날짜</span>
@@ -236,7 +239,7 @@
           </div>
         </div>
       </div>
-
+<!--베스트 글-->
       <div class="expert" style="float:right;">
         <span class="all-title">베스트 전문가</span>
         <div style="border:3px solid black">
