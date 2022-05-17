@@ -34,27 +34,59 @@
       width : 12em;
       height : 10em;
     }
+    .sch-btn {
+      margin-left:5em;
+      background-color:transparent;
+      cursor:pointer;
+    }
     .sch-img {
       width: 2em;
       height: 2em;
       object-fit: contain;
     }
+    .sch-tag {
+      padding:0.3em 0em 0em 0.3em;
+      margin:0em 0.5em 0em 0.5em;
+      width: 5em;
+      height: 2em;
+      border-radius: 68px;
+      background-color: #f6d876;
+    }
+    .sch-content {
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+    }
+    .sch-x {
+      cursor:pointer;
+      border:none;
+      background-color:transparent;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+    }
     .vector-4 {
-      width: 1197px;
-      height: 3px;
+      margin: 1em 0em 1em 0em;
+      width: 50em;
+      height: 0.2em;
       background-color: #ededed;
     }
-    .result {
-      width: 500px;
-      height: 172px;
-      padding: 24px 21px 15px 35px;
-      border: solid 2px #ededed;
-    }
-    .result-title {
-      width: 100px;
-      height: 21px;
+   .num {
+      margin: 0em 13.5em 0em 0em;
       font-family: NotoSansKR;
-      font-size: 21px;
+      font-size: 2em;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;
@@ -63,14 +95,56 @@
       text-align: left;
       color: #000;
     }
-    .result-data {
-
+    .sort {
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #a0a0a0;
+    }
+    .result {
+      margin: 1em 0em 0.5em 0em;
+      width: 37em;
+      height: 9em;
+      padding: 24px 21px 15px 35px;
+      border-radius: 0.5em;
+      border: solid 2px #ededed;
+    }
+    .result-title {
+      float:left;
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .result-date {
+      float:right;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
     }
     .result-content {
-      width: 500px;
-      height: 38px;
+      display:block;
+      border:3px solid blue;
+      margin: 0.5em 0em 0em 0em;
+      padding: 2em 0em 0em 0em;
       font-family: NotoSansKR;
-      font-size: 16px;
+      font-size: 1em;
       font-weight: 300;
       font-stretch: normal;
       font-style: normal;
@@ -80,9 +154,32 @@
       color: #000;
     }
     .line-1 {
-      height: 0.5px;
+      height: 0.2em;
+      margin:1em 0em 1em 0em;
       transform: rotate(-0.03deg);
       background-color: #ededed;
+    }
+    .sub-tag {
+      display:inline-block;
+      float:left;
+      margin-Right:0.5em;
+      width: 3em;
+      height: 1.5em;
+      border-radius: 92px;
+      background-color: #a0a0a0;
+    }
+    .sub-content {
+      width: 1em;
+      height: 0.5em;
+      font-family: NotoSansKR;
+      font-size: 0.5em;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #fff;
     }
 
     </style>
@@ -100,47 +197,80 @@
             <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
             <img src="img/search.png" id="img"/>
         </div>
-        <!-- 연재 추가(검색된 태그)-->
-        <div th:each="diseaseName : ${diseaseNamesKorean}" class="result">
-            <div th:text="${diseaseName}" class="result-title" color="yellow">DiseaseName</div>
-        </div>
-        <!-- 연재 추가(검색된 태그)-->
 
-        <div id="container" style="display:flex">
-            <div class="search">
+        <div class="search" style="display:flex; border:3px solid green;">
+            <button class="sch-btn" type="button" onclick="s()">
                 <img src="img/sch.png" class="sch-img"/>
-                <!-- 버튼 동적으로 불러오는 부분-->
+            </button>
 
+            <!-- 버튼 타임리프??-->
+            <div th:each="diseaseName : ${diseaseNamesKorean}" style="display:flex;">
+                <div class="sch-tag"><span th:text="${diseaseName}" class="sch-content">병</span><button class="sch-x" onclick="d()">X</button></div>
             </div>
         </div>
 
+
+
+
+
+
         <div class="vector-4"></div>
+
+        <div>
+            <span class="num">전체 ???개</span>
+            <span class="sort">최신순</span>
+        </div>
+
         <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
         <div th:each="result : ${searchResults}" class="result">
-            <span th:text="${result.title}" class="result-title">제목</span>
-            <span th:text="${result.createDate}" class="result-date">날짜</span>
-            <span th:text="${result.context}" class="result-context">내용</span>
-            <br>
+            <div class="tit" style="border:3px solid red;">
+                <span th:text="${result.title}" class="result-title">제목</span>
+                <span th:text="${result.createDate}" class="result-date">날짜</span>
+            </div>
+            <span th:text="${result.context}" class="result-content">내용</span>
+            <div class="line-1"></div>
+
+
             <span th:each="tag : ${result.tags}"class="result-tags">
                 <span th:if="${diseaseNames.contains(tag.getDiseaseName())}">
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).abdominalPain}" class="result-title">복통</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).diarrhea}" class="result-title">설사</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).nutritionalDisease}" class="result-title">영양질환</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).rhinitis}" class="result-title">비염</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).pneumonia}" class="result-title">폐렴</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).asthma}" class="result-title">천식</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).allergic}" class="result-title">알레르기</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).atopy}" class="result-title">아토피</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).cephalagia}" class="result-title">두통</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).otitisMedia}" class="result-title">중이염</div>
-                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).empyema}" class="result-title">축농증</div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).abdominalPain}" class="sub-tag"><span class="sub-content">복통</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).diarrhea}" class="sub-tag"><span class="sub-content">설사</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).nutritionalDisease}" class="sub-tag"><span class="sub-content">영양질환</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).rhinitis}" class="sub-tag"><span class="sub-content">비염</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).pneumonia}" class="sub-tag"><span class="sub-content">폐렴</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).asthma}" class="sub-tag"><span class="sub-content">천식</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).allergic}" class="sub-tag"><span class="sub-content">알레르기</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).atopy}" class="sub-tag"><span class="sub-content">아토피</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).cephalagia}" class="sub-tag"><span class="sub-content">두통</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).otitisMedia}" class="sub-tag"><span class="sub-content">중이염</span></div>
+                    <div style="float:left;" th:if="${tag.getDiseaseName() == T(team3.OneSubscribe.domain.DiseaseName).empyema}" class="sub-tag"><span class="sub-content">축농증</span></div>
                 </span>
             </span>
 
-            <div class="line-1"></div>
+            <div style="display:flex; float:right;">
+                <div class="bubble" style="margin-Right: 1em;">
+                    <img src="img/bubble.png" style="margin-Top:0.25em"/>
+                    <sapn>4</sapn>
+                </div>
+                <div class="heart">
+                    <img src="img/heart.png">
+                    <span>14</span>
+                </div>
+            </div>
+
+
         </div>
         <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
     </div>
     </center>
+    <script>
+        function s() {
+            alert("검색버튼");
+        }
+        function d() {
+            alert("삭제버튼");
+        }
+
+    </script>
 </body>
 </html>
