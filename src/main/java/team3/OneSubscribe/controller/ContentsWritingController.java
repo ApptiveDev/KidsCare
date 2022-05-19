@@ -185,6 +185,10 @@ public class ContentsWritingController {
         answer.setWriting(writing);
         answer.setContext(request.getParameter("content"));
         answer.setCreateDate(LocalDateTime.now());
+
+        Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
+        answer.setNickName(writer.getNickName());
+
         answerRepository.save(answer);
 
         model.addAttribute("writing", writing);
