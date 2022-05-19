@@ -187,7 +187,7 @@
 <body>
     <div class="header">
         <div>
-            <a href="index.html"><img src="../static/img/logo.png" alt="로고" class="logo"></a>
+            <a href="/"><img src="../static/img/logo.png" alt="로고" class="logo"></a>
         </div>
     </div>
 
@@ -217,7 +217,8 @@
         <div class="vector-4"></div>
 
         <div>
-            <span class="num">전체 ???개</span>
+            <span>검색 개수 : </span>
+            <span class="num" th:text="${searchCounting}"></span>
             <span class="sort">최신순</span>
         </div>
 

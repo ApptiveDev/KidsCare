@@ -106,7 +106,9 @@ public class SearchController {
         for(int i = 0; i < writings.size(); i++){
             System.out.println("searchList : " + writings.get(i).getTitle());
         }
+
         model.addAttribute("searchResults", writings);
+        model.addAttribute("searchCounting", writings.size());
         return "search_result";
     }
 }

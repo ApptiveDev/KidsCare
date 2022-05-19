@@ -35,7 +35,7 @@ public class Answer {
     @Enumerated(EnumType.STRING)
     private Expert expert;
 
-    private boolean feedback;
+    private boolean feedback = false;
 
     private Long likeNumber;
 
