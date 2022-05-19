@@ -16,6 +16,8 @@ public class Answer {
     @Column(name = "answer_id")
     private Long id;
 
+    private String nickName;
+
 //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "member_id")
 //    private Member member;

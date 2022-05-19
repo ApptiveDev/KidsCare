@@ -15,7 +15,6 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-//@ToString //TODO 이거때문에, 타임리프를 이용하여 href하면 두번째 클릭할때 안들어가짐. 일단은 빼놨는데, 필요하면 다른걸로 바꿔야 할듯.
 public class Writing {
     public Writing(WritingDTO p) {
         id = p.getId();

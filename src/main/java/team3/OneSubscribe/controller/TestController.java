@@ -68,13 +68,13 @@ public class TestController {
         member6.setLoginId("kim");
         member6.setLoginPassword("test1");
         memberService.save(member6);
-        return "index";
+        return "redirect:/";
     }
     @GetMapping("/setting1")
     public String settingForTesting(){
         Writing writing1 = new Writing();
-        writing1.setTitle("1");
-        writing1.setContext("1");
+        writing1.setTitle("복통이 있어요");
+        writing1.setContext("아이에게 복통이 있어요");
         writing1.setMember(memberRepository.findByLoginId("test"));
         writing1.setCreateDate(LocalDateTime.now());
         writingRepository.save(writing1);
@@ -85,8 +85,8 @@ public class TestController {
         tagRepository.save(tag1);
 
         Writing writing2 = new Writing();
-        writing2.setTitle("2");
-        writing2.setContext("2");
+        writing2.setTitle("설사 증상이 있어요");
+        writing2.setContext("아이에게 설사 증상이 있어요");
         writing2.setMember(memberRepository.findByLoginId("shin"));
         writing2.setCreateDate(LocalDateTime.now().plusMinutes(1));
         writingRepository.save(writing2);
@@ -97,8 +97,8 @@ public class TestController {
         tagRepository.save(tag2);
 
         Writing writing3 = new Writing();
-        writing3.setTitle("3");
-        writing3.setContext("3");
+        writing3.setTitle("어떤 영양 성분이 부족할까요?");
+        writing3.setContext("아이에게 어떤 영양 성분이 부족할까요?");
         writing3.setMember(memberRepository.findByLoginId("hwang"));
         writing3.setCreateDate(LocalDateTime.now().plusMinutes(2));
         writingRepository.save(writing3);
@@ -109,8 +109,8 @@ public class TestController {
         tagRepository.save(tag3);
 
         Writing writing4 = new Writing();
-        writing4.setTitle("12");
-        writing4.setContext("12");
+        writing4.setTitle("복통과 설사를 증상이 있어요");
+        writing4.setContext("아이에게 복통과 설사를 증상이 있어요");
         writing4.setMember(memberRepository.findByLoginId("ahn"));
         writing4.setCreateDate(LocalDateTime.now().plusMinutes(3));
         writingRepository.save(writing4);
@@ -126,8 +126,8 @@ public class TestController {
         tagRepository.save(tag4p);
 
         Writing writing5 = new Writing();
-        writing5.setTitle("123");
-        writing5.setContext("123");
+        writing5.setTitle("복통, 설사, 영양질환에 관하여");
+        writing5.setContext("복통, 설사, 영양질환에 대한 글 내용");
         writing5.setMember(memberRepository.findByLoginId("lee"));
         writing5.setCreateDate(LocalDateTime.now().plusMinutes(4));
         writingRepository.save(writing5);
@@ -148,8 +148,8 @@ public class TestController {
         tagRepository.save(tag5pp);
 
         Writing writing6 = new Writing();
-        writing6.setTitle("4");
-        writing6.setContext("4");
+        writing6.setTitle("비염이 있어요");
+        writing6.setContext("아이의 코가 자주 막혀요");
         writing6.setMember(memberRepository.findByLoginId("kim"));
         writing6.setCreateDate(LocalDateTime.now().plusMinutes(5));
         writingRepository.save(writing6);

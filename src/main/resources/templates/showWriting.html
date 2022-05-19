@@ -6,22 +6,22 @@
     <title>Title</title>
 </head>
 <body>
-<h1>showWriting</h1>
+<h2>해당 글 페이지</h2>
 <div th:text="'title : '+${title}"></div>
 <div th:text="'context : ' + ${context}"></div>
 
-<div th:each="i : ${li}">
-    <div>댓글</div>
-    <div th:text="'작성자 : ' + ${i.writing}"></div>
-    <div th:text="${i.context}"></div>
-    <div th:text="'생성시간 : '+${i.createDate}"></div>
-    <div th:text="'수정시간 : '+${i.updateDate}"></div>
-</div>
+<!--<div th:each="i : ${li}">-->
+<!--    <div>댓글</div>-->
+<!--    <div th:text="'작성자 : ' + ${i.writing}"></div>-->
+<!--    <div th:text="${i.context}"></div>-->
+<!--    <div th:text="'생성시간 : '+${i.createDate}"></div>-->
+<!--    <div th:text="'수정시간 : '+${i.updateDate}"></div>-->
+<!--</div>-->
 <div>
     <td><a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}">답변 작성</a></td>
 </div>
 
-<div>연재 댓글</div>
+<h3>댓글</h3>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -35,8 +35,8 @@
     <tr th:each="answer : ${answers}">
         <td th:text="${answer.id}"></td>
         <td th:text="${answer.context}"></td>
-        <td th:text="${writing.Member.nickName}"></td>
-        <td th:text="${writing.createDate}"></td>
+        <td th:text="${answer.nickName}"></td>
+        <td th:text="${answer.createDate}"></td>
     </tr>
     </tbody>
 </table>
