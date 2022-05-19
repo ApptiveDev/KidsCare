@@ -25,6 +25,7 @@ public class Member {
     @Column(unique = true)
     private String name;
 
+    @Column(unique = true)
     private String nickName;
 
     private String eMail;
@@ -43,7 +44,7 @@ public class Member {
 //    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
 //    private Answer answers;
 
-    // 추가
-    private Long totalLikeNumber;
+    // 좋아요(피드백) 받은 개수
+    private Long totalLikeNumber = 0L;
 
 }

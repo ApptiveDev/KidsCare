@@ -31,7 +31,7 @@ public class MemberController {
             m.setNickName(memberRepository.findByLoginId(m.getLoginId()).getNickName());
             session.setAttribute("member", m);
             model.addAttribute("isLogined", "true");
-            return "index";//로그인 성공 //TODO 이거 "redirect:/"로 하면 왜 로그인 아이디가 안 뜨지?
+            return "redirect:/";//로그인 성공 //TODO 이거 "redirect:/"로 하면 왜 로그인 아이디가 안 뜨지? 원래는 "index"로 되어있었음.
         }
         return "loginFail";
     }

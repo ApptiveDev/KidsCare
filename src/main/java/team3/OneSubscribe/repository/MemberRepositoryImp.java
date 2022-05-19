@@ -28,6 +28,11 @@ public class MemberRepositoryImp implements MemberRepository {
     }
 
     @Override
+    public Member findByNickName(String nickName){
+        return em.find(Member.class, nickName);
+    };
+
+    @Override
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();

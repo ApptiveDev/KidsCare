@@ -26,6 +26,10 @@ public class AnswerRepository {
         return em.find(Answer.class, id);
     }
 
+    public Answer findOneByNickName(String nickName){
+        return em.find(Answer.class, nickName);
+    }
+
     public List<Answer> findAll(){
         return em.createQuery("select i from Answer i", Answer.class)
                 .getResultList();
