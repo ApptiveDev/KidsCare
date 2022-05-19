@@ -4,59 +4,280 @@
 <head>
     <meta charset="UTF-8">
     <title>글 목록</title>
+
+    <style>
+    .header {
+      display:flex;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
+      background-color: rgba(246, 216, 118, 0.32);
+    }
+    body {
+      flex-grow: 0;
+      background-color: #fff;
+    }
+    span.menu {
+      cursor: pointer;
+      width: 5em;
+      height: 1em;
+      font-family: NotoSansKR;
+      font-size: 1.25em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .logo {
+      width: 20em;
+      margin: 0.8em 0em 0em 0em;
+      object-fit: contain;
+    }
+    .all {
+      width: 45em;
+    }
+    .all-title {
+      height: 1em;
+      font-family: Inter;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #499e99;
+    }
+    .line-23 {
+      width: 100%;
+      height: 3px;
+      background-color: #499e99;
+    }
+    .img {
+        width:1.5em;
+        height:1.5em;
+    }
+    .sch {
+      width:90%;
+      height: 2em;
+      background-color: #f9f9f9;
+    }
+    .sort {
+      float:right;
+      width: 7em;
+      height: 2.5em;
+      border: solid
+    }
+    .result {
+      display:inline-block;
+      float:left;
+      width: 43em;
+      height: 5em;
+      margin: 1em 0.5em 0em 0.75em;
+      padding: 21px 8px 16px 9px;
+      background-color: #f9f9f9;
+    }
+    .result-title {
+      float:left;
+      width: 100%;
+      height: 1.5em;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .result-date {
+      border:3px solid green;
+      width:50%;
+      font-size: 0.9em;
+      margin-Top:0.1em;
+    }
+    .result-writer {
+      border:3px solid green;
+      width:50%;
+      margin-Left: 2em;
+    }
+    .result-content {
+      display:block;
+      float:left;
+      border:3px solid blue;
+      width: 100%;
+      height: 1em;
+      font-family: NotoSansKR;
+      font-size: 0.75em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+
+
+    .write {
+      float:right;
+      cursor:pointer;
+      width: 6em;
+      height: 2em;
+      margin: 1em 0em 1em 0em;
+      border-radius: 14px;
+      border:none;
+      background-color: #fcf2d3;
+    }
+    .write-content {
+      width: 5em;
+      height: 2em;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #5f5f5f;
+    }
+    .bubble {
+      width:2em;
+    }
+    .heart {
+      width:3em;
+    }
+    </style>
 </head>
 <body>
-<div id="header" style="display:flex">
-    <div id="sort">
-        <select name="fruit">
-            <option value="최신순" selected="selected">최신순</option>
-            <option value="댓글">댓글많은순</option>
-            <option value=""></option>
-        </select>
+    <div class="header" ><!--상단 부분-->
+        <div>
+            <a href="/"><img class="logo" src="img/logo.png" alt="로고"></a>
+        </div>
+        <div style="position:absolute;right:10px;">
+            <div>
+                <p>계정이름</p>
+                <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+            </div>
+        </div>
     </div>
 
-    <div id="search">
-        <button type="button" onClick="location.href='search'"><img src="" alt="검색"/></button>
-    </div>
-</div>
-<div id="container">
-    <!--게시판을 담을 div를 만들고 그 안에 이동을 위한 article-->
-    <div class="wrap_article">
-        <article>
-            <a></a>
-        </article>
-    </div>
+    <center>
+        <div class="content" style="border:3px solid blue; width:50em;">
+            <div class="banner" style="float:left;">
+                <p style="background:green;">광고1</p>
+                <p>광고2</p>
+                <p>광고3</p>
+                <p>광고4</p>
+                <p>광고5</p>
+                <p>광고6</p>
+                <p>광고7</p>
 
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>업로드 날짜</th>
-        </tr>
-        </thead>
-<!--  //TODO : 역순 출력해야함-->
-        <tbody>
-
-        <tr th:each="writing : ${writings}">
-            <td th:text="${writing.id}"></td>
-            <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>
-            <td th:text="${writing.Member.nickName}"></td>
-            <td th:text="${writing.createDate}">업로드 날짜</td>
-            <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>
-        </tr>
-        </tbody>
-    </table>
-
-    <div id="write">
-            <div class="btn">
-                <a href="/contents/writing">
-                    <button type="button">글 작성</button>
-                </a>
             </div>
 
-    </div>
-</div>
+
+            <div class="all" style="float:left; border:3px solid green;">
+                <div style="float:left; margin:1em 0em 0em 1em;">
+                    <span class="all-title">전체글</span>
+                    <div class="line-23"></div>
+                </div>
+                <div style="margin-Top:4em;">
+                    <button><img src="img/sch.png" class="img"/></button>
+                    <input class="sch" type="search" placeholder="키워드를 검색해주세요">
+                </div>
+
+                <select name="sort" class="sort" required autofocus>
+                    <option value="최신순" selected>최신순</option>
+                    <option value="인기순">인기순</option>
+                </select>
+
+                <div th:each="writing : ${writings}">
+                    <div class="result">
+                        <div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div>
+                        <span class="result-content" th:text="${writing.context}">내용</span>
+                        <!--하트, 댓글, 날짜-->
+                        <div style="display:flex; border:3px solid red; width:100% height:1em;">
+                            <span th:text="${writing.createDate}" class="result-date">날짜</span>
+                            <span class="result-writer">작성자</span>
+                            <div style="display:flex; margin-Left:31em;">
+                                <div class="bubble">
+                                    <img src="img/bubble.png" style="margin-Top:0.25em"/>
+                                    <sapn>4</sapn>
+                                </div>
+                                <div class="heart">
+                                    <img src="img/heart.png">
+                                    <span>14</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="write" type="button" onclick="location.href='/contents/writing'"><span class="write-content">글작성</span></button>
+            </div>
+        </div>
+    </center>
+
+
+
+
+
+<!--<div style="display:flex">-->
+<!--    <div id="sort">-->
+<!--        <select name="fruit">-->
+<!--            <option value="최신순" selected="selected">최신순</option>-->
+<!--            <option value="댓글">댓글많은순</option>-->
+<!--            <option value=""></option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+<!--    <div id="search">-->
+<!--        <button type="button" onClick="location.href='search'"><img src="" alt="검색"/></button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div id="container">-->
+<!--    &lt;!&ndash;게시판을 담을 div를 만들고 그 안에 이동을 위한 article&ndash;&gt;-->
+<!--    <div class="wrap_article">-->
+<!--        <article>-->
+<!--            <a></a>-->
+<!--        </article>-->
+<!--    </div>-->
+
+<!--    <table class="table table-striped">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>#</th>-->
+<!--            <th>제목</th>-->
+<!--            <th>작성자</th>-->
+<!--            <th>업로드 날짜</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--&lt;!&ndash;  //TODO : 역순 출력해야함&ndash;&gt;-->
+<!--        <tbody>-->
+
+<!--        <tr th:each="writing : ${writings}">-->
+<!--            <td th:text="${writing.id}"></td>-->
+<!--            <td th:text="${writing.title}" th:href="@{/contents/{id} (id=${writing.id})}"></td>-->
+<!--            <td th:text="${writing.Member.nickName}"></td>-->
+<!--            <td th:text="${writing.createDate}">업로드 날짜</td>-->
+<!--            <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--    <div id="write">-->
+<!--            <div class="btn">-->
+<!--                <a href="/contents/writing">-->
+<!--                    <button type="button">글 작성</button>-->
+<!--                </a>-->
+<!--            </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
 </body>
 </html>

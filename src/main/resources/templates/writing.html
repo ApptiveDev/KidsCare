@@ -4,226 +4,566 @@
 <head>
     <meta charset="UTF-8">
     <title>글 작성</title>
+
+    <style>
+    .header {
+      display:flex;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
+      background-color: rgba(246, 216, 118, 0.32);
+    }
+    body {
+      flex-grow: 0;
+      background-color: #fff;
+    }
+    span.menu {
+      cursor: pointer;
+      width: 5em;
+      height: 1em;
+      font-family: NotoSansKR;
+      font-size: 1.25em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .logo {
+      width: 20em;
+      margin: 0.8em 0em 0em 0em;
+      object-fit: contain;
+    }
+    .tit {
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .title {
+      width:10em;
+      margin-Right:-0.5em;
+      cursor:pointer;
+      border: solid 3px #c4c4c4;
+      border-radius : 1em 1em 0 0;
+      background-color: #fff;
+    }
+    .img {
+      width:1.5em;
+      height:1.5em;
+      object-fit: contain;
+      margin-Right:1em;
+      margin-Top:0.2em;
+    }
+    .title-content {
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #c4c4c4;
+    }
+    .line-9 {
+      height: 4px;
+      transform: rotate(-360deg);
+      background-color: #fc5139;
+    }
+    .tag {
+      cursor:pointer;
+      background:#ffffff;
+      border-radius: 68px;
+      border: solid 2px #c4c4c4;
+    }
+    .tag-content {
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #c4c4c4;
+    }
+    .in-title {
+      width:30em;
+      height:2em;
+      border: solid 2px #ededed;
+      background-color: #fff;
+    }
+    .sub {
+      cursor:pointer;
+      width:10em;
+      padding:1em 3em 1em 3em;
+      background-color: #14a19b;
+      font-family: NotoSansKR;
+      font-size: 0.75em;;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #fff;
+      border:none;
+    }
+    .in-content {
+      width:25em;
+      height: 15em;
+      font-family: NotoSansKR;
+      font-size: 21px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.28);
+    }
+    </style>
 </head>
 <body>
-    <div id="writing_area">
-            <form th:action="@{/contents/writing/new}" th:object="${form}" method="post">
-                <div id="title">
-                    <!--textarea말고 input은 잠시 확인용??-->
-<!--                <textarea th:field="*{title}" name="title" id="title_" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>-->
-                    <label th:for="title">제목</label>
-                    <input type="text" th:field="*{title}" placeholder="제목을 입력하세요">
-                </div>
 
-                <div class="tag">
-                    <div id="tag1">
-                        <!--<h5>소화</h5>-->
-                        <div id="btn1">
-                            <input type="hidden" value="0" id="복통" name="복통"/>
-                            <input type="button" value="복통" onclick="onChg(this)" id="b1"/>
-
-                            <input type="hidden" value="0" id="설사" name="설사"/>
-                            <input type="button" value="설사" onclick="onChg(this)" id="b2"/>
-
-                            <input type="hidden" value="0" id="영양질환" name="영양질환"/>
-                            <input type="button" value="영양질환" onclick="onChg(this)" id="b3"/>
-                        </div>
-                    </div>
-                    <div id="tag2">
-                        <!--<h5>호흡</h5>-->
-                        <div id="btn2">
-                            <input type="hidden" value="0" id="비염" name="비염"/>
-                            <input type="button" value="비염" onclick="onChg(this)" id="b4"/>
-
-                            <input type="hidden" value="0" id="폐렴" name="폐렴"/>
-                            <input type="button" value="폐렴" onclick="onChg(this)" id="b5"/>
-
-                            <input type="hidden" value="0" id="천식" name="천식"/>
-                            <input type="button" value="천식" onclick="onChg(this)" id="b6"/>
-                        </div>
-                    </div>
-                    <div id="tag3">
-                        <!--<h5>피부</h5>-->
-                        <div id="btn3">
-                            <input type="hidden" value="0" id="알레르기" name="알레르기"/>
-                            <input type="button" value="알레르기" onclick="onChg(this)" id="b7"/>
-
-                            <input type="hidden" value="0" id="아토피" name="아토피"/>
-                            <input type="button" value="아토피" onclick="onChg(this)" id="b8"/>
-                        </div>
-                    </div>
-                    <div id="tag4">
-                        <!--<h5>기타</h5>-->
-                        <div id="btn4">
-                            <input type="hidden" value="0" id="두통" name="두통"/>
-                            <input type="button" value="두통" onclick="onChg(this)" id="b9"/>
-
-                            <input type="hidden" value="0" id="중이염" name="중이염"/>
-                            <input type="button" value="중이염" onclick="onChg(this)" id="b10"/>
-
-                            <input type="hidden" value="0" id="축농증" name="축농증"/>
-                            <input type="button" value="축농증" onclick="onChg(this)" id="b11"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="content">
-<!--                <textarea th:field="*{context}" name="content" id="content_" placeholder="내용" required></textarea>-->
-                    <label th:for="context">내용</label>
-                    <input type="text" th:field="*{context}" placeholder="내용을 입력하세요">
-                </div>
-
-<!--                <input type="file" name="SelectFile" />-->
-
-                <div id="btn">
-                    <input type="submit" value="글 작성" onclick="result()"/>
-                </div>
-
-            </form>
+    <div class="header" ><!--상단 부분-->
+        <div>
+            <a href="/"><img class="logo" src="../static/img/logo.png" alt="로고"></a>
+        </div>
+        <div style="position:absolute;right:10px;">
+            <div>
+                <p>계정이름</p>
+                <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+            </div>
+        </div>
     </div>
+
+
+<form th:action="@{/contents/writing/new}" th:object="${form}" method="post">
+    <center>
+        <div style="border:3px solid red; width:45em;">
+            <div style="height:2em; width:40em; border:3px solid blue">
+                <span class="tit">글쓰기</span>
+            </div>
+<!--        글쓰기 영역-->
+
+
+
+
+            <div class="btn-group" style="height:2em; width:40em;">
+                <button type="button" style="background-color:#fc5139; border-color:#fc5139 " class="title" id="btn-1" onclick="t1(this)"><img class="img" id="i1" src="../static/img/nerve_g.png"><span class="title-content" id="tc1" style="color:#ffffff">소화</span></button>
+                <button type="button" class="title" id="btn-2" onclick="t2(this)"><img class="img" id="i2" src="../static/img/psy_g.png"><span class="title-content" id="tc2">기관지</span></button>
+                <button type="button" class="title" id="btn-3" onclick="t3(this)"><img class="img" id="i3" src="../static/img/hand_g.png"><span class="title-content" id="tc3">피부</span></button>
+                <button type="button" class="title" id="btn-4" onclick="t4(this)"><img class="img" id="i4" src="../static/img/eye_g.png"><span class="title-content" id="tc4">기타</span></button>
+            </div>
+            <div class="line-9"></div>
+
+            <div id="title-1">
+                <input type="hidden" value="0" id="복통" name="복통"/>
+                <input type="hidden" value="0" id="설사" name="설사"/>
+                <input type="hidden" value="0" id="영양질환" name="영양질환"/>
+
+                <button type="button" class="tag" value="복통" onclick="onChg(this)" id="b1"><span class="tag-content" id="c1">복통</span></button>
+                <button type="button" class="tag" value="설사" onclick="onChg(this)" id="b2"><span class="tag-content" id="c2">설사</span></button>
+                <button type="button" class="tag" value="영양질환" onclick="onChg(this)" id="b3"><span class="tag-content" id="c3">영양질환</span></button>
+
+
+            </div>
+            <div id="title-2" style="display:none">
+                <input type="hidden" value="0" id="비염" name="비염"/>
+                <input type="hidden" value="0" id="폐렴" name="폐렴"/>
+                <input type="hidden" value="0" id="천식" name="천식"/>
+
+                <button type="button" class="tag" value="비염" onclick="onChg(this)" id="b4"><span class="tag-content" id="c4">비염</span></button>
+                <button type="button" class="tag" value="폐렴" onclick="onChg(this)" id="b5"><span class="tag-content" id="c5">폐렴</span></button>
+                <button type="button" class="tag" value="천식" onclick="onChg(this)" id="b6"><span class="tag-content" id="c6">천식</span></button>
+            </div>
+            <div id="title-3" style="display:none">
+                <input type="hidden" value="0" id="알레르기" name="알레르기"/>
+                <input type="hidden" value="0" id="아토피" name="아토피"/>
+
+                <button type="button" class="tag" value="알레르기" onclick="onChg(this)" id="b7"><span class="tag-content" id="c7">알레르기</span></button>
+                <button type="button" class="tag" value="아토피" onclick="onChg(this)" id="b8"><span class="tag-content" id="c8">아토피</span></button>
+            </div>
+            <div id="title-4" style="display:none">
+                <input type="hidden" value="0" id="두통" name="두통"/>
+                <input type="hidden" value="0" id="중이염" name="중이염"/>
+                <input type="hidden" value="0" id="축농증" name="축농증"/>
+
+                <button type="button" class="tag" value="두통" onclick="onChg(this)" id="b9"><span class="tag-content" id="c9">두통</span></button>
+                <button type="button" class="tag" value="중이염" onclick="onChg(this)" id="b10"><span class="tag-content" id="c10">중이염</span></button>
+                <button type="button" class="tag" value="축농증" onclick="onChg(this)" id="b11"><span class="tag-content" id="c11">축농증</span></button>
+            </div>
+
+            <div class="line-9"></div>
+
+            <div>
+                <input type="text" th:field="*{title}" placeholder="제목을 입력해주세요" class="in-title">
+                <input type="submit" value="작성완료" class="sub">
+            </div>
+
+            <div>
+                <textarea th:field="*{context}" class="in-content" placeholder="내용을 입력해주세요."></textarea>
+            </div>
+            <div>
+                <input type="file">
+            </div>
+        </div>
+    </center>
+</form>
+
+
     <script>
+        var btn1 = document.getElementById("btn-1");
+        var btn2 = document.getElementById("btn-2");
+        var btn3 = document.getElementById("btn-3");
+        var btn4 = document.getElementById("btn-4");
+
+        var title1 = document.getElementById("title-1");
+        var title2 = document.getElementById("title-2");
+        var title3 = document.getElementById("title-3");
+        var title4 = document.getElementById("title-4");
+
+        var tc1 = document.getElementById("tc1");
+        var tc2 = document.getElementById("tc2");
+        var tc3 = document.getElementById("tc3");
+        var tc4 = document.getElementById("tc4");
+
+        var i1 = document.getElementById("i1");
+        var i2 = document.getElementById("i2");
+        var i3 = document.getElementById("i3");
+        var i4 = document.getElementById("i4");
+
+        var line = document.getElementsByClassName("line-9");
+
+
+
+        function t1(form) {
+           btn1.style.backgroundColor = "#fc5139";
+           btn2.style.backgroundColor = "#ffffff";
+           btn3.style.backgroundColor = "#ffffff";
+           btn4.style.backgroundColor = "#ffffff";
+
+           title1.style.display = "block";
+           title2.style.display = "none";
+           title3.style.display = "none";
+           title4.style.display = "none";
+
+           tc1.style.color = "#ffffff"
+           tc2.style.color = "#c4c4c4"
+           tc3.style.color = "#c4c4c4"
+           tc4.style.color = "#c4c4c4"
+
+           btn1.style.borderColor = "#fc5139";
+           btn2.style.borderColor = "#c4c4c4";
+           btn3.style.borderColor = "#c4c4c4";
+           btn4.style.borderColor = "#c4c4c4";
+
+           i1.src = "../static/img/nerve_w.png";
+           i2.src = "../static/img/psy_g.png";
+           i3.src = "../static/img/hand_g.png";
+           i4.src = "../static/img/eye_g.png";
+
+
+           line[0].style.backgroundColor = "#fc5139"
+           line[1].style.backgroundColor = "#fc5139"
+
+        }
+        function t2(form) {
+           btn1.style.backgroundColor = "#ffffff";
+           btn2.style.backgroundColor = "#fcd764";
+           btn3.style.backgroundColor = "#ffffff";
+           btn4.style.backgroundColor = "#ffffff";
+
+           title1.style.display = "none";
+           title2.style.display = "block";
+           title3.style.display = "none";
+           title4.style.display = "none";
+
+           tc1.style.color = "#c4c4c4"
+           tc2.style.color = "#ffffff"
+           tc3.style.color = "#c4c4c4"
+           tc4.style.color = "#c4c4c4"
+
+           btn1.style.borderColor = "#c4c4c4";
+           btn2.style.borderColor = "#fcd764";
+           btn3.style.borderColor = "#c4c4c4";
+           btn4.style.borderColor = "#c4c4c4";
+
+           i1.src = "../static/img/nerve_g.png";
+           i2.src = "../static/img/psy_w.png";
+           i3.src = "../static/img/hand_g.png";
+           i4.src = "../static/img/eye_g.png";
+
+          line[0].style.backgroundColor = "#fcd764"
+          line[1].style.backgroundColor = "#fcd764"
+
+        }
+        function t3(form) {
+           btn1.style.backgroundColor = "#ffffff";
+           btn2.style.backgroundColor = "#ffffff";
+           btn3.style.backgroundColor = "#14a19b";
+           btn4.style.backgroundColor = "#ffffff";
+
+           title1.style.display = "none";
+           title2.style.display = "none";
+           title3.style.display = "block";
+           title4.style.display = "none";
+
+           tc1.style.color = "#c4c4c4"
+           tc2.style.color = "#c4c4c4"
+           tc3.style.color = "#ffffff"
+           tc4.style.color = "#c4c4c4"
+
+           btn1.style.borderColor = "#c4c4c4";
+           btn2.style.borderColor = "#c4c4c4";
+           btn3.style.borderColor = "#14a19b";
+           btn4.style.borderColor = "#c4c4c4";
+
+           i1.src = "../static/img/nerve_g.png";
+           i2.src = "../static/img/psy_g.png";
+           i3.src = "../static/img/hand_w.png";
+           i4.src = "../static/img/eye_g.png";
+
+           line[0].style.backgroundColor = "#14a19b"
+           line[1].style.backgroundColor = "#14a19b"
+
+        }
+        function t4(form) {
+           btn1.style.backgroundColor = "#ffffff";
+           btn2.style.backgroundColor = "#ffffff";
+           btn3.style.backgroundColor = "#ffffff";
+           btn4.style.backgroundColor = "#7492ff";
+
+           title1.style.display = "none";
+           title2.style.display = "none";
+           title3.style.display = "none";
+           title4.style.display = "block";
+
+           tc1.style.color = "#c4c4c4"
+           tc2.style.color = "#c4c4c4"
+           tc3.style.color = "#c4c4c4"
+           tc4.style.color = "#ffffff"
+
+           btn1.style.borderColor = "#c4c4c4";
+           btn2.style.borderColor = "#c4c4c4";
+           btn3.style.borderColor = "#c4c4c4";
+           btn4.style.borderColor = "#7492ff";
+
+           i1.src = "../static/img/nerve_g.png";
+           i2.src = "../static/img/psy_g.png";
+           i3.src = "../static/img/hand_g.png";
+           i4.src = "../static/img/eye_w.png";
+
+           line[0].style.backgroundColor = "#7492ff"
+           line[1].style.backgroundColor = "#7492ff"
+        }
+
+
         function onChg(form) {
         if (form.value=="복통") {
             var data = document.getElementById("복통")
             var btn = document.getElementById("b1")
+            var c = document.getElementById("c1");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="설사") {
             var data = document.getElementById("설사")
             var btn = document.getElementById("b2")
+            var c = document.getElementById("c2");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="영양질환") {
             var data = document.getElementById("영양질환")
             var btn = document.getElementById("b3")
+            var c = document.getElementById("c3");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="비염") {
             var data = document.getElementById("비염")
             var btn = document.getElementById("b4")
+            var c = document.getElementById("c4");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="폐렴") {
             var data = document.getElementById("폐렴")
             var btn = document.getElementById("b5")
+            var c = document.getElementById("c5");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="천식") {
             var data = document.getElementById("천식")
             var btn = document.getElementById("b6")
+            var c = document.getElementById("c6");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="알레르기") {
             var data = document.getElementById("알레르기")
             var btn = document.getElementById("b7")
+            var c = document.getElementById("c7");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="아토피") {
             var data = document.getElementById("아토피")
             var btn = document.getElementById("b8")
+            var c = document.getElementById("c8");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="두통") {
             var data = document.getElementById("두통")
             var btn = document.getElementById("b9")
+            var c = document.getElementById("c9");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else if (form.value=="중이염") {
             var data = document.getElementById("중이염")
             var btn = document.getElementById("b10")
+            var c = document.getElementById("c10");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
         else {
             var data = document.getElementById("축농증")
             var btn = document.getElementById("b11")
+            var c = document.getElementById("c11");
 
             if(data.value==0) {
                 data.value = 1
-                btn.style.backgroundColor = "#FC5C7D"
+                btn.style.backgroundColor = "#f6d876"
+                btn.style.borderColor = "#f6d876"
+                c.style.color = "#ffffff"
             }
             else {
                 data.value = 0
                 btn.style.backgroundColor = ""
+                btn.style.borderColor = "#c4c4c4"
+                c.style.color = "#c4c4c4"
             }
         }
     }
