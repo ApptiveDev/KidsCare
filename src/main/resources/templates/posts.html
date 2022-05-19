@@ -156,7 +156,7 @@
 <body>
     <div class="header" ><!--상단 부분-->
         <div>
-            <a href="/"><img class="logo" src="img/logo.png" alt="로고"></a>
+            <a href="/"><img class="logo" src="../static/img/logo.png" alt="로고"></a>
         </div>
         <div style="position:absolute;right:10px;">
             <div>
@@ -186,8 +186,7 @@
                     <div class="line-23"></div>
                 </div>
                 <div style="margin-Top:4em;">
-                    <button><img src="img/sch.png" class="img"/></button>
-                    <input class="sch" type="search" placeholder="키워드를 검색해주세요">
+                    <button onclick="location.href='/search'"><img src="../static/img/sch.png" class="img"/></button>
                 </div>
 
                 <select name="sort" class="sort" required autofocus>
@@ -197,19 +196,19 @@
 
                 <div th:each="writing : ${writings}">
                     <div class="result">
-                        <div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div>
-                        <span class="result-content" th:text="${writing.context}">내용</span>
+                        <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div></a>
+                        <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><span class="result-content" th:text="${writing.context}">내용</span></a>
                         <!--하트, 댓글, 날짜-->
                         <div style="display:flex; border:3px solid red; width:100% height:1em;">
                             <span th:text="${writing.createDate}" class="result-date">날짜</span>
                             <span class="result-writer">작성자</span>
                             <div style="display:flex; margin-Left:31em;">
                                 <div class="bubble">
-                                    <img src="img/bubble.png" style="margin-Top:0.25em"/>
+                                    <img src="../static/img/bubble.png" style="margin-Top:0.25em"/>
                                     <sapn>4</sapn>
                                 </div>
                                 <div class="heart">
-                                    <img src="img/heart.png">
+                                    <img src="../static/img/heart.png">
                                     <span>14</span>
                                 </div>
                             </div>

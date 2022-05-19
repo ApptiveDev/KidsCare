@@ -219,10 +219,13 @@
         <span class="all-title" onclick="location.href='/contents'" style="cursor:pointer">
           전체글</span>
 
+<!--        <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>-->
+
+
         <div th:each="writing : ${writings}">
           <div class="result">
-            <div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div>
-            <span class="result-content" th:text="${writing.context}">내용</span>
+            <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div></a>
+            <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><span class="result-content" th:text="${writing.context}">내용</span></a>
             <div class="line-1"></div>
 <!--하트, 댓글, 날짜-->
             <div style="display:flex; border:3px solid red; width:100%">
