@@ -218,16 +218,17 @@
 
         <div>
             <span class="num" th:text="'전체 ' + ${searchCounting} + '개'"></span>
-            <span class="sort">최신순</span>
         </div>
 
         <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
         <div th:each="result : ${searchResults}" class="result">
             <div class="tit" style="border:3px solid red;">
-                <span th:text="${result.title}" class="result-title">제목</span>
+<!-- <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"></a>-->
+                <a href="#" th:href="@{/contents/{id} (id=${result.id})}"><span th:text="${result.title}" class="result-title">제목</span></a>
                 <span th:text="${#temporals.format(result.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
             </div>
-            <span th:text="${result.context}" class="result-content">내용</span>
+            <a href="#" th:href="@{/contents/{id} (id=${result.id})}"><span th:text="${result.context}" class="result-content">내용</span></a>
+
             <div class="line-1"></div>
 
 

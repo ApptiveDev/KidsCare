@@ -4,11 +4,234 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <style>
+        .header {
+      display:flex;
+      height: 6em;
+      padding: 1em 1em 0em 3em;
+      background-color: rgba(246, 216, 118, 0.32);
+    }
+    body {
+      flex-grow: 0;
+      background-color: #fff;
+    }
+    span.menu {
+      cursor: pointer;
+      width: 5em;
+      height: 1em;
+      font-family: NotoSansKR;
+      font-size: 1.25em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .logo {
+      width: 20em;
+      margin: 0.8em 0em 0em 0em;
+      object-fit: contain;
+    }
+    .board {
+      float:left;
+      font-family: NotoSansKR;
+      font-size: 2em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .line-1 {
+      height:0.1em;
+      background-color: #ededed;
+    }
+    .title {
+      margin-Left:3em;
+      font-family: NotoSansKR;
+      font-size: 24px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .content {
+      margin-Top:0.5em;
+      margin-Left:3em;
+      font-family: NotoSansKR;
+      font-size: 24px;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.23;
+      letter-spacing: normal;
+      text-align: left;
+      color: #686868;
+    }
+    .nick {
+      display:inline-block;
+      width:47em;
+      border:3px solid green;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #000;
+    }
+    .date {
+      margin-Top:0.2em;
+      float:right;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #888;
+    }
+    .ans {
+      margin-Left:6em;
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.23;
+      letter-spacing: normal;
+      text-align: left;
+      color: #686868;
+    }
+    .rec {
+      height: 2em;
+      border: solid 1px #c2c2c2;
+      background-color: #f8f8f8;
+      border-left:none;
+      border-right:none;
+    }
+    .answer {
+      margin-Top:0.2em;
+      cursor:pointer;
+      float:right;
+      height:2em;
+      border-radius:0.5em;
+      border: solid 1.3px #fc5139;
+      background-color: #fff;
+    }
+    .answer-content {
+      font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #fc5139;
+    }
+    .post {
+      margin-Top:3em;
+      cursor:pointer;
+      float:left;
+      height:2.5em;
+      background:#fff;
+      width:7em;
+      border-radius: 0.5em;
+      border: solid 3px #14a19b;
+    }
+    .post-content {
+      font-family: NotoSansKR;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #14a19b;
+    }
+    </style>
 </head>
 <body>
-<h2>해당 글 페이지</h2>
-<div th:text="'title : '+${title}"></div>
-<div th:text="'context : ' + ${context}"></div>
+<div class="header" ><!--상단 부분-->
+    <div>
+        <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
+    </div>
+    <div style="position:absolute;right:10px;">
+        <div>
+            <p>계정이름</p>
+            <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+        </div>
+    </div>
+</div>
+
+<center>
+    <div style="width:60em;">
+        <br>
+        <span class="board">전체글 게시판</span>
+        <div id="container">
+            <!--글 메인-->
+            <div>
+                <div style="display:flex; margin:5em 0em 0em 3em;">
+                    <img src="/static/img/pro1.png" style="width:4em; height:4em;">
+                    <div style="margin:0.5em 0em 0em 1em;">
+                        <div>김김김</div>
+                        <div>20분 전</div>
+<!--                    <div th:text="${nickName}">김김김</div>-->
+<!--                    <div th:text="${#calendars.format(#calendars.createNow(),'HH:MM')}">20분 전</div>-->
+
+                    </div>
+                </div>
+                <br>
+                <div th:text="${title}" class="title">제목</div>
+                <div th:text="${context}" class="content">내용</div>
+                <div  style="float:left; margin: 0.5em 0em 0em 4.5em;">
+                    <img src="/static/img/bubble.png">
+                    <span>4</span>
+                </div>
+            </div>
+            <br><br>
+            <!--댓글-->
+            <div th:each="answer : ${answers}">
+                <div class="line-1"></div>
+                <div style="display:flex; margin:1em 0em 0em 4em; border:3px solid red">
+                  <img src="/static/img/pro2.png" style="width:2em; height:2em;">
+                  <div style="margin:0.4em 0em 0em 0.5em">
+                    <div th::text="${answer.nickName}" class="nick">닉네임</div>
+                    <span th:text="${#temporals.format(answer.createDate, 'yyyy.MM.dd')}" class="date">날짜</span>
+                  </div>
+                </div>
+                <div  th:text="${answer.context}" class="ans">댓글</div>
+            </div>
+            <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><div class="rec"> <button type="button" class="answer"><span class="answer-content">답변작성</span></button></div>
+            </a>
+            <button class="post" onclick="location.href='/contents'"><span class="post-content">글목록</span></button>
+        </div>
+    </div>
+</center>
+
+
+
+
+
+
+
+
+
+
 
 <!--<div th:each="i : ${li}">-->
 <!--    <div>댓글</div>-->
@@ -17,38 +240,33 @@
 <!--    <div th:text="'생성시간 : '+${i.createDate}"></div>-->
 <!--    <div th:text="'수정시간 : '+${i.updateDate}"></div>-->
 <!--</div>-->
-<div>
-    <td><a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}">답변 작성</a></td>
-</div>
+<!--<br>-->
+<!--<h3>댓글</h3>-->
+<!--<table class="table table-striped">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>#</th>-->
+<!--        <th>답변 내용</th>-->
+<!--        <th>작성자</th>-->
+<!--        <th>업로드 날짜</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="answer : ${answers}">-->
+<!--        <td th:text="${answer.id}">댓글</td>-->
+<!--        <td th:text="${answer.context}">댓글</td>-->
+<!--        <td th:text="${answer.nickName}">ㄷㄱ</td>-->
+<!--        <td th:text="${answer.createDate}">ㄷㄱㄱ</td>-->
+<!--    <tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 
-<h3>댓글</h3>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>답변 내용</th>
-        <th>작성자</th>
-        <th>업로드 날짜</th>
-        <th>좋아요</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="answer : ${answers}">
-        <td th:text="${answer.id}"></td>
-        <td th:text="${answer.context}"></td>
-        <td th:text="${answer.nickName}"></td>
-        <td th:text="${answer.createDate}"></td>
-        <td><a href="#" th:href="@{/contents/{id}/feedback (id=${answer.id})}">좋아요</a></td>
-    </tr>
-    </tbody>
-</table>
-
-<div>
-    <a href="/contents">
-        <span class="all-title">글목록</span>
-        <div class="line-all"></div>
-    </a>
-</div>
+<!--<div>-->
+<!--    <a href="/contents">-->
+<!--        <span class="all-title">글목록</span>-->
+<!--        <div class="line-all"></div>-->
+<!--    </a>-->
+<!--</div>-->
 
 </body>
 </html>
