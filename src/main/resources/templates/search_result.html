@@ -187,7 +187,7 @@
 <body>
     <div class="header">
         <div>
-            <a href="/"><img src="../static/img/logo.png" alt="로고" class="logo"></a>
+            <a href="/"><img src="/static/img/logo.png" alt="로고" class="logo"></a>
         </div>
     </div>
 
@@ -195,12 +195,12 @@
     <div style="width:50em; border:3px solid red;" >
         <div style="display:flex; align-items:center; justify-content:center; border:3px solid blue; margin-Top:2em">
             <span class="menu">우리 아이 증상은 무엇일까요?<br>태그를 사용하여 빠르게 찾아보세요</span>
-            <img src="../static/img/search.png" id="img"/>
+            <img src="/static/img/search.png" id="img"/>
         </div>
 
         <div class="search" style="display:flex; border:3px solid green;">
             <button class="sch-btn" type="button" onclick="s()">
-                <img src="../static/img/sch.png" class="sch-img"/>
+                <img src="/static/img/sch.png" class="sch-img"/>
             </button>
 
             <!-- 버튼 타임리프??-->
@@ -217,8 +217,7 @@
         <div class="vector-4"></div>
 
         <div>
-            <span>검색 개수 : </span>
-            <span class="num" th:text="${searchCounting}"></span>
+            <span class="num" th:text="'전체 ' + ${searchCounting} + '개'"></span>
             <span class="sort">최신순</span>
         </div>
 
@@ -226,7 +225,7 @@
         <div th:each="result : ${searchResults}" class="result">
             <div class="tit" style="border:3px solid red;">
                 <span th:text="${result.title}" class="result-title">제목</span>
-                <span th:text="${result.createDate}" class="result-date">날짜</span>
+                <span th:text="${#temporals.format(result.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
             </div>
             <span th:text="${result.context}" class="result-content">내용</span>
             <div class="line-1"></div>
@@ -250,11 +249,11 @@
 
             <div style="display:flex; float:right;">
                 <div class="bubble" style="margin-Right: 1em;">
-                    <img src="../static/img/bubble.png" style="margin-Top:0.25em"/>
+                    <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
                     <sapn>4</sapn>
                 </div>
                 <div class="heart">
-                    <img src="../static/img/heart.png">
+                    <img src="/static/img/heart.png">
                     <span>14</span>
                 </div>
             </div>

@@ -95,13 +95,13 @@
     }
     .result-date {
       border:3px solid green;
-      width:50%;
+      width:7em;
       font-size: 0.9em;
       margin-Top:0.1em;
     }
     .result-writer {
       border:3px solid green;
-      width:50%;
+      width:5em;
       margin-Left: 2em;
     }
     .result-content {
@@ -156,7 +156,7 @@
 <body>
     <div class="header" ><!--상단 부분-->
         <div>
-            <a href="/"><img class="logo" src="../static/img/logo.png" alt="로고"></a>
+            <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
         </div>
         <div style="position:absolute;right:10px;">
             <div>
@@ -185,30 +185,31 @@
                     <span class="all-title">전체글</span>
                     <div class="line-23"></div>
                 </div>
-                <div style="margin-Top:4em;">
-                    <button onclick="location.href='/search'"><img src="../static/img/sch.png" class="img"/></button>
+                <div style="display:flex; border:3px solid red; width:100%; height:2em;">
+                    <div style="width:90%">
+                        <button onclick="location.href='/search'"><img src="/static/img/sch.png" class="img"/></button>
+                    </div>
+
+                    <select name="sort" class="sort" required autofocus>
+                        <option value="최신순" selected>최신순</option>
+                        <option value="인기순">인기순</option>
+                    </select>
                 </div>
-
-                <select name="sort" class="sort" required autofocus>
-                    <option value="최신순" selected>최신순</option>
-                    <option value="인기순">인기순</option>
-                </select>
-
                 <div th:each="writing : ${writings}">
                     <div class="result">
                         <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div></a>
                         <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><span class="result-content" th:text="${writing.context}">내용</span></a>
                         <!--하트, 댓글, 날짜-->
-                        <div style="display:flex; border:3px solid red; width:100% height:1em;">
-                            <span th:text="${writing.createDate}" class="result-date">날짜</span>
+                        <div style="display:flex; border:3px solid red; width:100%; height:1em; margin-Top:2em;">
+                            <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
                             <span class="result-writer">작성자</span>
-                            <div style="display:flex; margin-Left:31em;">
+                            <div style="display:flex; margin-Left:25em;">
                                 <div class="bubble">
-                                    <img src="../static/img/bubble.png" style="margin-Top:0.25em"/>
+                                    <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
                                     <sapn>4</sapn>
                                 </div>
                                 <div class="heart">
-                                    <img src="../static/img/heart.png">
+                                    <img src="/static/img/heart.png">
                                     <span>14</span>
                                 </div>
                             </div>
