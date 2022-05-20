@@ -306,12 +306,9 @@
             <div style="display:flex; border:3px solid red; width:100%">
               <div class="bubble" style="margin-Right: 1em;">
                 <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
-                <sapn>4</sapn>
+                <sapn th:text="${writing.getAnswers().size()}">4</sapn>
               </div>
-              <div class="heart">
-                <img src="/static/img/heart.png">
-                <span>14</span>
-              </div>
+              
               <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
             </div>
           </div>
@@ -320,16 +317,18 @@
 <!--베스트 글-->
       <div class="expert" style="float:right; width:12em;">
         <span class="all-title">베스트 전문가</span>
+
         <div style="border:3px solid black; position:absolute">
           <img src="../static/img/eye.png" style="margin:0em 1.5em 0.5em 1em;">
           <div class="bst"><span class="bst-content">BEST</span></div>
-          <div style="display:inline-block">
+          <div th:each="bestExpert : ${bestExperts}" style="display:inline-block">
             <div class="di">00병원 대표원장</div>
-            <div class="na">김김김</div>
+            <div th:text="${bestExpert.nickName}" class="na">김김김</div>
             <img src="../static/img/best.png" class="bst-img">
             <div><span class="di" style="margin-Right:1.5em;">소속</span><span class="di">--닥터</span></div>
-            <div><span class="di" style="margin-Right:1.5em;">총답변</span><span class="answer">3560</span></div>
+            <div><span th:text="${bestExpert.totalLikeNumber}" class="di" style="margin-Right:1.5em;">좋아요</span><span class="answer">3560</span></div>
           </div>
+
         </div>
       </div>
     </div>

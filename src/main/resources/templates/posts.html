@@ -202,15 +202,11 @@
                         <!--하트, 댓글, 날짜-->
                         <div style="display:flex; border:3px solid red; width:100%; height:1em; margin-Top:2em;">
                             <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
-                            <span class="result-writer">작성자</span>
+                            <span th:text="${writing.member.nickName}" class="result-writer">작성자</span>
                             <div style="display:flex; margin-Left:25em;">
                                 <div class="bubble">
                                     <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
-                                    <sapn>4</sapn>
-                                </div>
-                                <div class="heart">
-                                    <img src="/static/img/heart.png">
-                                    <span>14</span>
+                                    <span th:text="${writing.getAnswers().size()}">4</span>
                                 </div>
                             </div>
                         </div>

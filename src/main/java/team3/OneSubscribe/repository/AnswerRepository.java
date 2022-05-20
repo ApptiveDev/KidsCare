@@ -3,6 +3,7 @@ package team3.OneSubscribe.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import team3.OneSubscribe.domain.Answer;
+import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
 
@@ -27,7 +28,9 @@ public class AnswerRepository {
     }
 
     public Answer findOneByNickName(String nickName){
-        return em.find(Answer.class, nickName);
+        return em.createQuery("select i from Answer i where i.nickName = : nickName", Answer.class)
+                .setParameter("nickName", nickName)
+                .getSingleResult();
     }
 
     public List<Answer> findAll(){
