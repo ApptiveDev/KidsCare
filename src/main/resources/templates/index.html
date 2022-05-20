@@ -191,7 +191,7 @@
     height:1em;
     display:inline-block;
     position:absolute;
-    left:1.7em;
+    left:1.8em;
     top:3.5em;
     background-color: #f6d876;
     border-radius:0.5em;
@@ -215,8 +215,8 @@
   .bst-img {
     width:1em;
     height:1em;
-    left:5em;
-    top:1em;
+    left:5.3em;
+    top:1.7em;
     display:inline-block;
     position:absolute;
   }
@@ -302,7 +302,7 @@
             <div style="display:flex; border:3px solid red; width:100%">
               <div class="bubble" style="margin-Right: 1em;">
                 <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
-                <sapn th:text="${writing.getAnswers().size()}">4</sapn>
+                <span th:text="${writing.getAnswers().size()}">4</span>
               </div>
               
               <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
@@ -315,14 +315,14 @@
         <span class="all-title">베스트 전문가</span>
 
         <div style="border:3px solid black; position:absolute">
-          <img src="../static/img/eye.png" style="margin:0em 1.5em 0.5em 1em;">
+          <img src="/static/img/pro1.png" style="width:3.5em; height:3.5em; margin:0.5em 1.5em 0em 1em;">
           <div class="bst"><span class="bst-content">BEST</span></div>
-          <div th:each="bestExpert : ${bestExperts}" style="display:inline-block">
+          <div th:each="bestExpert : ${bestExperts}" style="display:inline-block;">
 <!--            //<div class="di">00병원 대표원장</div>-->
             <div th:text="${bestExpert.nickName}" class="na">김김김</div>
-            <img src="../static/img/best.png" class="bst-img">
+            <img src="/static/img/best.png" class="bst-img">
 <!--            <div><span class="di" style="margin-Right:1.5em;">소속</span><span class="di">&#45;&#45;닥터</span></div>-->
-            <div><span>좋아요 : </span><span th:text="${bestExpert.totalLikeNumber}" class="di" style="margin-Right:1.5em;">좋아요</span><span>개</span></div>
+            <div><span th:text="'좋아요 :' + ${bestExpert.totalLikeNumber} + '개'" class="di" style="margin-Right:1.5em;">좋아요</span></div>
           </div>
 
         </div>
