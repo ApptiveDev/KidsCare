@@ -2,10 +2,12 @@ package team3.OneSubscribe.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.LinkedList;
 import java.util.List;
 
 @Repository
@@ -29,7 +31,9 @@ public class MemberRepositoryImp implements MemberRepository {
 
     @Override
     public Member findByNickName(String nickName){
-        return em.find(Member.class, nickName);
+        return em.createQuery("select m from Member m where m.nickName = : nickName", Member.class)
+                .setParameter("nickName", nickName)
+                .getSingleResult();
     };
 
     @Override
@@ -54,6 +58,33 @@ public class MemberRepositoryImp implements MemberRepository {
     @Override
     public Member findByPhoneNumber(String phoneNumber) {
         return null;
+    }
+
+    @Override
+    public List<Member> findBestExpert(){
+        List<Member> li = em.createQuery("select m from Member m order by m.totalLikeNumber desc", Member.class)
+                .getResultList();
+        if(li.isEmpty()) return li;
+
+        List<Member> bestexperts = new LinkedList<>();
+        bestexperts.add(li.get(0));
+        bestexperts.add(li.get(1));
+        bestexperts.add(li.get(2));
+        return bestexperts;
+
+    }
+
+    @Override
+    public List<Member> findBestInexpert(){
+        List<Member> li = em.createQuery("select m from Member m order by m.totalLikeNumber desc", Member.class)
+                .getResultList();
+        if(li.isEmpty()) return li;
+
+        List<Member> bestInexperts = new LinkedList<>();
+        bestInexperts.add(li.get(0));
+        bestInexperts.add(li.get(1));
+        bestInexperts.add(li.get(2));
+        return bestInexperts;
     }
 
 

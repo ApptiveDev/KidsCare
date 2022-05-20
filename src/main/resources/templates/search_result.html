@@ -251,11 +251,7 @@
             <div style="display:flex; float:right;">
                 <div class="bubble" style="margin-Right: 1em;">
                     <img src="../static/img/bubble.png" style="margin-Top:0.25em"/>
-                    <sapn>4</sapn>
-                </div>
-                <div class="heart">
-                    <img src="../static/img/heart.png">
-                    <span>14</span>
+                    <sapn th:text="${result.getAnswers().size()}">4</sapn>
                 </div>
             </div>
 

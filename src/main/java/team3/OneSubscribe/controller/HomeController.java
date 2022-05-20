@@ -77,6 +77,15 @@ public class HomeController {
 
             model.addAttribute("writings", recentWritings);
         }
+
+        // 베스트 전문가
+        // 사람 다 찾고, totalLikeNumber 비교, 위에 3명 보이게 하기 // 일단 0도 넣기
+        List<Member> bestExpert = memberRepository.findBestExpert();
+        List<Member> bestInExpert = memberRepository.findBestInexpert();
+        model.addAttribute("bestExperts", bestExpert);
+        model.addAttribute("bestInexperts", bestInExpert);
+
+
         return "index";
     }
 

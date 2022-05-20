@@ -232,11 +232,7 @@
             <div style="display:flex; border:3px solid red; width:100%">
               <div class="bubble" style="margin-Right: 1em;">
                 <img src="../static/img/bubble.png" style="margin-Top:0.25em"/>
-                <sapn>4</sapn>
-              </div>
-              <div class="heart">
-                <img src="../static/img/heart.png">
-                <span>14</span>
+                <sapn th:text="${writing.getAnswers().size()}">4</sapn>
               </div>
               <span th:text="${writing.createDate}" class="result-date">날짜</span>
             </div>
@@ -246,9 +242,10 @@
 <!--베스트 글-->
       <div class="expert" style="float:right;">
         <span class="all-title">베스트 전문가</span>
-        <div style="border:3px solid black">
+        <div th:each="bestExpert : ${bestExperts}" style="border:3px solid black">
           <span>대표원장</span>
-          <span>김김김 </span>
+          <span th:text="${bestExpert.nickName}">김김김 </span>
+          <span th:text="${bestExpert.totalLikeNumber}">좋아요</span>
         </div>
       </div>
     </div>

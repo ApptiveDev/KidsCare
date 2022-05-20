@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,19 +28,38 @@ public class FeedbackController {
     private final MemberRepository memberRepository;
 
     @Transactional
-    @PostMapping("/{answerId}/feedback")
+    @GetMapping("/{answerId}/feedback")
     public String Feedback(@PathVariable("answerId") Long answerId, HttpServletRequest request, Model model){
+
+        // redirection을 위한 경로 확인
+        Long writingId = answerRepository.findOneById(answerId).getWriting().getId();
+        System.out.println("writingId : " + writingId);
+
         // 유저랑, 글 작성자가 맞는지 확인 // request에 writingId 넣어줘야 함.
-        Member answerHuman = memberRepository.findByNickName(request.getParameter("nickName"));
+        Member questioner = memberRepository.findOneById(answerRepository.findOneById(answerId)
+                .getWriting()
+                .getMember()
+                .getId()); // 답변으로부터 글 작성자 알기 // 답변 작성자 아님
         HttpSession session = request.getSession();
-        Member questioner = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
-
-        // 동일하면(권한이 있으면) 답변의 feedback = true로 해주고, 답변자의 totalLikeNumber+= 1 해주기
-//        Answer answer = answerRepository.findOneByNickName(request.getParameter("nickName"));
-        Answer answer = answerRepository.findOneById(answerId);
-        answer.setFeedback(true);
-
-
-        return "redirect:/contents/{writingId}"; // 여기서도 feedback 주기
+        Member user = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId()); // 사용자
+        if(questioner == user){
+            model.addAttribute("operation", true);
+            Answer answer = answerRepository.findOneById(answerId);
+            if(answer.getFeedback() == 0) {
+                answer.setFeedback(1);
+                Member answerHuman = memberRepository.findByNickName(answerRepository.findOneById(answerId).getNickName());
+                Long newTotalLikeNumber = answerHuman.getTotalLikeNumber() + 1L;
+                answerHuman.setTotalLikeNumber(newTotalLikeNumber);
+            }
+            String s = "redirect:/contents/" + writingId;
+            System.out.println("작동O");
+            return s; // 이거 맞는지 모르겠는데?
+        }
+        else{
+            model.addAttribute("operation", false);
+            String s = "redirect:/contents/"+writingId;
+            System.out.println("작동X");
+            return s;
+        }
     }
 }

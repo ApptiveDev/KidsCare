@@ -29,6 +29,7 @@
         <th>답변 내용</th>
         <th>작성자</th>
         <th>업로드 날짜</th>
+        <th>좋아요</th>
     </tr>
     </thead>
     <tbody>
@@ -37,6 +38,7 @@
         <td th:text="${answer.context}"></td>
         <td th:text="${answer.nickName}"></td>
         <td th:text="${answer.createDate}"></td>
+        <td><a href="#" th:href="@{/contents/{id}/feedback (id=${answer.id})}">좋아요</a></td>
     </tr>
     </tbody>
 </table>

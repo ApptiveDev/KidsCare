@@ -25,6 +25,10 @@ public interface MemberRepository {
     //일치하는 멤버 없으면 null반환.
     public Member findByPhoneNumber(String phoneNumber);
 
+    public List<Member> findBestExpert();
+
+    public List<Member> findBestInexpert();
+
 
 
 
