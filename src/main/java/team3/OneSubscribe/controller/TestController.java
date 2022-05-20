@@ -49,12 +49,14 @@ public class TestController {
         member3.setNickName("hwang");
         member3.setLoginId("hwang");
         member3.setLoginPassword("test1");
+        member3.setTotalLikeNumber(10L);
         memberService.save(member3);
 
         Member member4 = new Member();
         member4.setNickName("ahn");
         member4.setLoginId("ahn");
         member4.setLoginPassword("test1");
+        member4.setTotalLikeNumber(1L);
         memberService.save(member4);
 
         Member member5 = new Member();
@@ -67,6 +69,7 @@ public class TestController {
         member6.setNickName("kim");
         member6.setLoginId("kim");
         member6.setLoginPassword("test1");
+        member6.setTotalLikeNumber(8L);
         memberService.save(member6);
         return "redirect:/";
     }
