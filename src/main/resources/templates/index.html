@@ -42,22 +42,23 @@
     }
     .main {
       width: 40em;
-      height: 12em;
+      height: 10em;
       margin: 1em 0em 2em 0em;
       background-color: #f9f9f9;
+      border-radius:1em;
     }
     .line-best {
-      width: 25em;
+      width: 27em;
       height: 0.1em;
       margin: 1em 0em 0em 1em;
       transform: rotate(-359.91deg);
       background-color: #e95e44;
     }
     .best-title {
-      margin:0.1em 0em 0em 0.5em;
+      margin:0.3em 0em 0em 1em;
       height: 1em;
       font-family: NotoSansKR;
-      font-size: 1.5em;
+      font-size: 1.1em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -67,9 +68,10 @@
       color: #e95e44;
     }
     .line-20 {
+      display:inline-block;
       width: 37em;
       height: 0.1em;
-      margin: 0.75em 0em 0.75em 0em;
+      margin-Bottom:0.8em;
       background-color: #c4c4c4;
     }
     .best-content {
@@ -92,7 +94,7 @@
     .all-title {
       height: 1em;
       font-family: Inter;
-      font-size: 1.5em;
+      font-size: 1.1em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -114,6 +116,7 @@
       margin: 1em 0.5em 0em 0.75em;
       padding: 21px 8px 16px 9px;
       background-color: #f9f9f9;
+      border-radius:1em;
     }
     .result-title {
       float:left;
@@ -156,6 +159,67 @@
       transform: rotate(-0.03deg);
       background-color: #ededed;
     }
+    .di {
+    font-family: NotoSansKR;
+    font-size: 0.5em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+    }
+    .na {
+    font-family: NotoSansKR;
+    font-size: 1em;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  .answer {
+    font-size:0.5em;
+    border: solid 1px #dfdfdf;
+    background-color: #f9f9f9;
+  }
+  .bst {
+    width:2em;
+    height:1em;
+    display:inline-block;
+    position:absolute;
+    left:1.7em;
+    top:3.5em;
+    background-color: #f6d876;
+    border-radius:0.5em;
+  }
+  .bst-content {
+    display:inline-block;
+    position:absolute;
+    left:0.5em;
+    top:0.2em;
+    text-align:center;
+    font-family: NotoSansKR;
+    font-size: 0.5em;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+  }
+  .bst-img {
+    width:1em;
+    height:1em;
+    left:5em;
+    top:1em;
+    display:inline-block;
+    position:absolute;
+  }
   </style>
 </head>
 
@@ -199,7 +263,7 @@
 
 
       <div class="main"> <!--게시판 글 불러와서 띄우는 곳 -->
-        <div class="best" style="display:flex">
+        <div class="best" style="display:flex;">
           <span class="best-title">금주의 베스트 글</span>
           <div class="line-best"></div>
         </div>
@@ -207,11 +271,21 @@
 
         <div th:each="writing, index : ${bestWritings}" class="best-content">
           <th:block th:if="${index.index+1}<=3">
-            <span th:text="${index.index+1}" style="margin-Right:2em"></span>
-            <span th:text="${writing.title}">임시1</span>
+            <div style="display:flex;">
+              <span th:text="${index.index+1}" style="margin-Right:2em"></span>
+              <a href="#" th:href="@{/contents/{id} (id=${writing.id})}" style="width:30em; text-decoration:none"><div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">임시1</span></span></div></a>
+              <div class="bubble" style="margin-Right: 1em;">
+                <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
+                <sapn>4</sapn>
+              </div>
+              <div class="heart">
+                <img src="/static/img/heart.png">
+                <span>14</span>
+              </div>
+            </div>
             <th:block th:if="${index.index+1}<3">
-            <div class="line-20"></div>
-          </th:block>
+              <div class="line-20"></div>
+            </th:block>
           </th:block>
         </div>
 <!--전체 글 시작-->
@@ -231,21 +305,30 @@
 <!--하트, 댓글, 날짜-->
             <div style="display:flex; border:3px solid red; width:100%">
               <div class="bubble" style="margin-Right: 1em;">
-                <img src="../static/img/bubble.png" style="margin-Top:0.25em"/>
+                <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
                 <sapn th:text="${writing.getAnswers().size()}">4</sapn>
               </div>
-              <span th:text="${writing.createDate}" class="result-date">날짜</span>
+              
+              <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
             </div>
           </div>
         </div>
       </div>
 <!--베스트 글-->
-      <div class="expert" style="float:right;">
+      <div class="expert" style="float:right; width:12em;">
         <span class="all-title">베스트 전문가</span>
-        <div th:each="bestExpert : ${bestExperts}" style="border:3px solid black">
-          <span>대표원장</span>
-          <span th:text="${bestExpert.nickName}">김김김 </span>
-          <span th:text="${bestExpert.totalLikeNumber}">좋아요</span>
+
+        <div style="border:3px solid black; position:absolute">
+          <img src="../static/img/eye.png" style="margin:0em 1.5em 0.5em 1em;">
+          <div class="bst"><span class="bst-content">BEST</span></div>
+          <div th:each="bestExpert : ${bestExperts}" style="display:inline-block">
+            <div class="di">00병원 대표원장</div>
+            <div th:text="${bestExpert.nickName}" class="na">김김김</div>
+            <img src="../static/img/best.png" class="bst-img">
+            <div><span class="di" style="margin-Right:1.5em;">소속</span><span class="di">--닥터</span></div>
+            <div><span th:text="${bestExpert.totalLikeNumber}" class="di" style="margin-Right:1.5em;">좋아요</span><span class="answer">3560</span></div>
+          </div>
+
         </div>
       </div>
     </div>
