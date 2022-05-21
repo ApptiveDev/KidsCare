@@ -28,9 +28,10 @@ public class MemberController {
         HttpSession session;
         if (memberService.login(m)) {
             session = request.getSession();//세션이 없다면 세션생성.
-            m.setNickName(memberRepository.findByLoginId(m.getLoginId()).getNickName());
+            m=memberRepository.findByLoginId(m.getLoginId());
             session.setAttribute("member", m);
             model.addAttribute("isLogined", "true");
+            model.addAttribute("nickName", m.getNickName());
             return "redirect:/";//로그인 성공 //TODO 이거 "redirect:/"로 하면 왜 로그인 아이디가 안 뜨지? 원래는 "index"로 되어있었음.
         }
         return "loginFail";

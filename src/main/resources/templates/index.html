@@ -226,27 +226,28 @@
 <body>
   <div class="header" ><!--상단 부분-->
     <div>
-<!--      <a href="/"><img class="logo" src="../static/img/logo.png" alt="로고"></a>-->
       <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
     </div>
     <div style="position:absolute;right:10px;">
       <div style="display:flex">
-        <span onclick="location.href='/member/signup'" class="menu">
+        <span th:unless="${isLogined=='true'}" onclick="location.href='/member/signup'" class="menu">
           회원가입
         </span>
-        <div class="line"></div>
-        &nbsp;&nbsp;
-        <span onclick="location.href='/member/login'" class="menu">
+        <div class="line">
+
+        </div>
+        <span th:unless="${isLogined=='true'}" onclick="location.href='/member/login'" class="menu">
           로그인
+        </span>
+        <span th:if="${isLogined=='true'}" onclick="location.href='/member/logout'" class="menu">
+          로그아웃
         </span>
       </div>
       <div>
-        <p>계정이름</p>
-        <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
+        <p th:if="${isLogined=='true'}" th:text="${nickName}"></p>
       </div>
     </div>
   </div>
-
 
   <center>
     <div class="content" style="border:3px solid blue; width:50em;">
@@ -260,8 +261,6 @@
         <p>광고7</p>
 
       </div>
-
-
       <div class="main"> <!--게시판 글 불러와서 띄우는 곳 -->
         <div class="best" style="display:flex;">
           <span class="best-title">금주의 베스트 글</span>
