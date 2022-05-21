@@ -188,11 +188,10 @@
                 <div style="display:flex; margin:5em 0em 0em 3em;">
                     <img src="/static/img/pro1.png" style="width:4em; height:4em;">
                     <div style="margin:0.5em 0em 0em 1em;">
-                        <div>김김김</div>
-                        <div>20분 전</div>
+                        <div th:text="${writing.member.nickName}">김김김</div>
+                        <div th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}">20분 전</div>
 <!--                    <div th:text="${nickName}">김김김</div>-->
 <!--                    <div th:text="${#calendars.format(#calendars.createNow(),'HH:MM')}">20분 전</div>-->
-
                     </div>
                 </div>
                 <br>
@@ -200,7 +199,7 @@
                 <div th:text="${context}" class="content">내용</div>
                 <div  style="float:left; margin: 0.5em 0em 0em 4.5em;">
                     <img src="/static/img/bubble.png">
-                    <span>4</span>
+                    <span th:text="${writing.getAnswers().size()}">4</span>
                 </div>
             </div>
             <br><br>
@@ -210,8 +209,9 @@
                 <div style="display:flex; margin:1em 0em 0em 4em; border:3px solid red">
                   <img src="/static/img/pro2.png" style="width:2em; height:2em;">
                   <div style="margin:0.4em 0em 0em 0.5em">
-                    <div th::text="${answer.nickName}" class="nick">닉네임</div>
+                    <div th:text="${answer.nickName}" class="nick">닉네임</div>
                     <span th:text="${#temporals.format(answer.createDate, 'yyyy.MM.dd')}" class="date">날짜</span>
+                    <a href="#" th:href="@{/contents/{id}/feedback (id=${answer.id})}">좋아요</a>
                   </div>
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>

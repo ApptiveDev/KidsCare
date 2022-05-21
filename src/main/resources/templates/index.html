@@ -41,24 +41,25 @@
       background-color: #b9b9b9;
     }
     .main {
-      width: 40em;
+      width: 60em;
       height: 10em;
       margin: 1em 0em 2em 0em;
       background-color: #f9f9f9;
       border-radius:1em;
     }
     .line-best {
-      width: 27em;
+      width: 47em;
       height: 0.1em;
       margin: 1em 0em 0em 1em;
       transform: rotate(-359.91deg);
       background-color: #e95e44;
     }
+
     .best-title {
       margin:0.3em 0em 0em 1em;
       height: 1em;
       font-family: NotoSansKR;
-      font-size: 1.1em;
+      font-size: 1.2em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -69,13 +70,13 @@
     }
     .line-20 {
       display:inline-block;
-      width: 37em;
+      width: 57.5em;
       height: 0.1em;
       margin-Bottom:0.8em;
       background-color: #c4c4c4;
     }
     .best-content {
-      width: 40em;
+      width: 60em;
       height: 0.2em;
       margin: 2em 0em 0em 1em;
       font-family: NotoSansKR;
@@ -89,12 +90,13 @@
       color: #000;
     }
     .all {
-      width: 35em;
+      width: 45em;
     }
     .all-title {
+      float:left;
       height: 1em;
       font-family: Inter;
-      font-size: 1.1em;
+      font-size: 1.2em;
       font-weight: bold;
       font-stretch: normal;
       font-style: normal;
@@ -111,9 +113,9 @@
     .result {
       display:inline-block;
       float:left;
-      width: 15em;
+      width: 20em;
       height: 5em;
-      margin: 1em 0.5em 0em 0.75em;
+      margin: 1em 1em 0em 0em;
       padding: 21px 8px 16px 9px;
       background-color: #f9f9f9;
       border-radius:1em;
@@ -134,13 +136,12 @@
     }
     .result-date {
       font-size: 0.9em;
-      margin-Left:5em;
-      margin-Top:0.1em;
+      margin-Left:15em;
+      margin-Top:0.3em;
     }
     .result-content {
       display:block;
       float:left;
-      border:3px solid blue;
       width: 100%;
       height: 1em;
       font-family: NotoSansKR;
@@ -154,8 +155,8 @@
       color: #000;
     }
     .line-1 {
-      height: 0.2em;
-      margin: 2.25em 0em 0.25em 0em;
+      height: 0.1em;
+      margin: 2.25em 0em 0.5em 0em;
       transform: rotate(-0.03deg);
       background-color: #ededed;
     }
@@ -183,21 +184,18 @@
   }
   .answer {
     font-size:0.5em;
-    border: solid 1px #dfdfdf;
     background-color: #f9f9f9;
   }
   .bst {
+    position:absolute;
     width:2em;
     height:1em;
-    display:inline-block;
-    position:absolute;
     left:1.8em;
-    top:3.5em;
+    top:3.8em;
     background-color: #f6d876;
     border-radius:0.5em;
   }
   .bst-content {
-    display:inline-block;
     position:absolute;
     left:0.5em;
     top:0.2em;
@@ -213,12 +211,11 @@
     color: #fff;
   }
   .bst-img {
+    position:absolute;
     width:1em;
     height:1em;
     left:5.3em;
     top:1.7em;
-    display:inline-block;
-    position:absolute;
   }
   </style>
 </head>
@@ -249,19 +246,7 @@
 
 
   <center>
-    <div class="content" style="border:3px solid blue; width:50em;">
-      <div class="banner" style="float:left;">
-        <p style="background:green;">광고1</p>
-        <p>광고2</p>
-        <p>광고3</p>
-        <p>광고4</p>
-        <p>광고5</p>
-        <p>광고6</p>
-        <p>광고7</p>
-
-      </div>
-
-
+    <div class="content" style="width:60em;">
       <div class="main"> <!--게시판 글 불러와서 띄우는 곳 -->
         <div class="best" style="display:flex;">
           <span class="best-title">금주의 베스트 글</span>
@@ -273,10 +258,10 @@
           <th:block th:if="${index.index+1}<=3">
             <div style="display:flex;">
               <span th:text="${index.index+1}" style="margin-Right:2em"></span>
-              <a href="#" th:href="@{/contents/{id} (id=${writing.id})}" style="width:30em; text-decoration:none"><div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">임시1</span></span></div></a>
-              <div class="bubble" style="margin-Right: 1em;">
-                <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
-                <sapn th:text="${writing.getAnswers().size()}">4</sapn>
+              <a href="#" th:href="@{/contents/{id} (id=${writing.id})}" style="width:53.5em; text-decoration:none"><div style="height:1em;"><span th:text="${writing.title}" class="result-title">임시1</span></span></div></a>
+              <div class="bubble" style="display:flex;">
+                <div><img src="/static/img/bubble.png"/></div>
+                <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
               </div>
             </div>
             <th:block th:if="${index.index+1}<3">
@@ -286,46 +271,47 @@
         </div>
 <!--전체 글 시작-->
       </div>
-      <div class="all" style="float:left; border:3px solid green;">
+      <div class="all" style="float:left;">
         <span class="all-title" onclick="location.href='/contents'" style="cursor:pointer">
           전체글</span>
 
 <!--        <td><a href="#" th:href="@{/contents/{id} (id=${writing.id})}">이동</a></td>-->
 
-
+        <br>
         <div th:each="writing : ${writings}">
           <div class="result">
-            <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><div style="border:3px solid red; height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div></a>
+            <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><div style="height:1em;"><span th:text="${writing.title}" class="result-title">제목</span></div></a>
             <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"><span class="result-content" th:text="${writing.context}">내용</span></a>
             <div class="line-1"></div>
 <!--하트, 댓글, 날짜-->
-            <div style="display:flex; border:3px solid red; width:100%">
-              <div class="bubble" style="margin-Right: 1em;">
-                <img src="/static/img/bubble.png" style="margin-Top:0.25em"/>
-                <span th:text="${writing.getAnswers().size()}">4</span>
+            <div style="display:flex;">
+              <div class="bubble" style="display:flex; width:17em;">
+                <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
+                <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
               </div>
-              
-              <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
+              <span th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}" g.bclass="result-date">날짜</span>
             </div>
           </div>
         </div>
       </div>
+
 <!--베스트 글-->
-      <div class="expert" style="float:right; width:12em;">
+      <div class="expert" style="float:right; width:13.5em;">
         <span class="all-title">베스트 전문가</span>
 
-        <div style="border:3px solid black; position:absolute">
-          <img src="/static/img/pro1.png" style="width:3.5em; height:3.5em; margin:0.5em 1.5em 0em 1em;">
-          <div class="bst"><span class="bst-content">BEST</span></div>
-          <div th:each="bestExpert : ${bestExperts}" style="display:inline-block;">
-<!--            //<div class="di">00병원 대표원장</div>-->
-            <div th:text="${bestExpert.nickName}" class="na">김김김</div>
-            <img src="/static/img/best.png" class="bst-img">
-<!--            <div><span class="di" style="margin-Right:1.5em;">소속</span><span class="di">&#45;&#45;닥터</span></div>-->
-            <div><span th:text="'좋아요 :' + ${bestExpert.totalLikeNumber} + '개'" class="di" style="margin-Right:1.5em;">좋아요</span></div>
+          <div th:each="bestExpert, index : ${bestExperts}" style="position:relative;display:flex; width:13em;height:5em;">
+            <div>
+               <img src="/static/img/pro1.png" style="width:3.5em; height:3.5em; margin:1em 2em 0em 1em;">
+            </div>
+            <div class="bst" th:if="${index.index+1}==1"><span class="bst-content">BEST</span></div>
+            <div style="margin-Top:1.5em;">
+  <!--            //<div class="di">00병원 대표원장</div>-->
+              <div th:text="${bestExpert.nickName}" class="na">김김김</div>
+              <img th:if="${index.index+1}==1" src="/static/img/best.png" class="bst-img">
+  <!--            <div><span class="di" style="margin-Right:1.5em;">소속</span><span class="di">&#45;&#45;닥터</span></div>-->
+              <div><span th:text="'좋아요 :' + ${bestExpert.totalLikeNumber} + '개'" class="di" style="margin-Right:1.5em;">좋아요</span></div>
+            </div>
           </div>
-
-        </div>
       </div>
     </div>
   </center>
