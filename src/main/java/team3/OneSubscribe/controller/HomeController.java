@@ -40,8 +40,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model, HttpServletRequest request) {
+
         HttpSession sess = request.getSession(false);
-        if (sess != null && sess.getAttribute("member") != null) { //로그인 한 사람
+        if (sess != null && sess.getAttribute("member") != null) { //로그인 하면 회원가입, 로그인 버튼이 사라지도록.
             model.addAttribute("isLogined", "true");
             model.addAttribute("nickName", ((Member) sess.getAttribute("member")).getNickName());
         }
