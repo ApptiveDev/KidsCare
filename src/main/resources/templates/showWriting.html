@@ -216,8 +216,13 @@
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>
             </div>
-            <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><div class="rec"> <button type="button" class="answer"><span class="answer-content">답변작성</span></button></div>
+            <a th:href="@{/contents/{id}/update (id=${writing.id})}">
+                글 수정
             </a>
+            <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><div class="rec"> <button type="button" class="answer">
+                <span class="answer-content">답변작성</span></button></div>
+            </a>
+
             <button class="post" onclick="location.href='/contents'"><span class="post-content">글목록</span></button>
         </div>
     </div>
