@@ -209,11 +209,6 @@
             </div>
         </div>
 
-
-
-
-
-
         <div class="vector-4"></div>
 
         <div>
@@ -224,6 +219,7 @@
         <div th:each="result : ${searchResults}" class="result">
             <div class="tit" style="border:3px solid red;">
 <!-- <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"></a>-->
+                <span scope="row" th:text="${pagination.startIndex + resultStat.index + 1}">글 번호</span>
                 <a href="#" th:href="@{/contents/{id} (id=${result.id})}"><span th:text="${result.title}" class="result-title">제목</span></a>
                 <span th:text="${#temporals.format(result.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
             </div>
@@ -260,6 +256,38 @@
         <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
     </div>
     </center>
+    <nav aria-label="Page navigation example ">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/search/result/?page=1}" aria-label="Previous">
+                    <span aria-hidden="true">처음</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{/search/result(page = ${pagination.prevBlock})}" aria-label="Previous">
+                    <span aria-hidden="true">이전</span>
+                </a>
+            </li>
+            <th:block  th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+                <li class="page-item"
+                    th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
+                    th:each="pageButton : ${#numbers.sequence(start, end)}">
+                    <a class="page-link" th:href="@{/search/result(page = ${pageButton})}" th:text="${pageButton}"></a>
+                </li>
+            </th:block>
+            <li class="page-item">
+                <a class="page-link" th:href="@{/search/result(page = ${pagination.nextBlock})}" aria-label="Next">
+                    <span aria-hidden="true">다음</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{/search/result(page = ${pagination.totalPageCnt})}" aria-label="Previous">
+                    <span aria-hidden="true">끝</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
     <script>
         function s() {
             alert("검색버튼");
