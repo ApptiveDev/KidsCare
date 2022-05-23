@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="container" class="signUp" onsubmit="return checkSubmit();">
-    <form name="signUp_form" method="get">
+    <form name="signUp_form" method="post" action="/member/signup">
         <div class="logo">
             <a href="/"><img src="" alt="로고"></a>
         </div>
@@ -61,10 +61,10 @@
             <h3>소속</h3>
             <div class="team">
                 <select id="team" name="team">
-                    <option value="0">없음</option>
-                    <option value="1">부산대병원</option>
-                    <option value="2">부산병원</option>
-                    <option value="3">금정병원</option>
+                    <option value="없음">없음</option>
+                    <option value="부산대병원">부산대병원</option>
+                    <option value="부산병원">부산병원</option>
+                    <option value="금정병원">금정병원</option>
                 </select>
             </div>
         </div>
@@ -73,10 +73,10 @@
             <h3>전화번호</h3>
             <div>
                 <select id="phoneNumber" name="phoneNumber">
-                    <option value="0">010</option>
-                    <option value="1">011</option>
-                    <option value="2">012</option>
-                    <option value="3">013</option>
+                    <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="012">012</option>
+                    <option value="013">013</option>
                 </select>
                 -
                 <input type="text" id="first" onblur="blurNum()">
@@ -88,7 +88,7 @@
 
         <div class="job_area">
             <h3>직업</h3>
-            <div name="expert"><!--맴버랑 맞는지 확인 필요-->
+            <div><!--맴버랑 맞는지 확인 필요-->
                 <input type="radio" name="who" value="1" checked>일반인
                 <input type="radio" name="who" value="2">의사
             </div>
