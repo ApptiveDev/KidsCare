@@ -33,11 +33,6 @@ public class WritingRepository {
                 .getResultList();
     }
 
-    public int findAllCnt(){ //TODO 돌아가긴 하는데, 나중에 수정할게. // 돌아가는거는 확인했어
-        return ((Number) em.createQuery("select count(*) from Writing")
-                .getSingleResult()).intValue();
-    }
-
     public List<Writing> findListPaging(int startIndex, int pageSize){
         return em.createQuery("select b from Writing b", Writing.class)
                 .setFirstResult(startIndex)
