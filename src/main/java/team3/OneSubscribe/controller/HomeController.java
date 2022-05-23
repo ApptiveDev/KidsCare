@@ -73,13 +73,13 @@ public class HomeController {
             model.addAttribute("writings", null);
         }
         else {
-            if(writings.size() < 5){
+            if(writings.size() < 6){
                 for (int i = writings.size(); i > 0; i--) {
                     recentWritings.add(writings.get(i - 1));
                 }
             }
             else{
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     recentWritings.add(writings.get(writings.size() - 1 - i));
                 }
             }
