@@ -40,7 +40,4 @@ public class WritingRepository {
                 .getResultList();
     }
 
-
-
-
 }
