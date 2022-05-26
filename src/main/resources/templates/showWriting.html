@@ -172,7 +172,6 @@
     </div>
     <div style="position:absolute;right:10px;">
         <div>
-            <p>계정이름</p>
             <p th:if="${isLogined}=='true'" th:text="${m.loginId}"></p>
         </div>
     </div>
@@ -216,7 +215,7 @@
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>
             </div>
-            <a th:href="@{/contents/{id}/update (id=${writing.id})}">
+            <a th:if="${writing.member.loginId==m.loginId}" th:href="@{/contents/{id}/update (id=${writing.id})}">
                 글 수정
             </a>
             <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><div class="rec"> <button type="button" class="answer">
