@@ -138,7 +138,7 @@ public class ContentsWritingController {
     //전체글 조회
 
     @GetMapping("")
-    public String contents(Model model, @RequestParam(defaultValue = "1") int page){
+    public String contents(Model model, @RequestParam(defaultValue = "1") int page) {
         List<Writing> writings = writingRepository.findAll();
 
         // 총 게시물 수
@@ -192,12 +192,27 @@ public class ContentsWritingController {
 
     @GetMapping("/{writingId}")
     //글 하나 보여주기
-    public String writingContents(@PathVariable("writingId") Long writingId, Model model) {
+    public String writingContents(@PathVariable("writingId") Long writingId, Model model, HttpServletRequest request) {
+        HttpSession sess = request.getSession(false);
+        Member m;
+        if (sess != null && (m = (Member) sess.getAttribute("member")) != null) {
+            model.addAttribute("isLogined", "true");
+
+            model.addAttribute("m", m);
+        }
+        else{
+            m = new Member();
+            m.setLoginId("notLogined");
+            model.addAttribute("m", m);
+
+        }
+
         //글찾기
         Writing writing = (Writing) writingRepository.findOneById(writingId);
-        model.addAttribute("writing", writing); // 답변 작성을 위해서 id 필요 // 연재가 추가
+        model.addAttribute("writing", writing); // 답변 작성을 위해서 id 필요
         model.addAttribute("title", writing.getTitle());//writing객체 다 넘기지 말고 필요한 애들만 넘기자
         model.addAttribute("context", writing.getContext());
+
 
         //댓글찾기
         List<Answer> li = answerService.findAllAnswerByWriting(writing);

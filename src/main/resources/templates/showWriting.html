@@ -189,6 +189,7 @@
     <div>
         <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
     </div>
+
     <div class="side">
         <div style="border:1px solid black; border-top:none; border-bottom:none; margin-Right:1em; padding:0em 0.25em 0em 0.25em;">
             <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
@@ -238,6 +239,12 @@
                 <div  th:text="${answer.context}" class="ans">댓글</div>
                 <div class="line-1"></div>
             </div>
+
+            <a th:if="${writing.member.loginId==m.loginId}" th:href="@{/contents/{id}/update (id=${writing.id})}">
+                글 수정
+            </a>
+         
+
             <div class="comment-title">댓글작성</div>
             <textarea placeholder="내용을 입력해주세요." class="comment"></textarea>
 
