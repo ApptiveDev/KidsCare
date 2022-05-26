@@ -146,7 +146,7 @@
 </div>
 
 
-<form th:action="@{/contents/writing/new}" th:object="${form}" method="post">
+<form th:action="@{/contents/{id}/update (id=${writing.id})}" th:object="${form}" method="post">
     <center>
         <div style="border:3px solid red; width:45em;">
             <div style="height:2em; width:40em; border:3px solid blue">

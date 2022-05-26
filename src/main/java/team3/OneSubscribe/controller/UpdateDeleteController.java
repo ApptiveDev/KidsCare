@@ -41,12 +41,12 @@ public class UpdateDeleteController {
 
     @PostMapping("/{writingId}/update")
     public String updateWriting(@PathVariable("writingId") Long writingId, WritingDTO form, HttpServletRequest request, Model model){
-        writingService.updateWriting(writingId, form.getTitle(), form.getContext());
+        //writingService.updateWriting(writingId, form.getTitle(), form.getContext());
 
         Writing writing = writingRepository.findOneById(writingId);
 
         // 기존
-        tagRepository.deleteMany(writing);
+        //tagRepository.deleteMany(writing);
 
         // 2. tag 저장
         if (Objects.equals(request.getParameter("복통"), "1")) {
@@ -121,11 +121,11 @@ public class UpdateDeleteController {
     @GetMapping("/writing/{writingId}/delete")
     public String deleteWriting(@PathVariable("writingId") Long writingId){
         // writing 삭제
-        writingRepository.deleteOne(writingId);
+        //writingRepository.deleteOne(writingId);
 
         // tag 삭제(해당 writing의 태그) // DB 구축 방법으로 인해 2가지 삭제하는거임
-        Writing writing = writingRepository.findOneById(writingId);
-        tagRepository.deleteMany(writing);
+        //Writing writing = writingRepository.findOneById(writingId);
+        //tagRepository.deleteMany(writing);
 
         return "redirect:/contents";
     }
