@@ -60,7 +60,7 @@ public class ContentsWritingController {
         writing.setMember(writer);
         writing.setCreateDate(LocalDateTime.now());
 
-        System.out.println("세션 : " + session.getAttribute("member"));
+//        System.out.println("세션 : " + session.getAttribute("member"));
         //writing.setMember((Member) session.getAttribute("member")); // 여기 고쳐야 함
         writingRepository.save(writing);
 
@@ -213,15 +213,17 @@ public class ContentsWritingController {
     public String updateWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model) {
         HttpSession sess = request.getSession(false);
         if (sess != null && ((Member) sess.getAttribute("member")).getLoginId() != null) {//로그인 되었을 때
-
             Writing writing = writingRepository.findOneById(writingId);
             Member m = (Member) sess.getAttribute("member");
             if (writing.getMember().getLoginId() == m.getLoginId()) {//글쓴이가 같을 때
                 model.addAttribute("isWriter", "true");
                 model.addAttribute("writing", writing);
-
+                model.addAttribute("isLogined", "true");
+                model.addAttribute("m", (Member) sess.getAttribute("member"));
+                model.addAttribute("form", new WritingDTO());//신기하다.
                 return "updateWriting";
             }
+            return "notYourWriting";
 
         }
         return "needLogin";
