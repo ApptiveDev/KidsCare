@@ -190,9 +190,9 @@
                         <button onclick="location.href='/search'"><img src="/static/img/sch.png" class="img"/></button>
                     </div>
 
-                    <select name="sort" class="sort" required autofocus>
-                        <option value="최신순" selected>최신순</option>
-                        <option value="인기순">인기순</option>
+                    <select onchange="if(this.value) location.href=(this.value);"  name="sort" class="sort" required autofocus>
+                        <option value="/contents" selected>최신순</option>
+                        <option value="/contents/own">내꺼</option>
                     </select>
                 </div>
 

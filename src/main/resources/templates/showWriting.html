@@ -212,6 +212,7 @@
                     <div th:text="${answer.nickName}" class="nick">닉네임</div>
                     <span th:text="${#temporals.format(answer.createDate, 'yyyy.MM.dd')}" class="date">날짜</span>
                     <a href="#" th:href="@{/contents/{id}/feedback (id=${answer.id})}">좋아요</a>
+                    <a href="#" th:href="@{/contents/{writingId}/{answerId}/delete (writingId=${writing.id},answerId=${answer.id})}">삭제</a>
                   </div>
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>
