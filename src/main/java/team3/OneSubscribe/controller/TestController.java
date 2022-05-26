@@ -82,6 +82,8 @@ public class TestController {
         writing1.setCreateDate(LocalDateTime.now());
         writingRepository.save(writing1);
 
+
+
         Tag tag1 = new Tag();
         tag1.setDiseaseName(DiseaseName.abdominalPain);
         tag1.setWriting(writing1);
@@ -91,8 +93,8 @@ public class TestController {
         writing2.setTitle("설사 증상이 있어요");
         writing2.setContext("아이에게 설사 증상이 있어요");
         writing2.setMember(memberRepository.findByLoginId("shin"));
-        writing2.setCreateDate(LocalDateTime.now().plusMinutes(1));
-        writingRepository.save(writing2);
+        Long w2 = writingRepository.save(writing2);
+        writingRepository.findOneById(w2).setCreateDate(LocalDateTime.now().minusDays(1));
 
         Tag tag2 = new Tag();
         tag2.setDiseaseName(DiseaseName.diarrhea);
@@ -103,8 +105,9 @@ public class TestController {
         writing3.setTitle("어떤 영양 성분이 부족할까요?");
         writing3.setContext("아이에게 어떤 영양 성분이 부족할까요?");
         writing3.setMember(memberRepository.findByLoginId("hwang"));
-        writing3.setCreateDate(LocalDateTime.now().plusMinutes(2));
-        writingRepository.save(writing3);
+        Long w3 = writingRepository.save(writing3);
+        writingRepository.findOneById(w3).setCreateDate(LocalDateTime.now().minusDays(2));
+
 
         Tag tag3 = new Tag();
         tag3.setDiseaseName(DiseaseName.nutritionalDisease);
@@ -115,8 +118,9 @@ public class TestController {
         writing4.setTitle("복통과 설사를 증상이 있어요");
         writing4.setContext("아이에게 복통과 설사를 증상이 있어요");
         writing4.setMember(memberRepository.findByLoginId("ahn"));
-        writing4.setCreateDate(LocalDateTime.now().plusMinutes(3));
-        writingRepository.save(writing4);
+        Long w4 = writingRepository.save(writing4);
+        writingRepository.findOneById(w4).setCreateDate(LocalDateTime.now().minusDays(3));
+
 
         Tag tag4 = new Tag();
         tag4.setDiseaseName(DiseaseName.abdominalPain);
@@ -132,8 +136,8 @@ public class TestController {
         writing5.setTitle("복통, 설사, 영양질환에 관하여");
         writing5.setContext("복통, 설사, 영양질환에 대한 글 내용");
         writing5.setMember(memberRepository.findByLoginId("lee"));
-        writing5.setCreateDate(LocalDateTime.now().plusMinutes(4));
-        writingRepository.save(writing5);
+        Long w5 = writingRepository.save(writing5);
+        writingRepository.findOneById(w5).setCreateDate(LocalDateTime.now().minusDays(4));
 
         Tag tag5 = new Tag();
         tag5.setDiseaseName(DiseaseName.abdominalPain);
@@ -154,8 +158,8 @@ public class TestController {
         writing6.setTitle("비염이 있어요");
         writing6.setContext("아이의 코가 자주 막혀요");
         writing6.setMember(memberRepository.findByLoginId("kim"));
-        writing6.setCreateDate(LocalDateTime.now().plusMinutes(5));
-        writingRepository.save(writing6);
+        Long w6 = writingRepository.save(writing6);
+        writingRepository.findOneById(w6).setCreateDate(LocalDateTime.now().minusDays(5));
 
         Tag tag6 = new Tag();
         tag6.setDiseaseName(DiseaseName.rhinitis);

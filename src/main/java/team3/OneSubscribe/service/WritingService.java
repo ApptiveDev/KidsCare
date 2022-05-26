@@ -93,15 +93,16 @@ public class WritingService {
 
     }
 
+    // 수정 기능
     @Transactional
-    public void updateWriting(){
-
+    public void updateWriting(Long writingId, String title, String context){
+        Writing findWriting = writingRepository.findOneById(writingId);
+        findWriting.setTitle(title);
+        findWriting.setContext(context);
+        findWriting.setUpdateDate(LocalDateTime.now());
+        // 이렇게 하고 db에 안 올려도 되나????? //Transactional때문에 괜찮은건가???? // 이거 테스트 해야함
     }
 
-    @Transactional
-    public void deleteWriting(){
-
-    }
 
 
 }

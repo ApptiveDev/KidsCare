@@ -50,7 +50,6 @@ public class ContentsWritingController {
     @PostMapping("/writing/new")
     public String contentsFromWriting(WritingDTO form, HttpServletRequest request) {
         HttpSession session = request.getSession();
-//        System.out.println("테스트 : "+session.getAttribute("test"));
         Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
 
         // 1. writing 저장
@@ -59,6 +58,7 @@ public class ContentsWritingController {
         writing.setContext(form.getContext());
         writing.setMember(writer);
         writing.setCreateDate(LocalDateTime.now());
+        writing.setUpdateDate(LocalDateTime.now()); //TODO 처음에 이걸 세팅해야하나?
 
 //        System.out.println("세션 : " + session.getAttribute("member"));
         //writing.setMember((Member) session.getAttribute("member")); // 여기 고쳐야 함
@@ -140,7 +140,6 @@ public class ContentsWritingController {
     @GetMapping("")
     public String contents(Model model, @RequestParam(defaultValue = "1") int page) {
         List<Writing> writings = writingRepository.findAll();
-        model.addAttribute("writings", writings);
 
         // 총 게시물 수
         int totalListCnt = writings.size();
@@ -155,6 +154,35 @@ public class ContentsWritingController {
         int pageSize = pagination.getPageSize();
 
         List<Writing> writingList = writingRepository.findListPaging(startIndex, pageSize);
+        Collections.reverse(writingList);
+        model.addAttribute("writingList", writingList);
+        model.addAttribute("pagination", pagination);
+
+        return "posts";
+    }
+
+    @GetMapping("/own")
+    public String myContents(Model model, @RequestParam(defaultValue = "1") int page, HttpServletRequest request){
+        // 로그인 안 되어 있을때, 로그인 필요하다고 하기 //
+
+        HttpSession session = request.getSession();
+        Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
+
+        List<Writing> writings = writingRepository.findByMember(writer);
+
+        // 총 게시물 수
+        int totalListCnt = writings.size();
+
+        // 생성인자로
+        Pagination pagination = new Pagination(totalListCnt, page);
+
+        // DB select start index
+        int startIndex = pagination.getStartIndex();
+
+        // 페이지 당 보여지는 게시글의 최대 개수
+        int pageSize = pagination.getPageSize();
+
+        List<Writing> writingList = writingRepository.findListPagingForOwn(writer, startIndex, pageSize);
         Collections.reverse(writingList);
         model.addAttribute("writingList", writingList);
         model.addAttribute("pagination", pagination);

@@ -3,6 +3,7 @@ package team3.OneSubscribe.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
 
@@ -40,5 +41,10 @@ public class TagRepository {
     public List<Tag> findAll(){
         return em.createQuery("select i from Tag i", Tag.class)
                 .getResultList();
+    }
+
+    public void deleteMany(Writing writing){
+        em.createQuery("delete from Tag i where i.writing = : writing", Tag.class)
+                .setParameter("writing", writing);
     }
 }

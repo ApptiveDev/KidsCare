@@ -53,4 +53,12 @@ public class AnswerRepository {
         return answers.size();
     }
 
+    //삭제 기능 // 테스트 해야 함
+    public void deleteOne(Long id){
+        em.createQuery("delete from Answer i where i.id = : id", Answer.class)
+                .setParameter("id", id)
+                .executeUpdate();
+        return;
+        //em.getTransaction().commit();
+    }
 }
