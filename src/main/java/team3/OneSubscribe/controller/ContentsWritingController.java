@@ -223,6 +223,7 @@ public class ContentsWritingController {
                 model.addAttribute("form", new WritingDTO());//신기하다.
                 return "updateWriting";
             }
+            return "notYourWriting";
 
         }
         return "needLogin";
