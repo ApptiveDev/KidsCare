@@ -33,6 +33,13 @@ public class WritingRepository {
                 .getResultList();
     }
 
+    public List<Writing> findListPaging(int startIndex, int pageSize){
+        return em.createQuery("select b from Writing b", Writing.class)
+                .setFirstResult(startIndex)
+                .setMaxResults(pageSize)
+                .getResultList();
+    }
+
 
 
 

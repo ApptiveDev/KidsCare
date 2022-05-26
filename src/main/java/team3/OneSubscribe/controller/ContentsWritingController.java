@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import team3.OneSubscribe.DTO.Pagination;
 import team3.OneSubscribe.DTO.WritingDTO;
 import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.DiseaseName;
@@ -26,6 +24,7 @@ import team3.OneSubscribe.service.MemberService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -139,10 +138,27 @@ public class ContentsWritingController {
     //전체글 조회
 
     @GetMapping("")
-    public String contents(Model model){
-        //TODO : 전부 가져오면 터진다. 10개 또는 20개씩 끊어서 가져오기
+    public String contents(Model model, @RequestParam(defaultValue = "1") int page){
         List<Writing> writings = writingRepository.findAll();
         model.addAttribute("writings", writings);
+
+        // 총 게시물 수
+        int totalListCnt = writings.size();
+
+        // 생성인자로
+        Pagination pagination = new Pagination(totalListCnt, page);
+
+        // DB select start index
+        int startIndex = pagination.getStartIndex();
+
+        // 페이지 당 보여지는 게시글의 최대 개수
+        int pageSize = pagination.getPageSize();
+
+        List<Writing> writingList = writingRepository.findListPaging(startIndex, pageSize);
+        Collections.reverse(writingList);
+        model.addAttribute("writingList", writingList);
+        model.addAttribute("pagination", pagination);
+
         return "posts";
     }
 
@@ -168,7 +184,7 @@ public class ContentsWritingController {
     }
 
     @GetMapping("/{writingId}/answer")
-    public String answer(@PathVariable("writingId") Long writingId, Model model){
+    public String answer(@PathVariable("writingId") Long writingId, Model model) {
         Writing writing = writingRepository.findOneById(writingId);
         model.addAttribute("writing", writing);
 
@@ -177,7 +193,7 @@ public class ContentsWritingController {
 
     @Transactional
     @PostMapping("/{writingId}/answer")
-    public String answerForWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model){
+    public String answerForWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
 
         Writing writing = writingRepository.findOneById(writingId);
@@ -188,12 +204,26 @@ public class ContentsWritingController {
 
         Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
         answer.setNickName(writer.getNickName());
-
         answerRepository.save(answer);
-
         model.addAttribute("writing", writing);
-
         return "redirect:/contents/{writingId}";
     }
 
+    @GetMapping("/{writingId}/update")
+    public String updateWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model) {
+        HttpSession sess = request.getSession(false);
+        if (sess != null && ((Member) sess.getAttribute("member")).getLoginId() != null) {//로그인 되었을 때
+
+            Writing writing = writingRepository.findOneById(writingId);
+            Member m = (Member) sess.getAttribute("member");
+            if (writing.getMember().getLoginId() == m.getLoginId()) {//글쓴이가 같을 때
+                model.addAttribute("isWriter", "true");
+                model.addAttribute("writing", writing);
+
+                return "updateWriting";
+            }
+
+        }
+        return "needLogin";
+    }
 }
