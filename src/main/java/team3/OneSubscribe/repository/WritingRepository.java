@@ -56,9 +56,12 @@ public class WritingRepository {
                 .getResultList();
     }
 
-    //삭제 기능 // 테스트 해야 함
+
+    @Transactional
     public void deleteOne(Long id){
-        em.createQuery("delete from Writing i where i.id = : id", Writing.class)
-                .setParameter("id", id);
+        em.createQuery("delete from Writing i where i.id = :id")
+                .setParameter("id", id)
+                .executeUpdate();
+        return;
     }
 }

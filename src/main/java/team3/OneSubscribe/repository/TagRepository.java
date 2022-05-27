@@ -42,9 +42,10 @@ public class TagRepository {
         return em.createQuery("select i from Tag i", Tag.class)
                 .getResultList();
     }
-
+    @Transactional
     public void deleteMany(Writing writing){
-        em.createQuery("delete from Tag i where i.writing = : writing", Tag.class)
-                .setParameter("writing", writing);
+        em.createQuery("delete from Tag i where i.writing = : writing")
+                .setParameter("writing", writing)
+                .executeUpdate();
     }
 }

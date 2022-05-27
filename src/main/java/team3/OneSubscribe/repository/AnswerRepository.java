@@ -9,6 +9,7 @@ import team3.OneSubscribe.domain.Writing;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -54,11 +55,11 @@ public class AnswerRepository {
     }
 
     //삭제 기능 // 테스트 해야 함
+    @Transactional
     public void deleteOne(Long id){
-        em.createQuery("delete from Answer i where i.id = : id", Answer.class)
+        em.createQuery("delete from Answer i where i.id = :id")
                 .setParameter("id", id)
                 .executeUpdate();
         return;
-        //em.getTransaction().commit();
     }
 }
