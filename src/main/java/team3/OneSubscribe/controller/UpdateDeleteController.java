@@ -20,6 +20,7 @@ import team3.OneSubscribe.service.WritingService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -120,22 +121,22 @@ public class UpdateDeleteController {
 
     @GetMapping("/writing/{writingId}/delete")
     public String deleteWriting(@PathVariable("writingId") Long writingId){
-        // writing 삭제
-        //writingRepository.deleteOne(writingId);
-
         // tag 삭제(해당 writing의 태그) // DB 구축 방법으로 인해 2가지 삭제하는거임
-        //Writing writing = writingRepository.findOneById(writingId);
-        //tagRepository.deleteMany(writing);
+        Writing writing = writingRepository.findOneById(writingId);
+        tagRepository.deleteMany(writing);
+
+        // writing 삭제
+        writingRepository.deleteOne(writingId);
 
         return "redirect:/contents";
     }
 
 
+
     @GetMapping("/{writingId}/{answerId}/delete")
     public String deleteAnswer(@PathVariable("writingId") Long writingId, @PathVariable("answerId") Long answerId){
         // 답변을 작성한 회원인지 먼저 확인
-        
-        //answerRepository.deleteOne(answerId);
+        answerRepository.deleteOne(answerId);
         return "redirect:/contents/{writingId}";
     }
 
