@@ -163,7 +163,7 @@
 <div style="width:100%; position:relative">
     <div id="sidebar" style="display:none">
         <center>
-            <img src="/static/img/logo_g.png" style="width:10em; height:1.75m; margin:2em 0em 1em 0em;">
+            <img src="/static/img/logo_g.png" style="width:10em; height:1.75em; margin:2em 0em 1em 0em;">
             <div style="display:flex">
                 <div class="intro">반갑습니다 황정호님!</div>
                 <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
@@ -231,6 +231,12 @@
                     <div th:text="${answer.nickName}" class="nick">닉네임</div>
                     <span th:text="${#temporals.format(answer.createDate, 'yyyy.MM.dd')}" class="date">날짜</span>
                     <a href="#" th:href="@{/contents/{id}/feedback (id=${answer.id})}">좋아요</a>
+<!--                    <a href="#" th:href="@{/contents/{writingId}/{answerId}/delete (writingId=${writing.id},answerId=${answer.id})}">삭제</a>-->
+                      <!--확인 -->
+                      <a th:if="${answer.nickName==m.nickName}" th:href="@{/contents/{writingId}/{answerId}/delete (writingId=${writing.id}, answerId=${answer.id})}">
+                          삭제
+                      </a>
+                      <!--확인 -->
                   </div>
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>

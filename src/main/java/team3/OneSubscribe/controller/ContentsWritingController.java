@@ -50,7 +50,6 @@ public class ContentsWritingController {
     @PostMapping("/writing/new")
     public String contentsFromWriting(WritingDTO form, HttpServletRequest request) {
         HttpSession session = request.getSession();
-//        System.out.println("테스트 : "+session.getAttribute("test"));
         Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
 
         // 1. writing 저장
@@ -59,8 +58,9 @@ public class ContentsWritingController {
         writing.setContext(form.getContext());
         writing.setMember(writer);
         writing.setCreateDate(LocalDateTime.now());
+        writing.setUpdateDate(LocalDateTime.now()); //TODO 처음에 이걸 세팅해야하나?
 
-        System.out.println("세션 : " + session.getAttribute("member"));
+//        System.out.println("세션 : " + session.getAttribute("member"));
         //writing.setMember((Member) session.getAttribute("member")); // 여기 고쳐야 함
         writingRepository.save(writing);
 
@@ -138,9 +138,8 @@ public class ContentsWritingController {
     //전체글 조회
 
     @GetMapping("")
-    public String contents(Model model, @RequestParam(defaultValue = "1") int page){
+    public String contents(Model model, @RequestParam(defaultValue = "1") int page) {
         List<Writing> writings = writingRepository.findAll();
-        model.addAttribute("writings", writings);
 
         // 총 게시물 수
         int totalListCnt = writings.size();
@@ -162,14 +161,58 @@ public class ContentsWritingController {
         return "posts";
     }
 
+    @GetMapping("/own")
+    public String myContents(Model model, @RequestParam(defaultValue = "1") int page, HttpServletRequest request){
+        // 로그인 안 되어 있을때, 로그인 필요하다고 하기 //
+
+        HttpSession session = request.getSession();
+        Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
+
+        List<Writing> writings = writingRepository.findByMember(writer);
+
+        // 총 게시물 수
+        int totalListCnt = writings.size();
+
+        // 생성인자로
+        Pagination pagination = new Pagination(totalListCnt, page);
+
+        // DB select start index
+        int startIndex = pagination.getStartIndex();
+
+        // 페이지 당 보여지는 게시글의 최대 개수
+        int pageSize = pagination.getPageSize();
+
+        List<Writing> writingList = writingRepository.findListPagingForOwn(writer, startIndex, pageSize);
+        Collections.reverse(writingList);
+        model.addAttribute("writingList", writingList);
+        model.addAttribute("pagination", pagination);
+
+        return "posts";
+    }
+
     @GetMapping("/{writingId}")
     //글 하나 보여주기
-    public String writingContents(@PathVariable("writingId") Long writingId, Model model) {
+    public String writingContents(@PathVariable("writingId") Long writingId, Model model, HttpServletRequest request) {
+        HttpSession sess = request.getSession(false);
+        Member m;
+        if (sess != null && (m = (Member) sess.getAttribute("member")) != null) {
+            model.addAttribute("isLogined", "true");
+
+            model.addAttribute("m", m);
+        }
+        else{
+            m = new Member();
+            m.setLoginId("notLogined");
+            model.addAttribute("m", m);
+
+        }
+
         //글찾기
         Writing writing = (Writing) writingRepository.findOneById(writingId);
-        model.addAttribute("writing", writing); // 답변 작성을 위해서 id 필요 // 연재가 추가
+        model.addAttribute("writing", writing); // 답변 작성을 위해서 id 필요
         model.addAttribute("title", writing.getTitle());//writing객체 다 넘기지 말고 필요한 애들만 넘기자
         model.addAttribute("context", writing.getContext());
+
 
         //댓글찾기
         List<Answer> li = answerService.findAllAnswerByWriting(writing);
@@ -213,15 +256,17 @@ public class ContentsWritingController {
     public String updateWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model) {
         HttpSession sess = request.getSession(false);
         if (sess != null && ((Member) sess.getAttribute("member")).getLoginId() != null) {//로그인 되었을 때
-
             Writing writing = writingRepository.findOneById(writingId);
             Member m = (Member) sess.getAttribute("member");
             if (writing.getMember().getLoginId() == m.getLoginId()) {//글쓴이가 같을 때
                 model.addAttribute("isWriter", "true");
                 model.addAttribute("writing", writing);
-
+                model.addAttribute("isLogined", "true");
+                model.addAttribute("m", (Member) sess.getAttribute("member"));
+                model.addAttribute("form", new WritingDTO());//신기하다.
                 return "updateWriting";
             }
+            return "notYourWriting";
 
         }
         return "needLogin";
