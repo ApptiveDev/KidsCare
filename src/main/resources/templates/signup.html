@@ -19,10 +19,10 @@
       background-color: #ededed;
     }
     .alert {
-      border:3px solid green;
       font-family: NotoSansKR;
-      font-size: 1em;
+      font-size: 0.75em;
       font-weight: 500;
+      margin-Top:0.5em;
       font-stretch: normal;
       font-style: normal;
       line-height: 1;
@@ -31,7 +31,6 @@
       color: #fc5139;
     }
     .tit {
-      border:3px solid red;
       font-family: NotoSansKR;
       font-size: 2em;
       font-weight: bold;
@@ -44,7 +43,6 @@
     }
     .sub-tit {
       margin-Top:0.5em;
-      border:3px solid red;
       width:7em;
       float:left;
       font-family: NotoSansKR;
@@ -62,13 +60,14 @@
       width: 25em;
       height: 2.5em;
       border-radius: 0.3em;
-      background-color: #c4c4c4;
+      background-color: #f0f0f0;
     }
     .sel {
       width:7em;
       height:3em;
       border-radius: 0.3em;
-      background-color: #f9f9f9;
+      border:none;
+      background-color: #f0f0f0;
     }
 
 
@@ -90,7 +89,7 @@
       width: 5em;
       height: 2em;
       border-radius: 1em;
-      border: solid 0.1em #c4c4c4;
+      border: solid 0.1em #f0f0f0;
       background-color:#fff;
     }
     .who-content {
@@ -102,7 +101,7 @@
       line-height: normal;
       letter-spacing: normal;
       text-align: center;
-      color: #c4c4c4;
+      color: #f0f0f0;
     }
     .btn {
     margin-Bottom:3em;
@@ -128,24 +127,24 @@
     </style>
 </head>
 <body>
-<div style="width:79em;">
+<div style="width:100%;">
 <center>
-<div class="signUp" onsubmit="return checkSubmit();" style="width:35em; border:3px solid red">
+<div class="signUp" onsubmit="return checkSubmit();" style="width:35em;">
     <form name="signUp_form" method="get">
         <div>
-            <a href="/"><img src="/static/img/search.png" alt="로고" style="width:10em; height:8em; margin-Top:3em;"></a>
+            <a href="/"><img src="/static/img/search.png" alt="로고" style="width:12em; height:10em; margin-Top:4em;"></a>
             <div></div>
-            <a href="/"><img src="/static/img/logo.png" alt="로고" style="width:20em; height:4em; margin:1em 0em 1em 0em;"></a>
+            <a href="/"><img src="/static/img/logo.png" alt="로고" style="width:22em; height:4em; margin:1em 0em 1em 0em;"></a>
         </div>
 
         <span class="tit">회원가입</span>
 
 
-        <div style="border:3px solid green; width:35em;">
+        <div style="width:35em;">
 
         <div class="line-5"></div>
 
-        <div class="id_area" style="border:3px solid blue">
+        <div class="id_area">
             <span class="sub-tit">아이디</span>
             <input type="text" id="id" name="loginId" placeholder="아이디를 입력해주세요." maxlength="20" onblur="blurId()" class="in">
 
@@ -172,7 +171,7 @@
         </div>
         <div class="line-5"></div>
 
-        <br><br>
+        <br>
 
         <div class="line-5"></div>
         <div class="name_area">
@@ -206,16 +205,16 @@
 
         <div class="num_area">
             <span class="sub-tit">전화번호</span>
-            <select id="phoneNumber" name="phoneNumber">
+            <select id="phoneNumber" name="phoneNumber" class="sel">
                 <option value="0">010</option>
                 <option value="1">011</option>
                 <option value="2">012</option>
                 <option value="3">013</option>
             </select>
             -
-            <input type="text" id="first" onblur="blurNum()">
+            <input type="text" id="first" onblur="blurNum()" class="sel">
             -
-            <input type="text" id="second" onblur="blurNum()">
+            <input type="text" id="second" onblur="blurNum()" class="sel">
 
             <div id="alert_num" class="alert"></div>
         </div>
@@ -401,7 +400,7 @@
                     chk=1;
             }
             if(chk==1) {
-                document.getElementById("alert_id").innerText = "Please enter alphabet or number";
+                document.getElementById("alert_id").innerText = "숫자나 알파벳을 입력하세요.";
                 return false;
             }
 
@@ -411,15 +410,15 @@
             }
             else if(value.length<6 || value.length>15) { //첫 번째 숫자 넣어야 함
                 if(value[0]>="0" && value[0]<="9") {
-                   document.getElementById("alert_id").innerText = "Please enter ID 6~12 characters and don't enter alphabet at first";
+                   document.getElementById("alert_id").innerText = "6~12자리문자를 입력하고 숫자를 처음에 사용하지마세요. ";
                    return false;
                 }
-                document.getElementById("alert_id").innerText = "Please enter ID 6~12 characters";
+                document.getElementById("alert_id").innerText = "6~12자리의 문자를 입력하세요.";
                 return false;
             }
             else { //개수는 맞지만 형식 불일치
                 if(value[0]>="0" && value[0]<="9") {
-                   document.getElementById("alert_id").innerText = "Don't enter alphabet at first";
+                   document.getElementById("alert_id").innerText = "숫자를 처음에 사용하지마세요.";
                    return false;
                 }
             }
@@ -436,7 +435,7 @@
                     chk=1;
             }
             if(chk==1) {
-                document.getElementById("alert_pw1").innerText = "Please enter alphabet or number or !@#";
+                document.getElementById("alert_pw1").innerText = "알파벳이나 숫자 또는 !, @, #을 입력하세요.";
                 return false;
             }
 
@@ -445,7 +444,7 @@
                 return false;
             }
             else if(value.length<6 || value.length>15) { //첫 번째 숫자 넣어야 함
-                document.getElementById("alert_pw1").innerText = "Please enter ID 6~12 characters";
+                document.getElementById("alert_pw1").innerText = "6~12자리의 문자를 입력하세요.";
                 return false;
             }
             chkPw = 1
@@ -460,7 +459,7 @@
                 return false;
             }
             else if(value2.length<6 || value2.length>15) {
-                document.getElementById("alert_pw2").innerText = "Please enter ID 6~12 characters";
+                document.getElementById("alert_pw2").innerText = "6~12자리의 문자를 입력하세요.";
                 return false;
             }
             else if(value1!=value2) {
@@ -476,7 +475,7 @@
                 return false;
             }
             if(testName.test(form.name.value) == false) {
-                document.getElementById("alert_name").innerText = "Wrong input";
+                document.getElementById("alert_name").innerText = "잘못된 입력입니다.";
                 return false;
             }
             chkName = 1
@@ -490,7 +489,7 @@
             }
 
             if(!(testEmail.test(email.value))) {
-                document.getElementById("alert_email").innerText = "Wrong input";
+                document.getElementById("alert_email").innerText = "잘못된 입력입니다.";
                 return false;
             }
             chkEmail = 1
@@ -512,7 +511,7 @@
                 }
             }
             if((f=="" && s=="") || !(f.length==4 && s.length==4) || chk==1) {
-                document.getElementById("alert_num").innerText = "Wrong input";
+                document.getElementById("alert_num").innerText = "잘못된 입력입니다.";
                 return false;
             }
             chkNum = 1;
@@ -522,7 +521,7 @@
         function checkSubmit() {
             if(chkId==1 && chkPw==1 && chkName==1 && chkEmail==1 && chkNum==1)
                 return true;
-            alert("입력다시")
+            alert("입력을 다시해주세요.")
             return false;
         }
 

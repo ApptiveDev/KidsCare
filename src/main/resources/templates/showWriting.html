@@ -4,7 +4,7 @@
 <script src = "/static/sidebar.js"></script>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>특정글</title>
 
     <style>
     .board {
@@ -160,7 +160,7 @@
     </style>
 </head>
 <body>
-<div style="width:79em; position:relative">
+<div style="width:100%; position:relative">
     <div id="sidebar" style="display:none">
         <center>
             <img src="/static/img/logo_g.png" style="width:10em; height:1.75em; margin:2em 0em 1em 0em;">
@@ -169,12 +169,10 @@
                 <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
             </div>
             <div class="line-29"></div>
-            <div class="side-box" onclick="location.href='/'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
-            <div class="side-box" onclick="location.href='/search'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
-            <div class="side-box" onclick="location.href='/search_result'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색 결과</span></div>
-            <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
-            <div class="side-box" onclick="location.href='/showWriting'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">특정글</span></div>
-            <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
+            <div class="side-box" onclick="location.href='/'"><img src="/static/img/home.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
+            <div class="side-box" onclick="location.href='/search'"><img src="/static/img/search_icon.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
+            <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/all.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
+            <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/write.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
             <div class="line-30">
                 <div style="display:flex; margin: 1em 0em 0em 2.25em;">
                     <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
@@ -185,19 +183,18 @@
         </center>
     </div>
 
-<div class="header" >
-    <div>
-        <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
-    </div>
-
-    <div class="side">
-        <div style="border:1px solid black; border-top:none; border-bottom:none; margin-Right:1em; padding:0em 0.25em 0em 0.25em;">
-            <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
-            <img src="/static/img/tri.png">
+    <div class="header">
+        <div>
+            <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
         </div>
-        <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em;" id="sidebtn">
+        <div style="position:absolute;display:flex; right:2em; top:4.5em;">
+            <div style="border:1px solid black; border-top:none; border-bottom:none; padding:0em 0.25em 0em 0.25em;">
+                <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
+                <img src="/static/img/tri.png">
+            </div>
+            <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
+        </div>
     </div>
-</div>
 
 <center>
     <div style="width:50em;">
@@ -226,6 +223,7 @@
 
             <div class="line-1"></div>
             <!--댓글-->
+
             <div th:each="answer : ${answers}">
                 <div style="display:flex; margin:1em 0em 0em 4em;">
                   <img src="/static/img/pro2.png" style="width:2em; height:2em;">
@@ -244,21 +242,14 @@
                 <div  th:text="${answer.context}" class="ans">댓글</div>
                 <div class="line-1"></div>
             </div>
+            <form th:action="@{/contents/{id}/answer (id=${writing.id})}" method="post">
+                <div class="comment-title">댓글작성</div>
+                <textarea name="content" placeholder="내용을 입력해주세요." class="comment"></textarea>
 
-            <a th:if="${writing.member.loginId==m.loginId}" th:href="@{/contents/{id}/update (id=${writing.id})}">
-                글 수정
-            </a>
-            <a th:if="${writing.member.loginId==m.loginId}" th:href="@{/contents/writing/{id}/delete (id=${writing.id})}">
-                글 삭제
-            </a>
-         
 
-            <div class="comment-title">댓글작성</div>
-            <textarea placeholder="내용을 입력해주세요." class="comment"></textarea>
-
-<!--작성완료 클릭시 발생하는 이벤트 넣어야 함.-->
-            <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><button type="button" class="answer"><img src="/static/img/comment.png" style="width:1em; height:1.2em; margin:0.2em 0.5em 0em 0.4em"><div class="answer-content">작성완료</div></button>
-            </a>
+                <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><button class="answer"><img src="/static/img/comment.png" style="width:1em; height:1.2em; margin:0.2em 0.5em 0em 0.4em"><div class="answer-content">작성완료</div></button>
+                </a>
+            </form>
             <button class="post" onclick="location.href='/contents'"><span class="post-content">돌아가기</span></button>
         </div>
     </div>

@@ -121,13 +121,33 @@
     .heart {
       width:3em;
     }
+    .page-link {
+        color:black;
+        text-decoration: none;
+    }
+    a:visited {
+        color:black;
+        text-decoration: none;
+    }
+    .page-item {
+        font-family: NotoSansKR;
+      font-size: 1em;
+      font-weight: 300;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #a0a0a0;
+    }
     </style>
 </head>
 <body>
 
 
-<div style="width:79em; position:relative">
-    <div id="sidebar" style="display:none">
+
+<div style="width:100%; position:relative;">
+    <div id="sidebar" style="display:none;">
         <center>
             <img src="/static/img/logo_g.png" style="width:10em; height:1.75m; margin:2em 0em 1em 0em;">
             <div style="display:flex">
@@ -135,12 +155,10 @@
                 <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
             </div>
             <div class="line-29"></div>
-            <div class="side-box" onclick="location.href='/'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
-            <div class="side-box" onclick="location.href='/search'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
-            <div class="side-box" onclick="location.href='/search_result'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색 결과</span></div>
-            <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
-            <div class="side-box" onclick="location.href='/showWriting'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">특정글</span></div>
-            <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
+            <div class="side-box" onclick="location.href='/'"><img src="/static/img/home.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
+            <div class="side-box" onclick="location.href='/search'"><img src="/static/img/search_icon.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
+            <div class="side-box" onclick="location.href='/contents'"><img src="/static/img/all.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">전체글 목록</span></div>
+            <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/write.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
             <div class="line-30">
                 <div style="display:flex; margin: 1em 0em 0em 2.25em;">
                     <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
@@ -152,17 +170,16 @@
     </div>
 
 
-
-    <div class="header" >
-    <div>
-        <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
-    </div>
-        <div class="side">
-            <div style="border:1px solid black; border-top:none; border-bottom:none; margin-Right:1em; padding:0em 0.25em 0em 0.25em;">
+    <div class="header">
+        <div>
+            <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
+        </div>
+        <div style="position:absolute;display:flex; right:2em; top:4.5em;">
+            <div style="border:1px solid black; border-top:none; border-bottom:none; padding:0em 0.25em 0em 0.25em;">
                 <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
                 <img src="/static/img/tri.png">
             </div>
-            <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em;" id="sidebtn">
+            <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
         </div>
     </div>
 
@@ -199,42 +216,34 @@
                     </div>
                 </div>
             </div>
-                        <br>
+            <br>
             <button class="write" type="button" onclick="location.href='/contents/writing'"><span class="write-content">글작성</span></button>
         </div>
-    </center>
+        <br><br>
 
-    <nav aria-label="Page navigation example ">
-        <ul class="pagination">
-            <li class="page-item">
+            <nav aria-label="Page navigation example " style="margin-Left:20em;">
                 <a class="page-link" th:href="@{/contents/?page=1}" aria-label="Previous">
                     <span aria-hidden="true">처음</span>
                 </a>
-            </li>
-            <li class="page-item">
                 <a class="page-link" th:href="@{/contents(page = ${pagination.prevBlock})}" aria-label="Previous">
                     <span aria-hidden="true">이전</span>
                 </a>
-            </li>
-            <th:block  th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
-                <li class="page-item"
-                    th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
-                    th:each="pageButton : ${#numbers.sequence(start, end)}">
-                    <a class="page-link" th:href="@{/contents(page = ${pageButton})}" th:text="${pageButton}"></a>
-                </li>
-            </th:block>
-            <li class="page-item">
+                <th:block th:with="start = ${pagination.startPage}, end = ${pagination.endPage}" style="display:inline-block;">
+                    <span class="page-item"
+                        th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
+                        th:each="pageButton : ${#numbers.sequence(start, end)}">
+                        <a class="page-link" th:href="@{/contents(page = ${pageButton})}" th:text="${pageButton}"></a>
+                    </span>
+                </th:block>
                 <a class="page-link" th:href="@{/contents(page = ${pagination.nextBlock})}" aria-label="Next">
                     <span aria-hidden="true">다음</span>
                 </a>
-            </li>
-            <li class="page-item">
                 <a class="page-link" th:href="@{/contents(page = ${pagination.totalPageCnt})}" aria-label="Previous">
                     <span aria-hidden="true">끝</span>
                 </a>
-            </li>
-        </ul>
-    </nav>
+            </nav>
+
+    </center>
 </div>
 </body>
 </html>
