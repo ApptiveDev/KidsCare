@@ -241,8 +241,8 @@
   <div id="sidebar" style="display:none; height:25em">
     <center>
       <img src="/static/img/logo_g.png" style="width:10em; height:1.75em; margin:2em 0em 1em 0em;">
-      <div style="display:flex">
-        <div class="intro">반갑습니다 황정호님!</div>
+      <div th:if="${isLogined!=null}" style="display:flex">
+        <div class="intro" th:text="'반갑습니다. '+${nickName}+'님!'"></div>
         <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
       </div>
       <div class="line-29"></div>
@@ -252,11 +252,13 @@
       <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/write.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
       <div class="line-30">
         <div style="display:flex; margin: 1em 0em 0em 2.25em;">
-          <a th:href="@{/member/login}" th:unless="${isLogined=='true'}"  class="side-menu">로그인</a>
+<!--          <div th:if="${isLogined}">-->
+          <a th:if="${isLogined==null}" th:href="@{/member/login}"  th:value="로그인" class="side-menu"></a>
+<!--          </div>-->
 <!--          <span class="side-menu" th:unless="${isLogined:? '' =='true'}" onclick="location.href='/member/login'">unless!!</span>-->
 
           <div class="vector-16"></div>
-          <div th:unless="${isLogined}" class="side-menu"  onclick="location.href='/member/signup'">회원가입</div>
+          <div th:if="${isLogined==null}" class="side-menu"  onclick="location.href='/member/signup'">회원가입</div>
         </div>
       </div>
     </center>
@@ -267,9 +269,9 @@
         <a href="/"><img class="logo" src="/static/img/logo.png" alt="로고"></a>
       </div>
     <div style="position:absolute;display:flex; right:2em; top:4.5em;">
-      <span onclick="location.href='/member/login'" class="menu">로그인</span>
-      <div class="line-22"></div>
-      <span onclick="location.href='/member/signup'" class="menu">회원가입</span>
+      <span th:if="${isLogined==null}" onclick="location.href='/member/login'" class="menu">로그인</span>
+      <div th:if="${isLogined==null}" class="line-22"></div>
+      <span th:if="${isLogined==null}" onclick="location.href='/member/signup'" class="menu">회원가입</span>
       <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
     </div>
   </div>
