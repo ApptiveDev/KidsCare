@@ -235,7 +235,10 @@ public class ContentsWritingController {
                 model.addAttribute("writing", writing);
                 model.addAttribute("isLogined", "true");
                 model.addAttribute("m", (Member) sess.getAttribute("member"));
-                model.addAttribute("form", new WritingDTO());//신기하다.
+                WritingDTO dto = new WritingDTO();
+                dto.setContext(writing.getContext());
+                dto.setTitle(writing.getTitle());
+                model.addAttribute("form", dto);//updateWriting.html을 봐라. 신기하다.
                 return "updateWriting";
             }
             return "notYourWriting";

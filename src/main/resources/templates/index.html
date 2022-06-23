@@ -253,9 +253,11 @@
       <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
       <div class="line-30">
         <div style="display:flex; margin: 1em 0em 0em 2.25em;">
-          <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
+          <a th:href="@{/member/login}" th:unless="${isLogined=='true'}"  class="side-menu">로그인</a>
+<!--          <span class="side-menu" th:unless="${isLogined:? '' =='true'}" onclick="location.href='/member/login'">unless!!</span>-->
+
           <div class="vector-16"></div>
-          <span class="side-menu" onclick="location.href='/member/signup'">회원가입</span>
+          <div th:unless="${isLogined}" class="side-menu"  onclick="location.href='/member/signup'">회원가입</div>
         </div>
       </div>
     </center>
