@@ -66,13 +66,15 @@
       color: #000;
     }
     .result-date {
-      width:7em;
       font-size: 0.9em;
       margin-Top:0.1em;
+      color:#888888;
+      margin-Right:1em;
     }
     .result-writer {
-      width:5em;
-      margin-Left: 2em;
+      text-align:left;
+      width:10em;
+      color:#181818;
     }
     .result-content {
       margin:0.8em 0em 0.8em 0em;
@@ -177,7 +179,6 @@
         <div style="position:absolute;display:flex; right:2em; top:4.5em;">
             <div style="border:1px solid black; border-top:none; border-bottom:none; padding:0em 0.25em 0em 0.25em;">
                 <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
-                <img src="/static/img/tri.png">
             </div>
             <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
         </div>
@@ -189,16 +190,17 @@
                 <span class="all-title">전체글</span>
                 <div class="line-23"></div>
             </div>
-            <div style="display:flex;width:100%; height:2em;">
-                <div style="width:90%">
-                    <button onclick="location.href='/search'"><img src="/static/img/sch.png" class="img"/></button>
-                </div>
+            <div style="display:flex; width:100%; height:2em;">
+                <div style="width:600em;"></div>
+                <select style="" onchange="if(this.value) location.href=(this.value);"  name="sort" class="sort" required autofocus>
+                    <option value="/contents" selected>최신순</option>
+                    <option value="/contents/own">나의 글</option>
+                </select>
 
-                    <select onchange="if(this.value) location.href=(this.value);"  name="sort" class="sort" required autofocus>
-                        <option value="/contents" selected>최신순</option>
-                        <option value="/contents/own">내꺼</option>
-                    </select>
+                <div style="width:90%;">
+                    <button onclick="location.href='/search'" style="float:right;"><img src="/static/img/sch.png" class="img"/></button>
                 </div>
+            </div>
 
             <div class="result" th:each="writing : ${writingList}">
 <!--                <span scope="row" th:text="${pagination.startIndex + writingStat.index + 1}">글 번호</span>-->
