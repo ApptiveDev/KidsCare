@@ -19,14 +19,21 @@
       text-align: left;
       color: #000;
     }
+    .line {
+      width: 50em;
+      height: 0.1em;
+      border: solid 2px #ededed;
+      border-right:none;
+      border-left:none;
+    }
     .line-1 {
       height:0.1em;
       background-color: #ededed;
     }
     .title {
-      margin-Left:3em;
+      margin:0.75em 0em 0.75em 2em;
       font-family: NotoSansKR;
-      font-size: 24px;
+      font-size: 1.5em;
       font-weight: 500;
       font-stretch: normal;
       font-style: normal;
@@ -37,9 +44,9 @@
     }
     .content {
       margin-Top:0.5em;
-      margin-Left:3em;
+      margin-Left:2em;
       font-family: NotoSansKR;
-      font-size: 24px;
+      font-size: 1.5em;
       font-weight: 300;
       font-stretch: normal;
       font-style: normal;
@@ -62,10 +69,9 @@
       color: #000;
     }
     .date {
-      margin-Top:0.2em;
-      float:right;
+      margin:0em 0em 1em 5.4em;
       font-family: NotoSansKR;
-      font-size: 1em;
+      font-size: 0.75em;
       font-weight: 300;
       font-stretch: normal;
       font-style: normal;
@@ -75,7 +81,7 @@
       color: #888;
     }
     .ans {
-      margin:0em 0em 1em 6em;
+      margin:0.75em 0em 0.75em 4em;
       font-family: NotoSansKR;
       font-size: 1em;
       font-weight: 300;
@@ -157,6 +163,11 @@
       text-align: left;
       color: rgba(0, 0, 0, 0.28);
     }
+    .ans-btn {
+        background-color:transparent;
+        border:1px solid grey;
+        cursor:pointer;
+    }
     </style>
 </head>
 <body>
@@ -190,7 +201,6 @@
         <div style="position:absolute;display:flex; right:2em; top:4.5em;">
             <div style="border:1px solid black; border-top:none; border-bottom:none; padding:0em 0.25em 0em 0.25em;">
                 <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
-                <img src="/static/img/tri.png">
             </div>
             <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
         </div>
@@ -206,40 +216,45 @@
                 <div style="display:flex; margin:4em 0em 0em 3em;">
                     <img src="/static/img/pro1.png" style="width:4em; height:4em;">
                     <div style="margin:0.5em 0em 0em 1em;">
-                        <div th:text="${writing.member.nickName}">김김김</div>
-                        <div th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}">20분 전</div>
+                        <div th:text="${writing.member.nickName}" style="text-align:left;">김김김</div>
+                        <div th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}">Today</div>
 <!--                    <div th:text="${nickName}">김김김</div>-->
 <!--                    <div th:text="${#calendars.format(#calendars.createNow(),'HH:MM')}">20분 전</div>-->
                     </div>
                 </div>
-                <br>
                 <div th:text="${title}" class="title">제목</div>
                 <div th:text="${context}" class="content">내용</div>
-                <div class="bubble" style="display:flex; margin:1em 0em 1em 4.5em;">
+                <div class="bubble" style="display:flex; margin:1em 0em 1em 3em;">
                     <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
                     <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
                 </div>
             </div>
 
-            <div class="line-1"></div>
+            <div class="line"></div>
             <!--댓글-->
 
             <div th:each="answer : ${answers}">
                 <div style="display:flex; margin:1em 0em 0em 4em;">
-                  <img src="/static/img/pro2.png" style="width:2em; height:2em;">
-                  <div style="margin:0.4em 0em 0em 0.5em">
+                  <img src="/static/img/pro2.png" style="width:2em; height:2em; margin-Top:0.25em;">
+                  <div style="margin:0.4em 0em 0em 0.5em; display:flex; width:43em;">
                     <div th:text="${answer.nickName}" class="nick">닉네임</div>
-                    <span th:text="${#temporals.format(answer.createDate, 'yyyy.MM.dd')}" class="date">날짜</span>
-                    <a href="#" th:href="@{/contents/{id}/feedback (id=${answer.id})}">좋아요</a>
+                      <div style="display:flex;">
+                          <button style="width:4.5em; margin-Right:1em;" class="ans-btn">
+                              <a style="text-decoration: none; color:black;" href="#" th:href="@{/contents/{id}/feedback (id=${answer.id})}">좋아요</a>
+                          </button>
+                          <button style="width:4.5em;" class="ans-btn">
+                              <a style="text-decoration: none; color:black;" th:if="${answer.nickName==m.nickName}" th:href="@{/contents/{writingId}/{answerId}/delete (writingId=${writing.id}, answerId=${answer.id})}">
+                                  삭제
+                              </a>
+                          </button>
+                      </div>
 <!--                    <a href="#" th:href="@{/contents/{writingId}/{answerId}/delete (writingId=${writing.id},answerId=${answer.id})}">삭제</a>-->
                       <!--확인 -->
-                      <a th:if="${answer.nickName==m.nickName}" th:href="@{/contents/{writingId}/{answerId}/delete (writingId=${writing.id}, answerId=${answer.id})}">
-                          삭제
-                      </a>
                       <!--확인 -->
                   </div>
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>
+                <div th:text="${#temporals.format(answer.createDate, 'yyyy.MM.dd')}" class="date">날짜</div>
                 <div class="line-1"></div>
             </div>
             <form th:action="@{/contents/{id}/answer (id=${writing.id})}" method="post">
