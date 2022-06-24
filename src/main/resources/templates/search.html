@@ -128,7 +128,6 @@
         <div style="position:absolute;display:flex; right:2em; top:4.5em;">
             <div style="border:1px solid black; border-top:none; border-bottom:none; padding:0em 0.25em 0em 0.25em;">
                 <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
-                <img src="/static/img/tri.png">
             </div>
             <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
         </div>
@@ -147,7 +146,7 @@
                 <div id="tag1">
                     <div style="margin:1.5em 0em 1.5em 10em; display:flex">
                         <img src="/static/img/hand.png" class="img"/>
-                        <div style="margin:0em 0em 0em 0.5em;"><span class="title">손, 발</span></div>
+                        <div style="margin:0em 0em 0em 0.5em;"><span class="title">소화</span></div>
                     </div>
                     <div id="btn1">
                         <input type="hidden" value="0" id="복통" name="복통"/>
@@ -164,7 +163,7 @@
                 <div id="tag2">
                     <div style="margin:1.5em 0em 1.5em 10em; display:flex">
                         <img src="/static/img/psy.png" class="img"/>
-                        <div style="margin:0em 0em 0em 0.5em;"><span class="title">심리</span></div>
+                        <div style="margin:0em 0em 0em 0.5em;"><span class="title">기관지</span></div>
                     </div>
                     <div id="btn2">
                         <input type="hidden" value="0" id="비염" name="비염"/>
@@ -182,9 +181,9 @@
                 <div id="tag3">
                     <div style="margin:1.5em 0em 1.5em 10em; display:flex">
                         <img src="/static/img/nerve.png" class="img"/>
-                        <div style="margin:0em 0em 0em 0.5em;"><span class="title">신경</span></div>
+                        <div style="margin:0em 0em 0em 0.5em;"><span class="title">피부</span></div>
                     </div>
-                    <div id="btn3">
+                    <div id="btn3" style="margin-Right:13em;">
                         <input type="hidden" value="0" id="알레르기" name="알레르기"/>
                         <button value="알레르기" type="button" onclick="onChg(this)" id="b7" class="btn"><span class="text" id="t7">알레르기</span></button>
 

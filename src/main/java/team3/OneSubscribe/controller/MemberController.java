@@ -30,8 +30,8 @@ public class MemberController {
             session = request.getSession();//세션이 없다면 세션생성.
             m=memberRepository.findByLoginId(m.getLoginId());
             session.setAttribute("member", m);
-            model.addAttribute("isLogined", "true");
-            model.addAttribute("nickName", m.getNickName());
+//            model.addAttribute("isLogined", "true");
+//            model.addAttribute("nickName", m.getNickName());
             return "redirect:/";//로그인 성공
         }
         return "loginFail";

@@ -104,6 +104,7 @@
       color: #f0f0f0;
     }
     .btn {
+    cursor:pointer;
     margin-Bottom:3em;
     width:20em;
     height:3em;
@@ -130,7 +131,7 @@
 <div style="width:100%;">
 <center>
 <div class="signUp" onsubmit="return checkSubmit();" style="width:35em;">
-    <form name="signUp_form" method="get">
+    <form name="signup" method="post">
         <div>
             <a href="/"><img src="/static/img/search.png" alt="로고" style="width:12em; height:10em; margin-Top:4em;"></a>
             <div></div>
@@ -308,7 +309,8 @@
         var testEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
         var testName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
         var chkId = 0
-        var chkPw = 0
+        var chkPw1 = 0
+        var chkPw2 = 0
         var chkName = 0
         var chkEmail = 0
         var chkNum = 0
@@ -389,9 +391,6 @@
     	}
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-
         function checkId() {
             var value =  form.id.value;
             var chk=0;
@@ -447,7 +446,7 @@
                 document.getElementById("alert_pw1").innerText = "6~12자리의 문자를 입력하세요.";
                 return false;
             }
-            chkPw = 1
+            chkPw1 = 1
             return true;
         }
 
@@ -466,6 +465,7 @@
                 document.getElementById("alert_pw2").innerText = "비밀번호가 일치하지 않습니다.";
                 return false;
             }
+            chkPw2 = 1
             return true;
         }
 
@@ -519,7 +519,7 @@
         }
 
         function checkSubmit() {
-            if(chkId==1 && chkPw==1 && chkName==1 && chkEmail==1 && chkNum==1)
+            if(chkId==1 && chkPw1==1 && chkPw2==1 && chkName==1 && chkEmail==1 && chkNum==1)
                 return true;
             alert("입력을 다시해주세요.")
             return false;
