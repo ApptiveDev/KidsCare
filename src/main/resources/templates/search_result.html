@@ -240,7 +240,7 @@
         </div>
 
         <div class="search" style="display:flex; margin:2em 0em 0em 1em;">
-            <button class="sch-btn" type="button" onclick="s()">
+            <button onclick="location.href='/search'" class="sch-btn" type="button">
                 <img src="/static/img/sch.png" class="sch-img"/>
             </button>
 
@@ -254,7 +254,7 @@
 
         <div style="float:left; margin: 1em 0em 0em 5em;">
             <span class="num" th:text="'전체 ' + ${searchCounting} + '개'">전체</span>
-            <span style="margin-Left:43em">최신순</span>
+            <span style="margin-Left:43em">연관순</span>
         </div>
         <br>
         <br>
