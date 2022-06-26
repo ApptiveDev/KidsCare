@@ -34,7 +34,7 @@ public class TestController {
     @GetMapping("/setting")
     public String makeTheId(){
         Member member1 = new Member();
-        member1.setName("choi");
+        member1.setNickName("choi");
         member1.setLoginId("test");
         member1.setLoginPassword("test1");
         memberService.save(member1);
