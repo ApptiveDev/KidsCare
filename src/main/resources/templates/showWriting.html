@@ -175,8 +175,8 @@
     <div id="sidebar" style="display:none; height:25em">
         <center>
             <img src="/static/img/logo_g.png" style="width:10em; height:1.75em; margin:2em 0em 1em 0em;">
-            <div th:if="${isLogined!=null}" style="display:flex">
-                <div class="intro" th:text="'반갑습니다. '+${nickName}+'님!'"></div>
+            <div style="display:flex">
+                <div class="intro" th:text="'반갑습니다. '+${m.getName()}+'님!'"></div>
                 <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
             </div>
             <br>

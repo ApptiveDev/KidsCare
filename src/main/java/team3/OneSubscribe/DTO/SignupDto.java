@@ -25,6 +25,6 @@ public class SignupDto {
 
     private int who;//expertArr의 index
 
-    private final String[] expertArr = {"", "NONEXPERT", "DOCTOR"};
+    private final String[] expertArr = { "DOCTOR", "NONEXPERT"};
 
 }
