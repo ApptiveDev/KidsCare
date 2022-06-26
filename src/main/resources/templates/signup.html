@@ -130,8 +130,9 @@
 <body>
 <div style="width:100%;">
 <center>
-<div class="signUp" onsubmit="return checkSubmit();" style="width:35em;">
-    <form name="signUp_form" method="get">
+
+<div class="signUp" style="width:35em;">
+    <form name="signUp_form" method="get" action="/" onsubmit="return checkSubmit();">
         <div>
             <a href="/"><img src="/static/img/search.png" alt="로고" style="width:12em; height:10em; margin-Top:4em;"></a>
             <div></div>
@@ -252,17 +253,10 @@
         </div>
         <div class="line-5"></div>
 
-
-
-
-
         <br>
         <button type="submit" class="btn"><span class="btn-content">회원가입</span></button>
-
-
         </div>
     </form>
-
 </div>
 </center>
 <script>
@@ -421,7 +415,7 @@
                    return false;
                 }
             }
-            chkId = 1
+            chkId = 1;
             return true;
         }
 
@@ -446,7 +440,7 @@
                 document.getElementById("alert_pw1").innerText = "6~12자리의 문자를 입력하세요.";
                 return false;
             }
-            chkPw1 = 1
+            chkPw1 = 1;
             return true;
         }
 
@@ -465,7 +459,7 @@
                 document.getElementById("alert_pw2").innerText = "비밀번호가 일치하지 않습니다.";
                 return false;
             }
-            chkPw2 = 1
+            chkPw2 = 1;
             return true;
         }
 
@@ -478,7 +472,7 @@
                 document.getElementById("alert_name").innerText = "잘못된 입력입니다.";
                 return false;
             }
-            chkName = 1
+            chkName = 1;
             return true;
         }
 
@@ -492,22 +486,22 @@
                 document.getElementById("alert_email").innerText = "잘못된 입력입니다.";
                 return false;
             }
-            chkEmail = 1
+            chkEmail = 1;
             return true;
         }
 
         function checkNum() {
             var f = form.first.value;
             var s = form.second.value;
-            var chk=0
+            var chk=0;
             for(var i=0; i<f.length; i++) {
                 if(!(f[i]>="0" && f[i]<="9")) {
-                    chk = 1
+                    chk = 1;
                 }
             }
             for(var i=0; i<s.length; i++) {
                 if(!(s[i]>="0" && s[i]<="9")) {
-                    chk = 1
+                    chk = 1;
                 }
             }
             if((f=="" && s=="") || !(f.length==4 && s.length==4) || chk==1) {
@@ -524,9 +518,6 @@
             alert("입력을 다시해주세요.")
             return false;
         }
-
-
-
     </script>
 </div>
 </body>
