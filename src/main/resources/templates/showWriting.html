@@ -225,8 +225,13 @@
                 <div th:text="${title}" class="title">제목</div>
                 <div th:text="${context}" class="content">내용</div>
                 <div class="bubble" style="display:flex; margin:1em 0em 1em 3em;">
-                    <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
-                    <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
+                    <div style="width:42.75em;text-align:left; display:flex">
+                        <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
+                        <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
+                    </div>
+                    <button style="width:4.5em; height:2.25em;" class="ans-btn">
+                        <a style="text-decoration: none; color:black;" href="/updateWriting">글수정</a>
+                    </button>
                 </div>
             </div>
 
