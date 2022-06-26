@@ -230,7 +230,7 @@
                         <div><sapn th:text="${writing.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
                     </div>
                     <button style="width:4.5em; height:2.25em;" class="ans-btn">
-                        <a style="text-decoration: none; color:black;" href="/updateWriting">글수정</a>
+                        <a style="text-decoration: none; color:black;" th:href="@{/contents/{writingId}/update (writingId=${writing.id})}">글수정</a>
                     </button>
                 </div>
             </div>
