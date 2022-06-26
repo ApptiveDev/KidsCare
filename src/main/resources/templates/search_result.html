@@ -226,6 +226,7 @@
         <div style="position:absolute;display:flex; right:2em; top:4.5em;">
             <div style="border:1px solid black; border-top:none; border-bottom:none; padding:0em 0.25em 0em 0.25em;">
                 <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
+                <img src="/static/img/tri.png">
             </div>
             <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
         </div>
@@ -244,12 +245,17 @@
 <!--            </button>-->
             <span style="margin:0em 0em 0em 2.5em;font-size:1.5em;width10em;">검색 태그 : </span>
 
+
             <!-- 버튼 타임리프??-->
             <div  style="display:flex;flex-wrap: wrap; width:45em;">
                 <div class="sch-tag" th:each="diseaseName : ${diseaseNamesKorean}">
                     <span th:text="${diseaseName}" class="sch-content">병</span>
                 </div>
             </div>
+            <!-- 밑에 부분 체크(오른쪽으루 붙이고 싶음) -->
+            <button onclick="location.href='/search'" class="sch-btn" type="button">
+                <img src="/static/img/sch.png" class="sch-img"/>
+            </button>
         </div>
 
         <div class="vector-4"></div>
