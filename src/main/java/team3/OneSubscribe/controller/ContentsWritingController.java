@@ -269,7 +269,7 @@ public class ContentsWritingController {
         if (sess != null && ((Member) sess.getAttribute("member")).getLoginId() != null) {//로그인 되었을 때
             Writing writing = writingRepository.findOneById(writingId);
             Member m = (Member) sess.getAttribute("member");
-            if (writing.getMember().getLoginId() == m.getLoginId()) {//글쓴이가 같을 때
+            if (writing.getMember().getLoginId().equals(m.getLoginId())) {//글쓴이가 같을 때
                 model.addAttribute("isWriter", "true");
                 model.addAttribute("writing", writing);
                 model.addAttribute("isLogined", "true");
