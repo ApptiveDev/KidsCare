@@ -42,8 +42,13 @@ public class ContentsWritingController {
     private final AnswerRepository answerRepository;
 
     @GetMapping("/writing")
-    public String writingPage(Model model) {
+    public String writingPage(Model model, HttpServletRequest request) {
         model.addAttribute("form", new WritingDTO());
+        HttpSession sess = request.getSession(false);
+        if (sess != null) {
+            Member m = (Member) sess.getAttribute("member");
+            model.addAttribute("name", m.getName());
+        }
         return "writing";
     }
 
@@ -138,7 +143,7 @@ public class ContentsWritingController {
     //전체글 조회
 
     @GetMapping("")
-    public String contents(Model model, @RequestParam(defaultValue = "1") int page) {
+    public String contents(Model model, @RequestParam(defaultValue = "1") int page, HttpServletRequest request) {
         List<Writing> writings = writingRepository.findAll();
 
         // 총 게시물 수
@@ -157,6 +162,12 @@ public class ContentsWritingController {
         Collections.reverse(writingList);
         model.addAttribute("writingList", writingList);
         model.addAttribute("pagination", pagination);
+        HttpSession sess = request.getSession(false);
+        Member m=null;
+        if (sess != null) {
+            m= (Member)sess.getAttribute("member");
+            model.addAttribute("name", m.getName());
+        }
 
         return "posts";
     }
@@ -206,6 +217,8 @@ public class ContentsWritingController {
             model.addAttribute("m", m);
 
         }
+
+
 
         //글찾기
         Writing writing = (Writing) writingRepository.findOneById(writingId);

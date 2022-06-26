@@ -3,6 +3,7 @@ package team3.OneSubscribe.controller.interceptor;
 import lombok.NoArgsConstructor;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 import team3.OneSubscribe.domain.Member;
 
@@ -28,10 +29,11 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession sess = request.getSession(false);
+
+
         boolean flag;
         if (sess != null) {
             Member m = (Member) sess.getAttribute("member");//세션 없을 때 세션 생성 x
-
 
 //        HttpSession m =  request.getSession(false);//세션의 유무만을 확인하니까 통과해버린다.
 //        Enumeration<String> em = m.getAttributeNames();
