@@ -28,7 +28,7 @@ public class MemberController {
         HttpSession session;
         if (memberService.login(m)) {
             session = request.getSession();//세션이 없다면 세션생성.
-            m=memberRepository.findByLoginId(m.getLoginId());
+            m = memberRepository.findByLoginId(m.getLoginId());
             session.setAttribute("member", m);
 //            model.addAttribute("isLogined", "true");
 //            model.addAttribute("nickName", m.getNickName());
@@ -69,7 +69,6 @@ public class MemberController {
     }
 
 
-
     //회원을 등록해준다. 등록에 성공하면 id를 반환. 실패하면 메시지를 반환.
     //어떤 검증에서 에러가 발생했는지 알기 위해 if문을 나눠서 작성.
     //에러를 보면 어디서 뭔가 잘못되었는지 한눈에 알 수 있어야 한다. errorCode를 같이 출력함.
@@ -80,14 +79,13 @@ public class MemberController {
         Member member = new Member(signupDto);
         int errorCode = 0;
         if ((errorCode = FormCheck.idFormCheck(signupDto.getLoginId())) != 0) {
-            throw new RuntimeException("id 형식이 맞지 않습니다. errorCode : " + errorCode);
+            return "IdPwFormError";
         }
         if ((errorCode = FormCheck.pwFormCheck(signupDto.getLoginPassword())) != 0) {
-            System.out.println("테스트 : " + signupDto.getLoginPassword());
-            throw new RuntimeException("password 형식이 맞지 않습니다. errorCode : " + errorCode);
+            return "IdPwFormError";
         }
         if (memberService.isIdDuplicated(signupDto.getLoginId())) { //ajax로 중복처리 했더라도 검사하는게 맞을듯.
-            throw new RuntimeException("이미 id가 존재합니다." + errorCode);
+            return "duplicatedID";
         }
         memberService.save(member); // id, pw 형식, 중복검사를 통과했을 때 저장.
         return "redirect:/";
@@ -101,7 +99,7 @@ public class MemberController {
     public boolean isIdDuplicated(@RequestBody String loginId) {
 
         System.out.println("isIdDuplicated");
-        System.out.println("loginId : "+loginId);
+        System.out.println("loginId : " + loginId);
         return memberService.isIdDuplicated(loginId);
     }
 

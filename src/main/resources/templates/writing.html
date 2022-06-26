@@ -133,7 +133,7 @@
             <div class="side-box" onclick="location.href='/showWriting'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">특정글</span></div>
             <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/side.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
             <div class="line-30">
-                <div style="display:flex; margin: 1em 0em 0em 2.25em;">
+                <div th:if="${name==null}" style="display:flex; margin: 1em 0em 0em 2.25em;">
                     <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
                     <div class="vector-16"></div>
                     <span class="side-menu" onclick="location.href='/member/signup'">회원가입</span>

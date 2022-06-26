@@ -208,14 +208,12 @@ public class ContentsWritingController {
         Member m;
         if (sess != null && (m = (Member) sess.getAttribute("member")) != null) {
             model.addAttribute("isLogined", "true");
-
             model.addAttribute("m", m);
         }
         else{
             m = new Member();
             m.setLoginId("notLogined");
             model.addAttribute("m", m);
-
         }
 
 
