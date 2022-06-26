@@ -76,7 +76,6 @@ public class MemberController {
     @PostMapping("/signup")
     public String signupMember(@ModelAttribute SignupDto signupDto) {
         System.out.println("테스트 : " + signupDto.getWho());
-        System.out.println("테스트 : " + signupDto.getExpertArr()[signupDto.getWho()]);
 
         Member member = new Member(signupDto);
         int errorCode = 0;

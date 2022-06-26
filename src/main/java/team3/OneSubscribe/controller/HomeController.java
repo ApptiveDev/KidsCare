@@ -46,7 +46,8 @@ public class HomeController {
         if (sess != null && sess.getAttribute("member") != null) { //로그인 했을 때
 //            System.out.println("로그인했다!");
             model.addAttribute("isLogined", true);
-            model.addAttribute("nickName", ((Member) sess.getAttribute("member")).getNickName());
+            System.out.println("테스트 : "+ ((Member) sess.getAttribute("member")));
+            model.addAttribute("nickName", ((Member) sess.getAttribute("member")).getName());
             System.out.println("nickName : " + ((Member) sess.getAttribute("member")).getNickName());
         }
 
