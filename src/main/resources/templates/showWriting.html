@@ -171,14 +171,15 @@
     </style>
 </head>
 <body>
-<div style="width:100%; position:relative">
-    <div id="sidebar" style="display:none">
+<div style="width:100%; height:100%; position:relative;">
+    <div id="sidebar" style="display:none; height:25em">
         <center>
             <img src="/static/img/logo_g.png" style="width:10em; height:1.75em; margin:2em 0em 1em 0em;">
             <div style="display:flex">
                 <div class="intro" th:text="'반갑습니다. '+${m.getName()}+'님!'"></div>
                 <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
             </div>
+            <br>
             <div class="line-29"></div>
             <div class="side-box" onclick="location.href='/'"><img src="/static/img/home.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">홈</span></div>
             <div class="side-box" onclick="location.href='/search'"><img src="/static/img/search_icon.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">검색창</span></div>
@@ -186,9 +187,9 @@
             <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/write.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
             <div class="line-30">
                 <div style="display:flex; margin: 1em 0em 0em 2.25em;">
-                    <span class="side-menu" onclick="location.href='/member/login'">로그인</span>
+                    <a th:if="${isLogined==null}" th:href="@{/member/login}"  th:value="로그인" class="side-menu" style="text-decoration:none">로그인</a>
                     <div class="vector-16"></div>
-                    <span class="side-menu" onclick="location.href='/member/signup'">회원가입</span>
+                    <div th:if="${isLogined==null}" class="side-menu"  onclick="location.href='/member/signup'">회원가입</div>
                 </div>
             </div>
         </center>
