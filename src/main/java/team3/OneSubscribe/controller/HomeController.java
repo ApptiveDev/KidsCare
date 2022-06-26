@@ -44,9 +44,10 @@ public class HomeController {
         HttpSession sess = request.getSession(false);//로그인 하면 회원가입, 로그인 버튼이 사라지도록.
 
         if (sess != null && sess.getAttribute("member") != null) { //로그인 했을 때
-            System.out.println("로그인했다!");
-            model.addAttribute("isLogined", "true");
+//            System.out.println("로그인했다!");
+            model.addAttribute("isLogined", true);
             model.addAttribute("nickName", ((Member) sess.getAttribute("member")).getNickName());
+            System.out.println("nickName : " + ((Member) sess.getAttribute("member")).getNickName());
         }
 
         // 금주의 베스트 글

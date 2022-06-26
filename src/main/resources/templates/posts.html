@@ -66,6 +66,7 @@
       color: #000;
     }
     .result-date {
+      width:7em;
       font-size: 0.9em;
       margin-Top:0.1em;
       color:#888888;
@@ -179,6 +180,7 @@
         <div style="position:absolute;display:flex; right:2em; top:4.5em;">
             <div style="border:1px solid black; border-top:none; border-bottom:none; padding:0em 0.25em 0em 0.25em;">
                 <span th:if="${isLogined}=='true'" th:text="${m.loginId} + '님'">계정이름</span>
+                <img src="/static/img/tri.png">
             </div>
             <img src="/static/img/sidebar.png" style="width:1.5em; height:1.25em; margin:0.1em 0em 0em 1em;" id="sidebtn">
         </div>
