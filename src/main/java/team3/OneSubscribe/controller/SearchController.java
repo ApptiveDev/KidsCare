@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import team3.OneSubscribe.DTO.Pagination;
 import team3.OneSubscribe.domain.DiseaseName;
+import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.MemberRepository;
@@ -54,6 +55,8 @@ public class SearchController {
 
         HttpSession session;
         session = request.getSession();//세션이 없다면 세션생성.
+        Member m =(Member) session.getAttribute("member");
+        model.addAttribute("name", m.getName());
         if(request.getParameter("복통") != null) {
             session.setAttribute("복통", request.getParameter("복통"));
             session.setAttribute("설사", request.getParameter("설사"));
