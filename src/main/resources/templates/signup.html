@@ -124,107 +124,137 @@
 </head>
 <body>
 <div style="width:100%;">
-    <center>
-        <div class="signUp" onsubmit="return checkSubmit();" style="width:35em;">
-            <form name="signUp_form" method="get">
-                <div>
-                    <a href="/"><img src="/static/img/search.png" alt="로고" style="width:12em; height:10em; margin-Top:4em;"></a>
-                    <div></div>
-                    <a href="/"><img src="/static/img/logo.png" alt="로고" style="width:22em; height:4em; margin:1em 0em 1em 0em;"></a>
-                </div>
-                <span class="tit">회원가입</span>
-                <div style="width:35em;">
-                    <div class="line-5"></div>
-                    <div class="id_area">
-                        <span class="sub-tit">아이디</span>
-                        <input type="text" id="id" name="loginId" placeholder="아이디를 입력해주세요." maxlength="20" onblur="blurId()" class="in">
-                        <!--            <input type="button" id ="idDuplicateCheckBtn" value="중복확인" style="float:right;" >-->
-                        <div id="alert_id" class="alert"></div>
-                    </div>
-                    <div class="line-3"></div>
-                    <div class="pw_area">
-                        <span class="sub-tit">비밀번호</span>
-                        <input type="password" id="pw1" name="loginPassword" placeholder="비밀번호를 입력해주세요." maxlength="20" onblur="blurPw1()" class="in">
-                        <div id="alert_pw1" class="alert"></div>
-                        <!--재확인 name 필요여부...-->
-                    </div>
-                    <div class="line-3"></div>
-                    <div>
-                        <span class="sub-tit">비밀번호 확인</span>
-                        <input type="password" id="pw2" name="pw2" placeholder="비밀번호를 다시 한번 입력해주세요." maxlength="20" onblur="blurPw2()" class="in">
-                        <div id="alert_pw2" class="alert"></div>
-                    </div>
-                    <div class="line-5"></div>
-                    <br>
-                    <div class="line-5"></div>
-                    <div class="name_area">
-                        <span class="sub-tit">이름</span>
-                        <input type="text" id="name" name="name" placeholder="이름을 입력해주세요." maxlength="40" onblur="blurName()" class="in">
-                        <div id="alert_name" class="alert"></div>
-                    </div>
-                    <div class="line-3"></div>
-                    <div>
-                        <span class="sub-tit">생년월일</span>
-                        <select name="yy" id="yy" class="sel"></select>
-                        <select name="mm" id="mm" class="sel"></select>
-                        <select name="dd" id="dd" class="sel"></select>
-                    </div>
-                    <div class="line-3"></div>
-                    <div>
-                        <span class="sub-tit">성별</span>
-                        <select id="gender" name="gender" class="sel">
-                            <option value="" selected>성별</option>
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
-                        </select>
-                    </div>
-                    <div class="line-3"></div>
-                    <div class="num_area">
-                        <span class="sub-tit">전화번호</span>
-                        <select id="phoneNumber" name="phoneNumber" class="sel">
-                            <option value="0">010</option>
-                            <option value="1">011</option>
-                            <option value="2">012</option>
-                            <option value="3">013</option>
-                        </select>
-                        -
-                        <input type="text" id="first" onblur="blurNum()" class="sel">
-                        -
-                        <input type="text" id="second" onblur="blurNum()" class="sel">
-                        <div id="alert_num" class="alert"></div>
-                    </div>
-                    <div class="line-3"></div>
-                    <div class="email_area">
-                        <span class="sub-tit">이메일</span>
-                        <input type="email" id="email" name="eMail" placeholder="xxx@xxxx.xxx" onblur="blurEmail()" class="in">
-                        <div id="alert_email" class="alert"></div>
-                    </div>
-                    <div class="line-3"></div>
-                    <div class="team_area">
-                        <span class="sub-tit">소속</span>
-                        <select id="team" name="team" class="sel">
-                            <option value="0">없음</option>
-                            <option value="1">부산대병원</option>
-                            <option value="2">부산병원</option>
-                            <option value="3">금정병원</option>
-                        </select>
-                    </div>
-                    <div class="line-5"></div>
-                    <br><br>
-                    <span class="quest">어떤 회원으로 키즈케어를 이용하시겠습니까?</span>
-                    <div class="line-5"></div>
-                    <div class="job_area">
-                        <button type="button" class="who" id="doc" style="background-color:#f6d876; border:none; margin-Right:3.5em;" onclick="f()"><span class="who-content" id="doc-content" style="color:#fff">의사</span></button>
-                        <button type="button" class="who" id="gur" onclick="gu()"><span class="who-content" id="gur-content">보호자</span></button>
-                    </div>
-                    <div class="line-5"></div>
-                    <br>
-                    <button type="submit" class="btn"><span class="btn-content">회원가입</span></button>
-                </div>
-            </form>
+<center>
+
+<div class="signUp" style="width:35em;">
+    <form name="signUp_form" method="get" action="/" onsubmit="return checkSubmit();">
+        <div>
+            <a href="/"><img src="/static/img/search.png" alt="로고" style="width:12em; height:10em; margin-Top:4em;"></a>
+            <div></div>
+            <a href="/"><img src="/static/img/logo.png" alt="로고" style="width:22em; height:4em; margin:1em 0em 1em 0em;"></a>
         </div>
-    </center>
-    <script>
+
+        <span class="tit">회원가입</span>
+
+
+        <div style="width:35em;">
+
+        <div class="line-5"></div>
+
+        <div class="id_area">
+            <span class="sub-tit">아이디</span>
+            <input type="text" id="id" name="loginId" placeholder="아이디를 입력해주세요." maxlength="20" onblur="blurId()" class="in">
+
+<!--            <input type="button" id ="idDuplicateCheckBtn" value="중복확인" style="float:right;" >-->
+
+            <div id="alert_id" class="alert"></div>
+        </div>
+
+        <div class="line-3"></div>
+
+        <div class="pw_area">
+            <span class="sub-tit">비밀번호</span>
+            <input type="password" id="pw1" name="loginPassword" placeholder="비밀번호를 입력해주세요." maxlength="20" onblur="blurPw1()" class="in">
+            <div id="alert_pw1" class="alert"></div>
+            <!--재확인 name 필요여부...-->
+        </div>
+
+            <div class="line-3"></div>
+
+        <div>
+            <span class="sub-tit">비밀번호 확인</span>
+            <input type="password" id="pw2" name="pw2" placeholder="비밀번호를 다시 한번 입력해주세요." maxlength="20" onblur="blurPw2()" class="in">
+            <div id="alert_pw2" class="alert"></div>
+        </div>
+        <div class="line-5"></div>
+
+        <br>
+
+        <div class="line-5"></div>
+        <div class="name_area">
+            <span class="sub-tit">이름</span>
+            <input type="text" id="name" name="name" placeholder="이름을 입력해주세요." maxlength="40" onblur="blurName()" class="in">
+            <div id="alert_name" class="alert"></div>
+        </div>
+
+        <div class="line-3"></div>
+
+        <div>
+            <span class="sub-tit">생년월일</span>
+            <select name="yy" id="yy" class="sel"></select>
+            <select name="mm" id="mm" class="sel"></select>
+            <select name="dd" id="dd" class="sel"></select>
+        </div>
+
+        <div class="line-3"></div>
+
+        <div>
+            <span class="sub-tit">성별</span>
+
+            <select id="gender" name="gender" class="sel">
+                <option value="" selected>성별</option>
+                <option value="M">남자</option>
+                <option value="F">여자</option>
+            </select>
+        </div>
+
+        <div class="line-3"></div>
+
+        <div class="num_area">
+            <span class="sub-tit">전화번호</span>
+            <select id="phoneNumber" name="phoneNumber" class="sel">
+                <option value="0">010</option>
+                <option value="1">011</option>
+                <option value="2">012</option>
+                <option value="3">013</option>
+            </select>
+            -
+            <input type="text" id="first" onblur="blurNum()" class="sel">
+            -
+            <input type="text" id="second" onblur="blurNum()" class="sel">
+
+            <div id="alert_num" class="alert"></div>
+        </div>
+
+        <div class="line-3"></div>
+
+        <div class="email_area">
+            <span class="sub-tit">이메일</span>
+            <input type="email" id="email" name="eMail" placeholder="xxx@xxxx.xxx" onblur="blurEmail()" class="in">
+            <div id="alert_email" class="alert"></div>
+        </div>
+
+        <div class="line-3"></div>
+
+        <div class="team_area">
+            <span class="sub-tit">소속</span>
+            <select id="team" name="team" class="sel">
+                <option value="0">없음</option>
+                <option value="1">부산대병원</option>
+                <option value="2">부산병원</option>
+                <option value="3">금정병원</option>
+            </select>
+        </div>
+
+        <div class="line-5"></div>
+
+        <br><br>
+
+        <span class="quest">어떤 회원으로 키즈케어를 이용하시겠습니까?</span>
+        <div class="line-5"></div>
+        <div class="job_area">
+            <button type="button" class="who" id="doc" style="background-color:#f6d876; border:none; margin-Right:3.5em;" onclick="f()"><span class="who-content" id="doc-content" style="color:#fff">의사</span></button>
+            <button type="button" class="who" id="gur" onclick="gu()"><span class="who-content" id="gur-content">보호자</span></button>
+        </div>
+        <div class="line-5"></div>
+
+        <br>
+        <button type="submit" class="btn"><span class="btn-content">회원가입</span></button>
+        </div>
+    </form>
+</div>
+</center>
+<script>
         var d = document.getElementById("doc");
         var dc = document.getElementById("doc-content");
         var g = document.getElementById("gur");
@@ -369,7 +399,7 @@
                     return false;
                 }
             }
-            chkId = 1
+            chkId = 1;
             return true;
         }
         function checkPw1() {
@@ -392,7 +422,7 @@
                 document.getElementById("alert_pw1").innerText = "6~12자리의 문자를 입력하세요.";
                 return false;
             }
-            chkPw1 = 1
+            chkPw1 = 1;
             return true;
         }
         function checkPw2() {
@@ -410,7 +440,7 @@
                 document.getElementById("alert_pw2").innerText = "비밀번호가 일치하지 않습니다.";
                 return false;
             }
-            chkPw2 = 1
+            chkPw2 = 1;
             return true;
         }
         function checkName() {
@@ -422,7 +452,7 @@
                 document.getElementById("alert_name").innerText = "잘못된 입력입니다.";
                 return false;
             }
-            chkName = 1
+            chkName = 1;
             return true;
         }
         function checkEmail() {
@@ -434,21 +464,21 @@
                 document.getElementById("alert_email").innerText = "잘못된 입력입니다.";
                 return false;
             }
-            chkEmail = 1
+            chkEmail = 1;
             return true;
         }
         function checkNum() {
             var f = form.first.value;
             var s = form.second.value;
-            var chk=0
+            var chk=0;
             for(var i=0; i<f.length; i++) {
                 if(!(f[i]>="0" && f[i]<="9")) {
-                    chk = 1
+                    chk = 1;
                 }
             }
             for(var i=0; i<s.length; i++) {
                 if(!(s[i]>="0" && s[i]<="9")) {
-                    chk = 1
+                    chk = 1;
                 }
             }
             if((f=="" && s=="") || !(f.length==4 && s.length==4) || chk==1) {
