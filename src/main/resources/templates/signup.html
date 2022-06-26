@@ -4,268 +4,227 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <script type="text/javascript" src="/minkun.js"></script>
-
     <style>
-    .line-5 {
-      margin:1.5em 0em 1.5em 0em;
-      width: 35em;
-      height: 0.2em;
-      background-color: #ededed;
-    }
-    .line-3 {
-      margin:1em 0em 1em 0em;
-      width: 35em;
-      height: 0.1em;
-      background-color: #ededed;
-    }
-    .alert {
-      font-family: NotoSansKR;
-      font-size: 0.75em;
-      font-weight: 500;
-      margin-Top:0.5em;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: normal;
-      text-align: left;
-      color: #fc5139;
-    }
-    .tit {
-      font-family: NotoSansKR;
-      font-size: 2em;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: normal;
-      text-align: left;
-      color: #000;
-    }
-    .sub-tit {
-      margin-Top:0.5em;
-      width:7em;
-      float:left;
-      font-family: NotoSansKR;
-      font-size: 1em;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: normal;
-      text-align: left;
-      color: #000;
-    }
-    .in {
-      border:none;
-      width: 25em;
-      height: 2.5em;
-      border-radius: 0.3em;
-      background-color: #f0f0f0;
-    }
-    .sel {
-      width:7em;
-      height:3em;
-      border-radius: 0.3em;
-      border:none;
-      background-color: #f0f0f0;
-    }
-
-
-
-
-    .quest {
-      font-family: NotoSansKR;
-      font-size: 1em;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1;
-      letter-spacing: normal;
-      text-align: left;
-      color: #000;
-    }
-    .who {
-      cursor:pointer;
-      width: 5em;
-      height: 2em;
-      border-radius: 1em;
-      border: solid 0.1em #f0f0f0;
-      background-color:#fff;
-    }
-    .who-content {
-      font-family: NotoSansKR;
-      font-size: 1em;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      text-align: center;
-      color: #f0f0f0;
-    }
-    .btn {
-    cursor:pointer;
-    margin-Bottom:3em;
-    width:20em;
-    height:3em;
-    flex-grow: 0;
-    border-radius: 0.5em;
-    background-color: #499e99;
-    border:none;
-    }
-    .btn-content {
-      flex-grow: 0;
-      font-family: NotoSansKR;
-      font-size: 1em;
-      font-weight: bold;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      text-align: center;
-      color: #fff;
-    }
+        .line-5 {
+            margin:1.5em 0em 1.5em 0em;
+            width: 35em;
+            height: 0.2em;
+            background-color: #ededed;
+        }
+        .line-3 {
+            margin:1em 0em 1em 0em;
+            width: 35em;
+            height: 0.1em;
+            background-color: #ededed;
+        }
+        .alert {
+            font-family: NotoSansKR;
+            font-size: 0.75em;
+            font-weight: 500;
+            margin-Top:0.5em;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-align: left;
+            color: #fc5139;
+        }
+        .tit {
+            font-family: NotoSansKR;
+            font-size: 2em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-align: left;
+            color: #000;
+        }
+        .sub-tit {
+            margin-Top:0.5em;
+            width:7em;
+            float:left;
+            font-family: NotoSansKR;
+            font-size: 1em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-align: left;
+            color: #000;
+        }
+        .in {
+            border:none;
+            width: 25em;
+            height: 2.5em;
+            border-radius: 0.3em;
+            background-color: #f0f0f0;
+        }
+        .sel {
+            width:7em;
+            height:3em;
+            border-radius: 0.3em;
+            border:none;
+            background-color: #f0f0f0;
+        }
+        .quest {
+            font-family: NotoSansKR;
+            font-size: 1em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-align: left;
+            color: #000;
+        }
+        .who {
+            cursor:pointer;
+            width: 5em;
+            height: 2em;
+            border-radius: 1em;
+            border: solid 0.1em #f0f0f0;
+            background-color:#fff;
+        }
+        .who-content {
+            font-family: NotoSansKR;
+            font-size: 1em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #f0f0f0;
+        }
+        .btn {
+            cursor:pointer;
+            margin-Bottom:3em;
+            width:20em;
+            height:3em;
+            flex-grow: 0;
+            border-radius: 0.5em;
+            background-color: #499e99;
+            border:none;
+        }
+        .btn-content {
+            flex-grow: 0;
+            font-family: NotoSansKR;
+            font-size: 1em;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
 <div style="width:100%;">
-<center>
-<div class="signUp" onsubmit="return checkSubmit();" style="width:35em;">
-    <form name="signup" method="post">
-        <div>
-            <a href="/"><img src="/static/img/search.png" alt="로고" style="width:12em; height:10em; margin-Top:4em;"></a>
-            <div></div>
-            <a href="/"><img src="/static/img/logo.png" alt="로고" style="width:22em; height:4em; margin:1em 0em 1em 0em;"></a>
+    <center>
+        <div class="signUp" onsubmit="return checkSubmit();" style="width:35em;">
+            <form name="signUp_form" method="get">
+                <div>
+                    <a href="/"><img src="/static/img/search.png" alt="로고" style="width:12em; height:10em; margin-Top:4em;"></a>
+                    <div></div>
+                    <a href="/"><img src="/static/img/logo.png" alt="로고" style="width:22em; height:4em; margin:1em 0em 1em 0em;"></a>
+                </div>
+                <span class="tit">회원가입</span>
+                <div style="width:35em;">
+                    <div class="line-5"></div>
+                    <div class="id_area">
+                        <span class="sub-tit">아이디</span>
+                        <input type="text" id="id" name="loginId" placeholder="아이디를 입력해주세요." maxlength="20" onblur="blurId()" class="in">
+                        <!--            <input type="button" id ="idDuplicateCheckBtn" value="중복확인" style="float:right;" >-->
+                        <div id="alert_id" class="alert"></div>
+                    </div>
+                    <div class="line-3"></div>
+                    <div class="pw_area">
+                        <span class="sub-tit">비밀번호</span>
+                        <input type="password" id="pw1" name="loginPassword" placeholder="비밀번호를 입력해주세요." maxlength="20" onblur="blurPw1()" class="in">
+                        <div id="alert_pw1" class="alert"></div>
+                        <!--재확인 name 필요여부...-->
+                    </div>
+                    <div class="line-3"></div>
+                    <div>
+                        <span class="sub-tit">비밀번호 확인</span>
+                        <input type="password" id="pw2" name="pw2" placeholder="비밀번호를 다시 한번 입력해주세요." maxlength="20" onblur="blurPw2()" class="in">
+                        <div id="alert_pw2" class="alert"></div>
+                    </div>
+                    <div class="line-5"></div>
+                    <br>
+                    <div class="line-5"></div>
+                    <div class="name_area">
+                        <span class="sub-tit">이름</span>
+                        <input type="text" id="name" name="name" placeholder="이름을 입력해주세요." maxlength="40" onblur="blurName()" class="in">
+                        <div id="alert_name" class="alert"></div>
+                    </div>
+                    <div class="line-3"></div>
+                    <div>
+                        <span class="sub-tit">생년월일</span>
+                        <select name="yy" id="yy" class="sel"></select>
+                        <select name="mm" id="mm" class="sel"></select>
+                        <select name="dd" id="dd" class="sel"></select>
+                    </div>
+                    <div class="line-3"></div>
+                    <div>
+                        <span class="sub-tit">성별</span>
+                        <select id="gender" name="gender" class="sel">
+                            <option value="" selected>성별</option>
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
+                        </select>
+                    </div>
+                    <div class="line-3"></div>
+                    <div class="num_area">
+                        <span class="sub-tit">전화번호</span>
+                        <select id="phoneNumber" name="phoneNumber" class="sel">
+                            <option value="0">010</option>
+                            <option value="1">011</option>
+                            <option value="2">012</option>
+                            <option value="3">013</option>
+                        </select>
+                        -
+                        <input type="text" id="first" onblur="blurNum()" class="sel">
+                        -
+                        <input type="text" id="second" onblur="blurNum()" class="sel">
+                        <div id="alert_num" class="alert"></div>
+                    </div>
+                    <div class="line-3"></div>
+                    <div class="email_area">
+                        <span class="sub-tit">이메일</span>
+                        <input type="email" id="email" name="eMail" placeholder="xxx@xxxx.xxx" onblur="blurEmail()" class="in">
+                        <div id="alert_email" class="alert"></div>
+                    </div>
+                    <div class="line-3"></div>
+                    <div class="team_area">
+                        <span class="sub-tit">소속</span>
+                        <select id="team" name="team" class="sel">
+                            <option value="0">없음</option>
+                            <option value="1">부산대병원</option>
+                            <option value="2">부산병원</option>
+                            <option value="3">금정병원</option>
+                        </select>
+                    </div>
+                    <div class="line-5"></div>
+                    <br><br>
+                    <span class="quest">어떤 회원으로 키즈케어를 이용하시겠습니까?</span>
+                    <div class="line-5"></div>
+                    <div class="job_area">
+                        <button type="button" class="who" id="doc" style="background-color:#f6d876; border:none; margin-Right:3.5em;" onclick="f()"><span class="who-content" id="doc-content" style="color:#fff">의사</span></button>
+                        <button type="button" class="who" id="gur" onclick="gu()"><span class="who-content" id="gur-content">보호자</span></button>
+                    </div>
+                    <div class="line-5"></div>
+                    <br>
+                    <button type="submit" class="btn"><span class="btn-content">회원가입</span></button>
+                </div>
+            </form>
         </div>
-
-        <span class="tit">회원가입</span>
-
-
-        <div style="width:35em;">
-
-        <div class="line-5"></div>
-
-        <div class="id_area">
-            <span class="sub-tit">아이디</span>
-            <input type="text" id="id" name="loginId" placeholder="아이디를 입력해주세요." maxlength="20" onblur="blurId()" class="in">
-
-<!--            <input type="button" id ="idDuplicateCheckBtn" value="중복확인" style="float:right;" >-->
-
-            <div id="alert_id" class="alert"></div>
-        </div>
-
-        <div class="line-3"></div>
-
-        <div class="pw_area">
-            <span class="sub-tit">비밀번호</span>
-            <input type="password" id="pw1" name="loginPassword" placeholder="비밀번호를 입력해주세요." maxlength="20" onblur="blurPw1()" class="in">
-            <div id="alert_pw1" class="alert"></div>
-            <!--재확인 name 필요여부...-->
-        </div>
-
-            <div class="line-3"></div>
-
-        <div>
-            <span class="sub-tit">비밀번호 확인</span>
-            <input type="password" id="pw2" name="pw2" placeholder="비밀번호를 다시 한번 입력해주세요." maxlength="20" onblur="blurPw2()" class="in">
-            <div id="alert_pw2" class="alert"></div>
-        </div>
-        <div class="line-5"></div>
-
-        <br>
-
-        <div class="line-5"></div>
-        <div class="name_area">
-            <span class="sub-tit">이름</span>
-            <input type="text" id="name" name="name" placeholder="이름을 입력해주세요." maxlength="40" onblur="blurName()" class="in">
-            <div id="alert_name" class="alert"></div>
-        </div>
-
-        <div class="line-3"></div>
-
-        <div>
-            <span class="sub-tit">생년월일</span>
-            <select name="yy" id="yy" class="sel"></select>
-            <select name="mm" id="mm" class="sel"></select>
-            <select name="dd" id="dd" class="sel"></select>
-        </div>
-
-        <div class="line-3"></div>
-
-        <div>
-            <span class="sub-tit">성별</span>
-
-            <select id="gender" name="gender" class="sel">
-                <option value="" selected>성별</option>
-                <option value="M">남자</option>
-                <option value="F">여자</option>
-            </select>
-        </div>
-
-        <div class="line-3"></div>
-
-        <div class="num_area">
-            <span class="sub-tit">전화번호</span>
-            <select id="phoneNumber" name="phoneNumber" class="sel">
-                <option value="0">010</option>
-                <option value="1">011</option>
-                <option value="2">012</option>
-                <option value="3">013</option>
-            </select>
-            -
-            <input type="text" id="first" onblur="blurNum()" class="sel">
-            -
-            <input type="text" id="second" onblur="blurNum()" class="sel">
-
-            <div id="alert_num" class="alert"></div>
-        </div>
-
-        <div class="line-3"></div>
-
-        <div class="email_area">
-            <span class="sub-tit">이메일</span>
-            <input type="email" id="email" name="eMail" placeholder="xxx@xxxx.xxx" onblur="blurEmail()" class="in">
-            <div id="alert_email" class="alert"></div>
-        </div>
-
-        <div class="line-3"></div>
-
-        <div class="team_area">
-            <span class="sub-tit">소속</span>
-            <select id="team" name="team" class="sel">
-                <option value="0">없음</option>
-                <option value="1">부산대병원</option>
-                <option value="2">부산병원</option>
-                <option value="3">금정병원</option>
-            </select>
-        </div>
-
-        <div class="line-5"></div>
-
-        <br><br>
-
-        <span class="quest">어떤 회원으로 키즈케어를 이용하시겠습니까?</span>
-        <div class="line-5"></div>
-        <div class="job_area">
-            <button type="button" class="who" id="doc" style="background-color:#f6d876; border:none; margin-Right:3.5em;" onclick="f()"><span class="who-content" id="doc-content" style="color:#fff">의사</span></button>
-            <button type="button" class="who" id="gur" onclick="gu()"><span class="who-content" id="gur-content">보호자</span></button>
-        </div>
-        <div class="line-5"></div>
-
-
-
-
-
-        <br>
-        <button type="submit" class="btn"><span class="btn-content">회원가입</span></button>
-
-
-        </div>
-    </form>
-
-</div>
-</center>
-<script>
+    </center>
+    <script>
         var d = document.getElementById("doc");
         var dc = document.getElementById("doc-content");
         var g = document.getElementById("gur");
@@ -290,7 +249,6 @@
             var yy = document.getElementById("yy");
             var mm = document.getElementById("mm");
             var dd = document.getElementById("dd");
-
             yy.innerHTML = "<option>년</option>";
             mm.innerHTML = "<option>월</option>";
             dd.innerHTML = "<option>일</option>";
@@ -304,8 +262,7 @@
                 dd.innerHTML += "<option value="+i+">"+ i + "</option>";
             }
         }
-
-	    const form = document.signUp_form;
+        const form = document.signUp_form;
         var testEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
         var testName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
         var chkId = 0
@@ -314,49 +271,45 @@
         var chkName = 0
         var chkEmail = 0
         var chkNum = 0
-
-    	function blurId() {
-    		var chkId = checkId();
-    		if(chkId) {
+        function blurId() {
+            var chkId = checkId();
+            if(chkId) {
                 document.getElementById("alert_id").innerText = "";
                 form.id.style.border = "2px solid";
                 form.id.style.borderColor = '#00F000';
             }
             else {
-            	form.id.style.borderColor = '#FF0000';
+                form.id.style.borderColor = '#FF0000';
                 document.getElementById("alert_id").style.color = '#FF0000';
             }
-    	}
-
-    	function blurPw1() {
-    		var chkPw1 = checkPw1();
-    		if(chkPw1) {
+        }
+        function blurPw1() {
+            var chkPw1 = checkPw1();
+            if(chkPw1) {
                 document.getElementById("alert_pw1").innerText = "";
                 form.pw1.style.border = "2px solid";
                 form.pw1.style.borderColor = '#00F000';
             }
             else {
-            	form.pw1.style.borderColor = '#FF0000';
+                form.pw1.style.borderColor = '#FF0000';
                 document.getElementById("alert_pw1").style.color = '#FF0000';
             }
-    	}
-
-    	function blurPw2() {
-    		var chkPw2 = checkPw2();
-    		if(chkPw2) {
+        }
+        function blurPw2() {
+            var chkPw2 = checkPw2();
+            if(chkPw2) {
                 document.getElementById("alert_pw2").innerText = "";
                 form.pw2.style.border = "2px solid";
                 form.pw2.style.borderColor = '#00F000';
             }
             else {
-            	form.pw2.style.borderColor = '#FF0000';
+                form.pw2.style.borderColor = '#FF0000';
                 document.getElementById("alert_pw2").style.color = '#FF0000';
             }
-    	}
-
+        }
         function blurName() {
-    		var chkName = checkName();
-    		if(chkName) {
+            var chkName = checkName();
+            if(chkName) {
                 document.getElementById("alert_name").innerText = "";
                 form.name.style.border = "2px solid";
                 form.name.style.borderColor = '#00F000';
@@ -365,32 +318,28 @@
                 form.name.style.borderColor = '#FF0000';
                 document.getElementById("alert_name").style.color = '#FF0000';
             }
-    	}
-
-    	function blurEmail() {
-    		var chkEmail = checkEmail();
-    		if(chkEmail) {
+        }
+        function blurEmail() {
+            var chkEmail = checkEmail();
+            if(chkEmail) {
                 document.getElementById("alert_email").innerText = "";
                 form.email.style.border = "2px solid";
                 form.email.style.borderColor = '#00F000';
             }
             else {
-            	form.email.style.borderColor = '#FF0000';
+                form.email.style.borderColor = '#FF0000';
                 document.getElementById("alert_email").style.color = '#FF0000';
             }
-    	}
-
-    	function blurNum() {
-    	    var chkNum = checkNum();
-    		if(chkNum) {
+        }
+        function blurNum() {
+            var chkNum = checkNum();
+            if(chkNum) {
                 document.getElementById("alert_num").innerText = "";
             }
             else {
                 document.getElementById("alert_num").style.color = '#FF0000';
             }
-    	}
-
-
+        }
         function checkId() {
             var value =  form.id.value;
             var chk=0;
@@ -402,42 +351,39 @@
                 document.getElementById("alert_id").innerText = "숫자나 알파벳을 입력하세요.";
                 return false;
             }
-
             if(value=="") {
                 document.getElementById("alert_id").innerText = "아이디를 입력해주세요.";
                 return false;
             }
             else if(value.length<6 || value.length>15) { //첫 번째 숫자 넣어야 함
                 if(value[0]>="0" && value[0]<="9") {
-                   document.getElementById("alert_id").innerText = "6~12자리문자를 입력하고 숫자를 처음에 사용하지마세요. ";
-                   return false;
+                    document.getElementById("alert_id").innerText = "6~12자리문자를 입력하고 숫자를 처음에 사용하지마세요. ";
+                    return false;
                 }
                 document.getElementById("alert_id").innerText = "6~12자리의 문자를 입력하세요.";
                 return false;
             }
             else { //개수는 맞지만 형식 불일치
                 if(value[0]>="0" && value[0]<="9") {
-                   document.getElementById("alert_id").innerText = "숫자를 처음에 사용하지마세요.";
-                   return false;
+                    document.getElementById("alert_id").innerText = "숫자를 처음에 사용하지마세요.";
+                    return false;
                 }
             }
             chkId = 1
             return true;
         }
-
         function checkPw1() {
             var value =  form.pw1.value;
             var chk=0;
             for(var i=0; i<value.length; i++) { //숫자, 영어, 특정 특수 문자
                 if(!((value[i]>="0"&&value[i]<="9")||(value[i]>="A"&&value[i]<="Z")||
-                (value[i]>="a"&&value[i]<="z")||(value[i]=="!")||(value[i]=="@")||(value[i]=="~")))
+                    (value[i]>="a"&&value[i]<="z")||(value[i]=="!")||(value[i]=="@")||(value[i]=="~")))
                     chk=1;
             }
             if(chk==1) {
                 document.getElementById("alert_pw1").innerText = "알파벳이나 숫자 또는 !, @, #을 입력하세요.";
                 return false;
             }
-
             if(value=="") {
                 document.getElementById("alert_pw1").innerText = "비밀번호를 입력해주세요.";
                 return false;
@@ -449,7 +395,6 @@
             chkPw1 = 1
             return true;
         }
-
         function checkPw2() {
             var value1 =  form.pw1.value;
             var value2 =  form.pw2.value;
@@ -468,7 +413,6 @@
             chkPw2 = 1
             return true;
         }
-
         function checkName() {
             if(form.name.value=="") {
                 document.getElementById("alert_name").innerText = "이름을 입력해 주세요.";
@@ -481,13 +425,11 @@
             chkName = 1
             return true;
         }
-
         function checkEmail() {
             if(form.email.value=="") {
                 document.getElementById("alert_email").innerText = "이메일을 입력해주세요.";
                 return false;
             }
-
             if(!(testEmail.test(email.value))) {
                 document.getElementById("alert_email").innerText = "잘못된 입력입니다.";
                 return false;
@@ -495,7 +437,6 @@
             chkEmail = 1
             return true;
         }
-
         function checkNum() {
             var f = form.first.value;
             var s = form.second.value;
@@ -517,16 +458,12 @@
             chkNum = 1;
             return true;
         }
-
         function checkSubmit() {
             if(chkId==1 && chkPw1==1 && chkPw2==1 && chkName==1 && chkEmail==1 && chkNum==1)
                 return true;
             alert("입력을 다시해주세요.")
             return false;
         }
-
-
-
     </script>
 </div>
 </body>
