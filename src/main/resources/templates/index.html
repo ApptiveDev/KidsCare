@@ -252,7 +252,7 @@
       <div class="side-box" onclick="location.href='/contents/writing'"><img src="/static/img/write.png" style="float:left; width:1.25em; height:1.25em; margin-Right:1em;"><span class="side-content">글쓰기</span></div>
       <div class="line-30">
         <div style="display:flex; margin: 1em 0em 0em 2.25em;">
-          <a th:if="${isLogined==null}" th:href="@{/member/login}"  th:value="로그인" class="side-menu"></a>
+          <a th:if="${isLogined==null}" th:href="@{/member/login}"  th:value="로그인" class="side-menu" style="text-decoration:none">로그인</a>
           <div class="vector-16"></div>
           <div th:if="${isLogined==null}" class="side-menu"  onclick="location.href='/member/signup'">회원가입</div>
         </div>
