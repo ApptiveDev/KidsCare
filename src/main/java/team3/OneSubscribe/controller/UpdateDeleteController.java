@@ -41,13 +41,19 @@ public class UpdateDeleteController {
     private final WritingService writingService;
 
     @PostMapping("/{writingId}/update")
-    public String updateWriting(@PathVariable("writingId") Long writingId, WritingDTO form, HttpServletRequest request, Model model){
+    public String updateWriting(@PathVariable("writingId") Long writingId, WritingDTO form, HttpServletRequest request){
         //writingService.updateWriting(writingId, form.getTitle(), form.getContext());
 
         Writing writing = writingRepository.findOneById(writingId);
 
-        // 기존
-        //tagRepository.deleteMany(writing);
+        // 1. 제목, 내용, 시간 저장
+        writing.setTitle(form.getTitle());
+        writing.setContext(form.getContext());
+        writing.setUpdateDate(LocalDateTime.now());
+        writingRepository.save(writing);
+
+        // 기존tag 삭제
+        tagRepository.deleteMany(writing);
 
         // 2. tag 저장
         if (Objects.equals(request.getParameter("복통"), "1")) {

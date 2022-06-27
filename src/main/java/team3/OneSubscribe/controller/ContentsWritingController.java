@@ -65,8 +65,6 @@ public class ContentsWritingController {
         writing.setCreateDate(LocalDateTime.now());
         writing.setUpdateDate(LocalDateTime.now()); //TODO 처음에 이걸 세팅해야하나?
 
-//        System.out.println("세션 : " + session.getAttribute("member"));
-        //writing.setMember((Member) session.getAttribute("member")); // 여기 고쳐야 함
         writingRepository.save(writing);
 
 
