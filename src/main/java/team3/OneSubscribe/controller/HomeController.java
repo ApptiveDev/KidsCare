@@ -40,9 +40,7 @@ public class HomeController {
 
         if (sess != null && sess.getAttribute("member") != null) { //로그인 했을 때
             model.addAttribute("isLogined", true);
-            System.out.println("테스트 : "+ ((Member) sess.getAttribute("member")));
             model.addAttribute("nickName", ((Member) sess.getAttribute("member")).getName());
-            System.out.println("nickName : " + ((Member) sess.getAttribute("member")).getNickName());
         }
 
         // 금주의 베스트 글

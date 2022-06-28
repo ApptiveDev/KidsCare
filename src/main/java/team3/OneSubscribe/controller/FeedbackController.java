@@ -33,7 +33,6 @@ public class FeedbackController {
 
         // redirection을 위한 경로 확인
         Long writingId = answerRepository.findOneById(answerId).getWriting().getId();
-        System.out.println("writingId : " + writingId);
 
         // 유저랑, 글 작성자가 맞는지 확인 // request에 writingId 넣어줘야 함.
         Member questioner = memberRepository.findOneById(answerRepository.findOneById(answerId)

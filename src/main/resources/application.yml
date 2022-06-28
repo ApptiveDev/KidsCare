@@ -38,7 +38,7 @@ spring:
 
 logging:
   level:
-    org.hibernate.SQL: error #info #debug
+    org.hibernate.SQL: warn #info #debug
     org.hibernate.type: warn
     #org.hibernate.type: trace
 
@@ -46,3 +46,8 @@ server:
   servlet:
     session:
       tracking-modes: cookie
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false

@@ -55,7 +55,6 @@ public class MemberController {
     //에러를 보면 어디서 뭔가 잘못되었는지 한눈에 알 수 있어야 한다. errorCode를 같이 출력함.
     @PostMapping("/signup")
     public String signupMember(@ModelAttribute SignupDto signupDto) {
-        System.out.println("테스트 : " + signupDto.getWho());
 
         Member member = new Member(signupDto);
         int errorCode = 0;
@@ -80,8 +79,6 @@ public class MemberController {
     @PostMapping("/isIdDuplicated")
     public boolean isIdDuplicated(@RequestBody String loginId) {
 
-        System.out.println("isIdDuplicated");
-        System.out.println("loginId : " + loginId);
         return memberService.isIdDuplicated(loginId);
     }
 
