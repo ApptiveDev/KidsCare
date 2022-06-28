@@ -55,8 +55,13 @@ public class SearchController {
 
         HttpSession session;
         session = request.getSession();//세션이 없다면 세션생성.
-        Member m =(Member) session.getAttribute("member");
-        model.addAttribute("name", m.getName());
+        if(session.getAttribute("member") != null) {
+            Member m = (Member) session.getAttribute("member");
+            model.addAttribute("name", m.getName());
+        }else{
+            Member m = (Member) session.getAttribute("member");
+            model.addAttribute("name", "'로그인 안됨'");
+        }
         if(request.getParameter("복통") != null) {
             session.setAttribute("복통", request.getParameter("복통"));
             session.setAttribute("설사", request.getParameter("설사"));

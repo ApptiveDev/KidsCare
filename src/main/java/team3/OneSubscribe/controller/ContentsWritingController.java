@@ -160,21 +160,33 @@ public class ContentsWritingController {
         Collections.reverse(writingList);
         model.addAttribute("writingList", writingList);
         model.addAttribute("pagination", pagination);
-        HttpSession sess = request.getSession(false);
-        Member m=null;
-        if (sess != null) {
-            m= (Member)sess.getAttribute("member");
-            model.addAttribute("name", m.getName());
+        HttpSession session = request.getSession(false);
+        //Member m=null;
+        if (session != null) {
+            if(session.getAttribute("member") != null) {
+                Member m = (Member) session.getAttribute("member");
+                model.addAttribute("name", m.getName());
+            }else{
+                Member m = (Member) session.getAttribute("member");
+                model.addAttribute("name", "'로그인 필요'");
+            }
         }
+
+
 
         return "posts";
     }
 
     @GetMapping("/own")
     public String myContents(Model model, @RequestParam(defaultValue = "1") int page, HttpServletRequest request){
-        // 로그인 안 되어 있을때, 로그인 필요하다고 하기 //
 
         HttpSession session = request.getSession();
+        // 로그인 안 되어 있을때, 로그인 필요하다고 하기 //
+        if(session.getAttribute("member") == null){
+            return "login";
+        }
+
+        // 로그인 된 경우
         Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
 
         List<Writing> writings = writingRepository.findByMember(writer);
@@ -254,6 +266,9 @@ public class ContentsWritingController {
         answer.setContext(request.getParameter("content"));
         answer.setCreateDate(LocalDateTime.now());
 
+        if(session.getAttribute("member") == null){
+            return "login";
+        }
         Member writer = memberRepository.findByLoginId(((Member) session.getAttribute("member")).getLoginId());
         answer.setNickName(writer.getNickName());
         answerRepository.save(answer);
@@ -264,7 +279,7 @@ public class ContentsWritingController {
     @GetMapping("/{writingId}/update")
     public String updateWriting(@PathVariable("writingId") Long writingId, HttpServletRequest request, Model model) {
         HttpSession sess = request.getSession(false);
-        if (sess != null && ((Member) sess.getAttribute("member")).getLoginId() != null) {//로그인 되었을 때
+        if (sess != null && sess.getAttribute("member") != null &&((Member) sess.getAttribute("member")).getLoginId() != null) {//로그인 되었을 때
             Writing writing = writingRepository.findOneById(writingId);
             Member m = (Member) sess.getAttribute("member");
             if (writing.getMember().getLoginId().equals(m.getLoginId())) {//글쓴이가 같을 때
