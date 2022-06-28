@@ -87,6 +87,7 @@ public class MemberController {
         if (memberService.isIdDuplicated(signupDto.getLoginId())) { //ajax로 중복처리 했더라도 검사하는게 맞을듯.
             return "duplicatedID";
         }
+        member.setNickName(member.getLoginId()); // 닉네임이 이라는 것을 따로 만들어놨는데, 회원가입에서 안 받음 // 그래서 logid를 nickname으로 대체하고자 함
         memberService.save(member); // id, pw 형식, 중복검사를 통과했을 때 저장.
         return "redirect:/";
     }
