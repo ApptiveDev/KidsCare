@@ -41,3 +41,8 @@ logging:
     org.hibernate.SQL: error #info #debug
     org.hibernate.type: warn
     #org.hibernate.type: trace
+
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
