@@ -199,7 +199,7 @@
 <div style="width:100%; height:100%; position:relative;">
     <div id="sidebar" style="display:none; height:25em">
         <center>
-            <img src="/static/img/logo_g.png" style="width:10em; height:1.75m; margin:2em 0em 1em 0em;">
+            <img src="/static/img/logo_g.png" style="width:10em; height:1.75em; margin:2em 0em 1em 0em;">
             <div style="display:flex">
                 <div class="intro" th:text="'반갑습니다. '+${name}+'님!'"></div>
                 <img src="/static/img/pro2.png" style="width:2.5em; height:2.5em; margin:0.3em 0em 0em 2em">
@@ -240,12 +240,8 @@
             <img src="/static/img/search.png" id="img"/>
         </div>
 
-        <div class="search" style="display:flex; margin:2em 0em 0em 1em; width30em;">
-<!--            <button class="sch-btn" type="button" onclick="location.href='/search'">-->
-<!--                <img src="/static/img/sch.png" class="sch-img"/>-->
-<!--            </button>-->
-            <span style="margin:0em 0em 0em 2.5em;font-size:1.5em;width10em;">검색 태그 : </span>
-
+        <div class="search" style="display:flex; margin:2em 0em 0em 1em; width:30em;">
+            <span style="margin:0em 0em 0em 2.5em;font-size:1.5em;width:10em;">검색 태그 : </span>
 
             <!-- 버튼 타임리프??-->
             <div  style="display:flex;flex-wrap: wrap; width:45em;">
@@ -268,14 +264,9 @@
         <br>
         <br>
 
-
-
-
         <!-- 연재 추가(각 글마다 검색된 태그만 표시)-->
         <div th:each="result : ${searchResults}" class="result">
             <div class="tit">
-<!-- <a href="#" th:href="@{/contents/{id} (id=${writing.id})}"></a>-->
-<!--                <span scope="row" th:text="${pagination.startIndex + resultStat.index + 1}">글 번호</span>-->
                 <a href="#" th:href="@{/contents/{id} (id=${result.id})}"><span th:text="${result.title}" class="result-title">제목</span></a>
                 <span th:text="${#temporals.format(result.createDate,'yyyy.MM.dd')}" class="result-date">날짜</span>
             </div>
@@ -283,7 +274,6 @@
             <a href="#" th:href="@{/contents/{id} (id=${result.id})}" style="text-decoration-line:none;"><span th:text="${result.context}" class="result-content">내용</span></a>
 
             <div class="line-1"></div>
-
 
                 <span th:each="tag : ${result.tags}"class="result-tags">
                     <span th:if="${diseaseNames.contains(tag.getDiseaseName())}">
@@ -305,8 +295,6 @@
                     <div style="margin-Top:0.2em;"><img src="/static/img/bubble.png"/></div>
                     <div><sapn th:text="${result.getAnswers().size()}" style="margin:0em 0em 0em 0.4em;">4</sapn></div>
                 </div>
-
-
 
         </div>
     </div>
@@ -332,7 +320,6 @@
             </a>
         </nav>
     </center>
-
 
     <script>
         function s() {

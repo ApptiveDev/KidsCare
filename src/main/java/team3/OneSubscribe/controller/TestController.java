@@ -20,15 +20,10 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Slf4j
 public class TestController {
-
     private final WritingRepository writingRepository;
 
-    private final WritingService writingService;
-
     private final MemberRepository memberRepository;
-
     private final MemberService memberService;
-
     private final TagRepository tagRepository;
 
     @GetMapping("/setting")
@@ -82,8 +77,6 @@ public class TestController {
         writing1.setCreateDate(LocalDateTime.now());
         writingRepository.save(writing1);
 
-
-
         Tag tag1 = new Tag();
         tag1.setDiseaseName(DiseaseName.abdominalPain);
         tag1.setWriting(writing1);
@@ -108,7 +101,6 @@ public class TestController {
         Long w3 = writingRepository.save(writing3);
         writingRepository.findOneById(w3).setCreateDate(LocalDateTime.now().minusDays(2));
 
-
         Tag tag3 = new Tag();
         tag3.setDiseaseName(DiseaseName.nutritionalDisease);
         tag3.setWriting(writing3);
@@ -120,7 +112,6 @@ public class TestController {
         writing4.setMember(memberRepository.findByLoginId("ahn"));
         Long w4 = writingRepository.save(writing4);
         writingRepository.findOneById(w4).setCreateDate(LocalDateTime.now().minusDays(3));
-
 
         Tag tag4 = new Tag();
         tag4.setDiseaseName(DiseaseName.abdominalPain);

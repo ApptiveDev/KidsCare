@@ -217,8 +217,6 @@
                     <div style="margin:0.5em 0em 0em 1em;">
                         <div th:text="${writing.member.nickName}" style="text-align:left;">작성자</div>
                         <div th:text="${#temporals.format(writing.createDate,'yyyy.MM.dd')}">Today</div>
-<!--                    <div th:text="${nickName}">김김김</div>-->
-<!--                    <div th:text="${#calendars.format(#calendars.createNow(),'HH:MM')}">20분 전</div>-->
                     </div>
                 </div>
                 <div th:text="${title}" class="title">제목</div>
@@ -252,9 +250,6 @@
                               </a>
                           </button>
                       </div>
-<!--                    <a href="#" th:href="@{/contents/{writingId}/{answerId}/delete (writingId=${writing.id},answerId=${answer.id})}">삭제</a>-->
-                      <!--확인 -->
-                      <!--확인 -->
                   </div>
                 </div>
                 <div  th:text="${answer.context}" class="ans">댓글</div>
@@ -264,7 +259,6 @@
             <form th:action="@{/contents/{id}/answer (id=${writing.id})}" method="post">
                 <div class="comment-title">댓글작성</div>
                 <textarea name="content" placeholder="내용을 입력해주세요." class="comment"></textarea>
-
 
                 <a href="#" th:href="@{/contents/{id}/answer (id=${writing.id})}"><button class="answer"><img src="/static/img/comment.png" style="width:1em; height:1.2em; margin:0.2em 0.5em 0em 0.4em"><div class="answer-content">작성완료</div></button>
                 </a>

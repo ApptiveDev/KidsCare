@@ -22,7 +22,7 @@ public class AnswerContent {
 
     private LocalDateTime updateDate;
 
-    private String context; // 형식을 어떤걸로 저장해야 할지 모르겠음.
+    private String context;
 
     @Enumerated(EnumType.STRING)
     private Expert expert;
@@ -32,7 +32,6 @@ public class AnswerContent {
     private boolean feedback;
 
     //조회를 위한 정보
-
     private Long questioner;
 
     private Long writingContentNumber;

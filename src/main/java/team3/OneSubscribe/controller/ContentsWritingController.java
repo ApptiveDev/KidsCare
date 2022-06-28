@@ -36,7 +36,6 @@ public class ContentsWritingController {
 
     private final WritingRepository writingRepository;
     private final MemberRepository memberRepository;
-    private final MemberService memberService;
     private final TagRepository tagRepository;
     private final AnswerService answerService;
     private final AnswerRepository answerRepository;
@@ -66,7 +65,6 @@ public class ContentsWritingController {
         writing.setUpdateDate(LocalDateTime.now()); //TODO 처음에 이걸 세팅해야하나?
 
         writingRepository.save(writing);
-
 
         // 2. tag 저장
         if (Objects.equals(request.getParameter("복통"), "1")) {
@@ -139,7 +137,6 @@ public class ContentsWritingController {
     }
 
     //전체글 조회
-
     @GetMapping("")
     public String contents(Model model, @RequestParam(defaultValue = "1") int page, HttpServletRequest request) {
         List<Writing> writings = writingRepository.findAll();
@@ -171,9 +168,6 @@ public class ContentsWritingController {
                 model.addAttribute("name", "'로그인 필요'");
             }
         }
-
-
-
         return "posts";
     }
 
@@ -226,14 +220,11 @@ public class ContentsWritingController {
             model.addAttribute("m", m);
         }
 
-
-
         //글찾기
         Writing writing = (Writing) writingRepository.findOneById(writingId);
         model.addAttribute("writing", writing); // 답변 작성을 위해서 id 필요
         model.addAttribute("title", writing.getTitle());//writing객체 다 넘기지 말고 필요한 애들만 넘기자
         model.addAttribute("context", writing.getContext());
-
 
         //댓글찾기
         List<Answer> li = answerService.findAllAnswerByWriting(writing);
@@ -242,7 +233,6 @@ public class ContentsWritingController {
         //연재댓글(참고용)
         List<Answer> answers = answerRepository.findByWriting(writing);
         model.addAttribute("answers", answers);
-
 
         return "showWriting";
     }

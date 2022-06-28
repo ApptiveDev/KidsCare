@@ -51,9 +51,6 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Writing> writings;
 
-//    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
-//    private Answer answers;
-
     // 좋아요(피드백) 받은 개수
     private Long totalLikeNumber = 0L;
 

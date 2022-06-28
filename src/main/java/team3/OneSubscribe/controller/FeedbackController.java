@@ -52,13 +52,11 @@ public class FeedbackController {
                 answerHuman.setTotalLikeNumber(newTotalLikeNumber);
             }
             String s = "redirect:/contents/" + writingId;
-            System.out.println("작동O");
             return s; // 이거 맞는지 모르겠는데?
         }
         else{
             model.addAttribute("operation", false);
             String s = "redirect:/contents/"+writingId;
-            System.out.println("작동X");
             return s;
         }
     }

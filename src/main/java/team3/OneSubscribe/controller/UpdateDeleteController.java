@@ -32,17 +32,11 @@ import java.util.Objects;
 public class UpdateDeleteController {
 
     private final WritingRepository writingRepository;
-    private final MemberRepository memberRepository;
-    private final MemberService memberService;
     private final TagRepository tagRepository;
-    private final AnswerService answerService;
     private final AnswerRepository answerRepository;
-
-    private final WritingService writingService;
 
     @PostMapping("/{writingId}/update")
     public String updateWriting(@PathVariable("writingId") Long writingId, WritingDTO form, HttpServletRequest request){
-        //writingService.updateWriting(writingId, form.getTitle(), form.getContext());
 
         Writing writing = writingRepository.findOneById(writingId);
 
@@ -145,6 +139,4 @@ public class UpdateDeleteController {
         answerRepository.deleteOne(answerId);
         return "redirect:/contents/{writingId}";
     }
-
-
 }

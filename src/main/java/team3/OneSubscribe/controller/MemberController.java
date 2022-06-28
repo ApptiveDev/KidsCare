@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
 public class MemberController {
 
     private final MemberService memberService;
-
     private final MemberRepository memberRepository;
 
     @PostMapping("/login")
@@ -30,8 +29,6 @@ public class MemberController {
             session = request.getSession();//세션이 없다면 세션생성.
             m = memberRepository.findByLoginId(m.getLoginId());
             session.setAttribute("member", m);
-//            model.addAttribute("isLogined", "true");
-//            model.addAttribute("nickName", m.getNickName());
             return "redirect:/";//로그인 성공
         }
         return "loginFail";
@@ -40,7 +37,6 @@ public class MemberController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false); //세션이 없어도 생성안함.
-//        model.addAttribute("logout", "fail");
         if (session != null) {
             session.invalidate();
             model.addAttribute("logout", "success");//덮어쓰기
@@ -50,21 +46,6 @@ public class MemberController {
 
     @PostMapping("/findId")
     public String findId(String name, String email, String phoneNum, Model model) {
-//        String resId = loginService.findLoginId(name, email, phoneNum);
-//        if (resId == null) {
-//            model.addAttribute("findId", "해당하는 아이디를 찾지 못했습니다. 다시 입력해주세요");
-//            //찾지 못했다. 다시 입력하도록 보낸다.
-//            return "find_login_id";
-//
-//        } else {//아이디를 찾았다.
-//            //이메일 보내기.
-//            mailService.sendMail(email, "[KidsCare]아이디 찾기", "아이디는 : " +resId + "입니다."); //메일을 보내는데 시간이 좀 걸려서 비동기로 하면 좋을 것 같다.
-//            //메일을 확인하라는 뷰 띄우기.
-//            model.addAttribute("findId", email);
-//            return "plz_check_email";
-//        }
-//
-//    }
         return "find_login_id";
     }
 
