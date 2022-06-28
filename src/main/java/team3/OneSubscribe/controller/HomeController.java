@@ -39,6 +39,7 @@ public class HomeController {
     private final TagRepository tagRepository;
 
     @GetMapping("/")
+    @PostMapping("/") //redirection을 위한것
     public String index(Model model, HttpServletRequest request) {
 
         HttpSession sess = request.getSession(false);//로그인 하면 회원가입, 로그인 버튼이 사라지도록.
