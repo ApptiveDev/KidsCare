@@ -54,7 +54,6 @@ public class AnswerRepository {
         return answers.size();
     }
 
-    //삭제 기능 // 테스트 해야 함
     @Transactional
     public void deleteOne(Long id){
         em.createQuery("delete from Answer i where i.id = :id")

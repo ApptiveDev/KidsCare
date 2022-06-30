@@ -18,10 +18,6 @@ public class Answer {
 
     private String nickName;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "member_id")
-//    private Member member;
-
     @ManyToOne
     @JoinColumn(name = "writing_id")
     private Writing writing;
@@ -39,8 +35,4 @@ public class Answer {
 
     private Long likeNumber;
 
-//    private Long totalLikeNumber;
-
-//    @OneToMany(mappedBy = "answer")
-//    private List<AnswerContent> answersContents = new ArrayList<>();
 }

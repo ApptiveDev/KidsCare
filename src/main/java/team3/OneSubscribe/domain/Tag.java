@@ -9,14 +9,9 @@ import javax.persistence.*;
 @Getter @Setter
 public class Tag {
 
-
     @Id @GeneratedValue
     @Column(name = "tag_id")
     private Long id;
-
-//    @ManyToOne
-//    @JoinColumn(name = "writing_content_id")
-//    private WritingContent writingContent;
 
     @ManyToOne
     @JoinColumn(name = "writing_id")

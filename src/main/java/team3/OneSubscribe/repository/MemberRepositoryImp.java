@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberRepositoryImp implements MemberRepository {
 
-
     @PersistenceContext
     private EntityManager em;
 
@@ -36,14 +35,11 @@ public class MemberRepositoryImp implements MemberRepository {
                 .getSingleResult();
     }
 
-    ;
-
     @Override
     public List<Member> findAll() {
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
     }
-
 
     @Override
     //일치하는게 없으면 null반환.
@@ -105,7 +101,5 @@ public class MemberRepositoryImp implements MemberRepository {
         }
         return bestInexperts;
     }
-
-
 }
 

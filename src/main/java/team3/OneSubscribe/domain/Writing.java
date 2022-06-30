@@ -30,11 +30,6 @@ public class Writing {
     @JoinColumn(name = "nickName")
     private Member member;
 
-//    private Long count;
-
-//    @OneToMany(mappedBy = "writing")
-//    private List<WritingContent> writingContents = new ArrayList<>();
-
     @OneToMany(mappedBy = "writing")
     private List<Tag> tags = new ArrayList<>();
 
@@ -50,5 +45,4 @@ public class Writing {
 
     @CreationTimestamp
     private LocalDateTime updateDate;
-
 }

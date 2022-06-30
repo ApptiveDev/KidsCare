@@ -29,7 +29,4 @@ public interface MemberRepository {
 
     public List<Member> findBestInexpert();
 
-
-
-
 }

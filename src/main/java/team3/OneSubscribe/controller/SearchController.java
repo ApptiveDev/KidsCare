@@ -42,7 +42,6 @@ public class SearchController {
     private final MemberService memberService;
 
     private final TagRepository tagRepository;
-
     private final SearchService searchService;
 
     @GetMapping("/search")
@@ -128,10 +127,6 @@ public class SearchController {
         model.addAttribute("diseaseNames", diseaseNames);
 
         List<Writing> writings = searchService.searchResults(diseaseNames);
-        // 확인용 // 나중에 지워야함
-        for(int i = 0; i < writings.size(); i++){
-            System.out.println("searchList : " + writings.get(i).getTitle());
-        }
 
         // 총 게시물 수
         int totalListCnt = writings.size();
@@ -145,7 +140,6 @@ public class SearchController {
         // 페이지 당 보여지는 게시글의 최대 개수
         int pageSize = pagination.getPageSize();
 
-        //List<Writing> writingList = writingRepository.findListPaging(startIndex, pageSize);
         int finalIndex;
         if(startIndex + pageSize > writings.size()){
             finalIndex = writings.size();

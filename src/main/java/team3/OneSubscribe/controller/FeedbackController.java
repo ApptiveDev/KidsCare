@@ -33,7 +33,6 @@ public class FeedbackController {
 
         // redirection을 위한 경로 확인
         Long writingId = answerRepository.findOneById(answerId).getWriting().getId();
-        System.out.println("writingId : " + writingId);
 
         // 유저랑, 글 작성자가 맞는지 확인 // request에 writingId 넣어줘야 함.
         Member questioner = memberRepository.findOneById(answerRepository.findOneById(answerId)
@@ -52,13 +51,11 @@ public class FeedbackController {
                 answerHuman.setTotalLikeNumber(newTotalLikeNumber);
             }
             String s = "redirect:/contents/" + writingId;
-            System.out.println("작동O");
             return s; // 이거 맞는지 모르겠는데?
         }
         else{
             model.addAttribute("operation", false);
             String s = "redirect:/contents/"+writingId;
-            System.out.println("작동X");
             return s;
         }
     }
