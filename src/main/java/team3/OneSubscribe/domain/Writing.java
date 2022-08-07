@@ -3,7 +3,6 @@ package team3.OneSubscribe.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import team3.OneSubscribe.DTO.WritingDTO;
 

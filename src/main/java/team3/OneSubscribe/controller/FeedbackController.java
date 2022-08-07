@@ -51,7 +51,7 @@ public class FeedbackController {
                 answerHuman.setTotalLikeNumber(newTotalLikeNumber);
             }
             String s = "redirect:/contents/" + writingId;
-            return s; // 이거 맞는지 모르겠는데?
+            return s;
         }
         else{
             model.addAttribute("operation", false);

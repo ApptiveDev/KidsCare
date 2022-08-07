@@ -3,7 +3,6 @@ package team3.OneSubscribe.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.Tag;
 import team3.OneSubscribe.domain.Writing;
 

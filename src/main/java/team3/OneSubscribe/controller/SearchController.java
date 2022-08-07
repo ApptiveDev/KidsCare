@@ -2,11 +2,9 @@ package team3.OneSubscribe.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import team3.OneSubscribe.DTO.Pagination;
 import team3.OneSubscribe.domain.DiseaseName;
@@ -20,12 +18,9 @@ import team3.OneSubscribe.service.MemberService;
 import team3.OneSubscribe.service.SearchService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 import static team3.OneSubscribe.domain.DiseaseName.*;
 import static team3.OneSubscribe.domain.DiseaseName.abdominalPain;
