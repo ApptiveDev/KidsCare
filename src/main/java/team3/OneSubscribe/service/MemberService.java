@@ -1,6 +1,5 @@
 package team3.OneSubscribe.service;
 
-import com.sun.xml.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.repository.MemberRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Transactional(readOnly = true)
 @RequiredArgsConstructor

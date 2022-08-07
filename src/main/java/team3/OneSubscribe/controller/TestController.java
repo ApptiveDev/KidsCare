@@ -12,7 +12,7 @@ import team3.OneSubscribe.repository.MemberRepository;
 import team3.OneSubscribe.repository.TagRepository;
 import team3.OneSubscribe.repository.WritingRepository;
 import team3.OneSubscribe.service.MemberService;
-import team3.OneSubscribe.service.WritingService;
+
 
 import java.time.LocalDateTime;
 

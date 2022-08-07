@@ -3,7 +3,6 @@ package team3.OneSubscribe.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import team3.OneSubscribe.domain.Answer;
-import team3.OneSubscribe.domain.Member;
 import team3.OneSubscribe.domain.Writing;
 import team3.OneSubscribe.repository.AnswerRepository;
 
@@ -32,16 +31,9 @@ public class AnswerService {
         return false;
     }
 
-    //    TODO : 해당 글에 answer 전부 조회
     public List<Answer> findAllAnswerByWriting(Writing w) {
         return w.getAnswers().stream().map(i->answerRepository.findOneById(i.getId())).collect(Collectors.toList());
     }
-
-    //TODO : 삭제
-//    public long deleteWriting(Answer answer) {
-//    }
-
-//    TODO : 수정
 
     @Transactional
     public void updateAnswer(){

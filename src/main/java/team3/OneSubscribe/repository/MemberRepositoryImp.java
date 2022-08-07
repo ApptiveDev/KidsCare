@@ -2,7 +2,6 @@ package team3.OneSubscribe.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import team3.OneSubscribe.domain.Answer;
 import team3.OneSubscribe.domain.Member;
 
 import javax.persistence.EntityManager;

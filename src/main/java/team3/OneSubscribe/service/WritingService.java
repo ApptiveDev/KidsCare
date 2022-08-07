@@ -33,14 +33,9 @@ public class WritingService {
         return false;
     }
 
-
-    //TODO : 전부조회
     public List<Writing> findAll() {
         return writingRepository.findAll();
     }
-
-    //TODO : 수정
-    //TODO : 삭제
 
     public List<Writing> sequenceByAnswerNumber(){
         List<Writing> writings = writingRepository.findAll();
@@ -100,7 +95,6 @@ public class WritingService {
         findWriting.setTitle(title);
         findWriting.setContext(context);
         findWriting.setUpdateDate(LocalDateTime.now());
-        // 이렇게 하고 db에 안 올려도 되나????? //Transactional때문에 괜찮은건가???? // 이거 테스트 해야함
     }
 
 

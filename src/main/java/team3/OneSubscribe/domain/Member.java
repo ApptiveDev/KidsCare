@@ -28,9 +28,9 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
     @Column(unique = true)
-    private String loginId; // 형식 확인 필요
+    private String loginId;
 
-    private String loginPassword; // 형식 확인 필요
+    private String loginPassword;
 
     @Column(unique = true)
     private String name;

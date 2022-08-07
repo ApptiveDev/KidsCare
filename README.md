@@ -1,51 +1,73 @@
 # KidsCare
 
-### Description
-* Service to help with your child's illness
-* 2022.03. - 2022.07.
-* Contributor
-    * Designer : **annssu05@gmail.com** ,**horse6953@gmail.com**
-      * [zeplin](https://app.zeplin.io/project/622e9e9da59a753dc4f06650)
-    * Front: **[wjdgh224](https://github.com/wjdgh224)**
-    * Back : **[Amenable-C](https://github.com/Amenable-C)**, **[zhdhfhd33](https://github.com/zhdhfhd33)**
+## 1. 📚 Product Manager(IT Service Planner), 💻 Developer, 🎨 Designer
+<div align="center">
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Amenable-C"><p><b>최연재</b></p></a><small>📚 기획</small></td>
+  </tr> 
+</table>   
+<table>
+  <tr>
+      <td align="center"><a href="https://github.com/zhdhfhd33"><p><b>신민건</b></p></a><small>💻 Back-End Developer</small></td>
+    <td align="center"><a href="https://github.com/Amenable-C"><p><b>최연재</b></p></a><small>💻 Back-End Developer</small></td>
+    <td align="center"><a href="https://github.com/wjdgh224"><p><b>황정호</b></p></a><small>💻 Front-End Developer</small></td>
+  </tr> 
+</table>
+<table>
+  <tr>
+    <td align="center"><p><b>김문경</b></p><small>🎨 디자인</small><br/><small>horse6953@gmail.com</small></td>
+    <td align="center"><p><b>안수현</b></p><small>🎨 디자인</small><br/><small>annssu05@gmail.com</small></td> 
+  </tr> 
+</table>
+</div>
 
-### Contents
-* 페이지
-    * 홈페이지
-        * 금주의 베스트
-        * 전체글
-        * 베스트 전문가
-    * 로그인/회원가입
-    * 전체글/특정글
-    * 검색/검색결과
-    * 글작성
-    * 공통
-        * 사이드바
-        * 로고
+<br><hr><br>
 
-### Front
-* 기초적인 뼈대를 HTML로 작성
-* Zeplin을 참조해 CSS적용
-* Notion의 기획대로 오브젝트 상호작용을 JS로 구현
-* 서버에서 오는 동적데이터 처리를 위한 Thymeleaf이용
+## 2. 서비스 소개
+<b>한줄 소개 : 의심스러운 증상에 대한 정보를 제공하는 서비스(소아청소년과 커뮤니티)</b><br/><br/>
+<div>
+<img src="https://user-images.githubusercontent.com/61836238/183279216-9a5d9825-b338-43d6-8b05-e7b867f1e0a8.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183279268-59fa6c4f-51a9-4002-85ba-fbfafbade45e.png" width="400" height="400" align='center'><br><br>
+   
+<img src="https://user-images.githubusercontent.com/61836238/183279273-7991d12b-3ff8-401e-b73e-6bd0c31e7e0c.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183279276-515db365-1d2b-4864-97be-54152cb98f1a.png" width="400" height="400" align='center'><br><br>
+   
+<img src="https://user-images.githubusercontent.com/61836238/183279279-32170480-1aa8-4aa6-82c1-7faacc6dc328.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183279280-05b8a655-9c56-4673-a47b-429b99991fca.png" width="400" height="400" align='center'>
+</div>
 
+<br><hr><br>
 
+## 3. 페이지
+<div>
+<img src="https://user-images.githubusercontent.com/61836238/183280109-27a4f208-1898-485b-8dca-d3ac4fbc0f47.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280129-e4529fe7-184a-4f4f-ade8-82884907a572.png" width="400" height="400" align='center'><br><br>
 
-### Develop Tools
-<img src="https://user-images.githubusercontent.com/78483046/176113986-dfdec755-0842-4301-9522-e2231ef6a30b.jpg" width="50" height="50">
-<img src="https://user-images.githubusercontent.com/78483046/176113988-ad583ca1-29d1-4b86-9aa5-5f36f9f3a588.jpg" width="50" height="50">
-<img src="https://user-images.githubusercontent.com/78483046/176113994-cfe07ed7-ecfc-4af2-a09a-92b8f6dd1aae.jpg" width="50" height="50">
-<img src="https://user-images.githubusercontent.com/78483046/176114007-e7c880ea-7a5d-458c-b23e-64e67b53270e.png" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/61836238/183280132-6c8777c6-8afe-4bc6-a18e-9aaf7a134340.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280139-0e929f18-51d4-4402-8669-9d2cafd1fab3.png" width="400" height="400" align='center'><br><br>
 
-***
-<img src="https://user-images.githubusercontent.com/78483046/176113996-c36e5906-bdeb-4886-ab80-9f9cbd7a5020.png" width="50" height="70">
-<img src="https://user-images.githubusercontent.com/78483046/176114005-5e7192f6-2274-4725-9a88-090abac80291.png" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/61836238/183280153-5ccfe08c-3ed0-4543-a20d-ff4c538b10f3.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280161-ce6adb91-c3eb-4322-898a-9ca03e1841bb.png" width="400" height="400" align='center'><br><br>
 
-***
-<img src="https://user-images.githubusercontent.com/78483046/176113991-c969b2ba-fd08-43dc-aeac-e8c9813d5cc8.png" width="50" height="50">
-<img src="https://user-images.githubusercontent.com/78483046/176113978-1a3749e3-ad1a-4956-82b3-748688a3cec6.png" width="75" height="50">
+<img src="https://user-images.githubusercontent.com/61836238/183280219-f1f5e1fd-5401-40f6-8ff2-b48e426b34f1.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280166-9a3202cd-d014-40c8-8436-1b6d34b5bb8f.png" width="400" height="400" align='center'>
+</div>
 
-***
-<img src="https://user-images.githubusercontent.com/78483046/176114001-842b34fd-9ef8-435f-a0b7-acec9f69cb19.png" width="100" height="47.5">
-<img src="https://user-images.githubusercontent.com/78483046/176114003-a1f1f773-6f8c-482f-a697-6fb4184e3536.png" width="100" height="45">
-<img src="https://user-images.githubusercontent.com/78483046/176114008-2470c793-6157-4afc-8d61-c739e3128120.png" width="100" height="50">
+<br><hr><br>
+
+## 4. 🛠 Tech Stack
+<p>
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"></br>
+</p>
+
+<p>
+<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"></br>
+</p>
+
+<p>
+<img alt="Thymeleaf" src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=Thymeleaf&logoColor=white">
+</p>
