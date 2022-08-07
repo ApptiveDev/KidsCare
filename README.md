@@ -4,14 +4,14 @@
 <div align="center">
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/Amenable-C"><img src="./images/Amenable-C.jpeg" width="150x;" alt=""/><br /><p><b>최연재</b></p></a><small>📚 기획</small></td>
+    <td align="center"><a href="https://github.com/Amenable-C"><p><b>최연재</b></p></a><small>📚 기획</small></td>
   </tr> 
 </table>   
 <table>
   <tr>
-      <td align="center"><a href="https://github.com/zhdhfhd33"><img src="./images/zhdhfhd33.jpeg" width="150x;" alt=""/><br /><p><b>신민건</b></p></a><small>💻 Back-End Developer</small></td>
-    <td align="center"><a href="https://github.com/Amenable-C"><img src="./images/Amenable-C.jpeg" width="150x;" alt=""/><br /><p><b>최연재</b></p></a><small>💻 Back-End Developer</small></td>
-    <td align="center"><a href="https://github.com/wjdgh224"><img src="./images/wjdgh224.jpeg" width="150px;" alt=""/><br /><p><b>황정호</b></p></a><small>💻 Front-End Developer</small></td>
+      <td align="center"><a href="https://github.com/zhdhfhd33"><p><b>신민건</b></p></a><small>💻 Back-End Developer</small></td>
+    <td align="center"><a href="https://github.com/Amenable-C"><p><b>최연재</b></p></a><small>💻 Back-End Developer</small></td>
+    <td align="center"><a href="https://github.com/wjdgh224"><p><b>황정호</b></p></a><small>💻 Front-End Developer</small></td>
   </tr> 
 </table>
 <table>
@@ -41,16 +41,17 @@
 
 ## 3. 페이지
 <div>
-<img src="https://user-images.githubusercontent.com/61836238/183280109-27a4f208-1898-485b-8dca-d3ac4fbc0f47.png" width="300" height="300" align='center'>
-<img src="https://user-images.githubusercontent.com/61836238/183280129-e4529fe7-184a-4f4f-ade8-82884907a572.png" width="300" height="300" align='center'>
-<img src="https://user-images.githubusercontent.com/61836238/183280132-6c8777c6-8afe-4bc6-a18e-9aaf7a134340.png" width="300" height="300" align='center'><br><br>
+<img src="https://user-images.githubusercontent.com/61836238/183280109-27a4f208-1898-485b-8dca-d3ac4fbc0f47.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280129-e4529fe7-184a-4f4f-ade8-82884907a572.png" width="400" height="400" align='center'><br><br>
 
-<img src="https://user-images.githubusercontent.com/61836238/183280139-0e929f18-51d4-4402-8669-9d2cafd1fab3.png" width="300" height="300" align='center'>
-<img src="https://user-images.githubusercontent.com/61836238/183280153-5ccfe08c-3ed0-4543-a20d-ff4c538b10f3.png" width="300" height="300" align='center'>
-<img src="https://user-images.githubusercontent.com/61836238/183280161-ce6adb91-c3eb-4322-898a-9ca03e1841bb.png" width="300" height="300" align='center'><br><br>
+<img src="https://user-images.githubusercontent.com/61836238/183280132-6c8777c6-8afe-4bc6-a18e-9aaf7a134340.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280139-0e929f18-51d4-4402-8669-9d2cafd1fab3.png" width="400" height="400" align='center'><br><br>
 
-<img src="https://user-images.githubusercontent.com/61836238/183280219-f1f5e1fd-5401-40f6-8ff2-b48e426b34f1.png" width="300" height="300" align='center'>
-<img src="https://user-images.githubusercontent.com/61836238/183280166-9a3202cd-d014-40c8-8436-1b6d34b5bb8f.png" width="300" height="300" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280153-5ccfe08c-3ed0-4543-a20d-ff4c538b10f3.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280161-ce6adb91-c3eb-4322-898a-9ca03e1841bb.png" width="400" height="400" align='center'><br><br>
+
+<img src="https://user-images.githubusercontent.com/61836238/183280219-f1f5e1fd-5401-40f6-8ff2-b48e426b34f1.png" width="400" height="400" align='center'>
+<img src="https://user-images.githubusercontent.com/61836238/183280166-9a3202cd-d014-40c8-8436-1b6d34b5bb8f.png" width="400" height="400" align='center'>
 </div>
 
 <br><hr><br>
